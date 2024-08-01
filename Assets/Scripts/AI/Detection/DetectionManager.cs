@@ -5,7 +5,7 @@ public class DetectionManager : MonoBehaviour
 {
     public static DetectionManager instance { get; private set; }
     public Dictionary<string, HashSet<Transform>> targets { get; private set; } = new();
-    public Dictionary<string, HashSet<HearingSensor>> listeners { get; private set; } = new();
+    public Dictionary<string, HashSet<AwarenessSystem>> listeners { get; private set; } = new();
     public string[] teams { get; private set; }
     private void Awake()
     {
@@ -25,19 +25,34 @@ public class DetectionManager : MonoBehaviour
             }
             if (!listeners.ContainsKey(teams[i]))
             {
-                listeners.Add(teams[i], new HashSet<HearingSensor>());
+                listeners.Add(teams[i], new HashSet<AwarenessSystem>());
             }
         }
     }
     public void RegisterTarget(Transform entity)
     {
         //each team will be identified by a layer
-        targets[entity.gameObject.layer.ToString()].Add(entity);
+        try
+        {
+            targets[entity.gameObject.layer.ToString()].Add(entity);
+        }
+        catch (KeyNotFoundException)
+        {
+            targets.Add(entity.gameObject.layer.ToString(), new HashSet<Transform>());
+            targets[entity.gameObject.layer.ToString()].Add(entity);
+        }
         //Debug.Log("Registered " + entity.name + " in team " + entity.gameObject.layer.ToString());
     }
     public void DeRegisterTarget(Transform entity)
     {
-        targets[entity.gameObject.layer.ToString()].Remove(entity);
+        try
+        {
+            targets[entity.gameObject.layer.ToString()].Remove(entity);
+        }
+        catch (KeyNotFoundException)
+        {
+            //we don't need to do anything
+        }
     }
     public void MakeNoise(Sound sound)
     {
@@ -54,12 +69,27 @@ public class DetectionManager : MonoBehaviour
             }
         }
     }
-    public void RegisterListener(HearingSensor sensor)
+    public void RegisterListener(AwarenessSystem sensor)
     {
-        listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
+        try
+        {
+            listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
+        }
+        catch (KeyNotFoundException)
+        {
+            listeners.Add(sensor.transform.root.gameObject.layer.ToString(), new HashSet<AwarenessSystem>());
+            listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
+        }
     }
-    public void DeRegisterListener(HearingSensor sensor)
+    public void DeRegisterListener(AwarenessSystem sensor)
     {
-        listeners[sensor.transform.root.gameObject.layer.ToString()].Remove(sensor);
+        try
+        {
+            listeners[sensor.transform.root.gameObject.layer.ToString()].Remove(sensor);
+        }
+        catch (KeyNotFoundException)
+        {
+            //we don't need to do anything
+        }
     }
 }

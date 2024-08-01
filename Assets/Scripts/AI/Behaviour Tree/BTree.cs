@@ -10,16 +10,14 @@ public abstract class BTree : MonoBehaviour
     protected float updateinterval = .1f;
     protected BlackBoard LocalMemory = null;
     public float reach;
+    protected virtual void Awake()
+    {
+        LocalMemory = new BlackBoard();
+        root = SetupTree();
+    }
     protected virtual void OnEnable()
     {
-        if (LocalMemory == null)
-        {
-            LocalMemory = BlackBoardManager.instance.GetIndividualBlackBoard(this);
-        }
-        if (root == null)
-        {
-            root = SetupTree();
-        }
+        LocalMemory.SetData<TargetData>("Target", null);
         shouldrun = true;
         coroutine = StartCoroutine(UpdateLoop());
     }
@@ -34,6 +32,7 @@ public abstract class BTree : MonoBehaviour
     {
         WaitForSeconds waitinterval = new(updateinterval);
         WaitUntil waitforpermission = new(() => { return shouldrun; });
+        yield return new WaitUntil(new(() => { return LocalMemory != null; }));
         while (true)
         {
             yield return waitinterval;
@@ -44,6 +43,7 @@ public abstract class BTree : MonoBehaviour
     protected abstract Node SetupTree();
     public string GetDebugText()
     {
-        return root.GetDebugText();
+        return root.
+            GetDebugText();
     }
 }

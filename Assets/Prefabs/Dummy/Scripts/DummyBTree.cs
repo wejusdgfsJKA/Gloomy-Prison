@@ -4,34 +4,26 @@ public class DummyBTree : BTree
 {
     protected AwarenessSystem awarenessSystem;
     protected DummyEntity dummyEntity;
-    protected void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         dummyEntity = GetComponent<DummyEntity>();
         awarenessSystem = GetComponent<AwarenessSystem>();
-    }
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        LocalMemory?.SetData<Transform>("Target", null);
-        SetReach(reach);
     }
     protected override Node SetupTree()
     {
         root = new Selector("Root");
-        root.AddService(new Service("Has target?",
-            () =>
+        root.AddService("Target selection", () =>
+        {
+            if (awarenessSystem.ClosestTarget == null)
             {
-                if (awarenessSystem.target != null && awarenessSystem.target.gameObject.activeSelf)
-                {
-                    LocalMemory.SetData<Transform>("Target", awarenessSystem.target);
-                    //Debug.DrawLine(transform.position, awarenessSystem.target.position, Color.red, 10);
-                }
-                else
-                {
-                    LocalMemory.SetData<Transform>("Target", null);
-                }
-            }));
-
+                LocalMemory.SetData<TargetData>("Target", null);
+            }
+            else
+            {
+                LocalMemory.SetData("Target", awarenessSystem.targets[awarenessSystem.ClosestTarget]);
+            }
+        });
         //AddAttackNode(root);
 
         AddChaseNode(root);
@@ -40,37 +32,37 @@ public class DummyBTree : BTree
 
         return root;
     }
-    public void SetReach(float reach)
-    {
-        LocalMemory.SetData("Reach", reach);
-    }
     Node AddChaseNode(Node parent)
     {
         Node ChaseNode = parent.Attach(new Node("Chase", () =>
         {
             //Debug.Log("Beggining chase");
-            dummyEntity.MoveToLocation(LocalMemory.
-                GetData<Transform>("Target").position);
-            LocalMemory.SetData("PrevPos", LocalMemory.
-                GetData<Transform>("Target").position);
+            Vector3 pos = LocalMemory.GetData<TargetData>("Target").KnownPos;
+            dummyEntity.MoveToLocation(pos);
+            LocalMemory.SetData("PrevPos", pos);
             return NodeState.SUCCESS;
         },
         () =>
         {
             //Debug.Log("Chasing");
-            if ((LocalMemory.GetData<Vector3>("PrevPos") - LocalMemory.
-                GetData<Transform>("Target").position).sqrMagnitude > 0.01f)
+            Vector3 pos = LocalMemory.GetData<TargetData>("Target").KnownPos;
+            if ((LocalMemory.GetData<Vector3>("PrevPos") - pos).sqrMagnitude > 0.01f)
             {
-                dummyEntity.MoveToLocation(LocalMemory.
-                    GetData<Transform>("Target").position);
-                LocalMemory.SetData("PrevPos", LocalMemory.
-                    GetData<Transform>("Target").position);
+                dummyEntity.MoveToLocation(pos);
+                LocalMemory.SetData("PrevPos", pos);
             }
             return NodeState.RUNNING;
         }));
         ChaseNode.AddDecorator("HasTarget?", () =>
         {
-            return LocalMemory.GetData<Transform>("Target") != null;
+            try
+            {
+                return LocalMemory.GetData<TargetData>("Target") != null;
+            }
+            catch
+            {
+                return false;
+            }
         });
         return ChaseNode;
     }

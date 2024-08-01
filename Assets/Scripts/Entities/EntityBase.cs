@@ -1,10 +1,10 @@
+using UnityEditor;
 using UnityEngine;
-
 public class EntityBase : MonoBehaviour
 {
     //the state the entity is currently in; will likely be used for the AI
     //to respond to the player's actions
-    public enum EntityState { Attacking, Blocking, Idle }
+    public enum EntityState { Attacking, Blocking, Idle, Pushing, Winding }
     public EntityState CurrentState { get; protected set; }
     public EntityData entityData;
     [SerializeField]
@@ -13,9 +13,10 @@ public class EntityBase : MonoBehaviour
     protected float stamina;
     [SerializeField]
     protected float poise;
-    protected float StartedBlocking;
     [SerializeField]
     protected Weapon CurrentWeapon;
+    [SerializeField]
+    protected bool ShowDebug;
     protected virtual void OnEnable()
     {
         //reset all stats and enter idle state
@@ -36,7 +37,6 @@ public class EntityBase : MonoBehaviour
     {
         //this entity just started blocking
         //useful for determining timed blocks
-        StartedBlocking = Time.time;
         CurrentState = EntityState.Blocking;
     }
     public void StopBlocking()
@@ -52,84 +52,28 @@ public class EntityBase : MonoBehaviour
             DealPoiseDamage(dmgInfo.poiseDamage);
             return;
         }
-        if (!Block(dmgInfo))
+        var blockResult = CurrentWeapon.Block(dmgInfo);
+        switch (blockResult)
         {
-            DealDamage(dmgInfo.damage);
-            DealPoiseDamage(dmgInfo.poiseDamage);
-        }
-    }
-    public virtual bool Block(DmgInfo dmgInfo)
-    {
-        if (CurrentState != EntityState.Blocking)
-        {
-            return false;
-        }
-        if (Time.time <= StartedBlocking + Settings.instance.TimedBlockWindow)
-        {
-            //a timed block was executed
-            SuccessfullBlock(dmgInfo, true);
-            return true;
-        }
-        //we need to calculate the angle of the strike
-        float strikeangle = 0;
-        if (dmgInfo.attackType == DmgInfo.AttackType.Strike)
-        {
-            if (strikeangle <= CurrentWeapon.GetStrikeBlockAngle())
-            {
-                //we successfully blocked a strike
-                SuccessfullBlock(dmgInfo);
-                return true;
-            }
-        }
-        else
-        {
-            if (dmgInfo.attackType == DmgInfo.AttackType.Thrust)
-            {
-                if (strikeangle <= CurrentWeapon.GetThrustBlockAngle())
-                {
-                    //we successfully blocked a thrust
-                    SuccessfullBlock(dmgInfo);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    public virtual void SuccessfullBlock(DmgInfo dmgInfo, bool timed = false)
-    {
-        if (dmgInfo.strength == DmgInfo.AttackStrength.Regular)
-        {
-            //we successfully blocked a regular attack
-            if (timed)
-            {
-                //maybe we want to stagger the opponent?
-                DealStaminaDamage(dmgInfo.staminaCost *
-                    Settings.instance.TimedBlockStaminaCostCoefficient);
-                return;
-            }
-            DealStaminaDamage(dmgInfo.staminaCost);
-            return;
-        }
-        if (dmgInfo.strength == DmgInfo.AttackStrength.Heavy)
-        {
-            //we need a shield to block this
-            if (!CurrentWeapon.GetShieldBool())
-            {
-                //a heavy blow like this can only be blocked with a shield
+            case BlockResult.Perfect:
+                //we executed a timed block
+                DealStaminaDamage(dmgInfo.staminaCost * Settings.instance.TimedBlockStaminaCostCoefficient);
+                break;
+            case BlockResult.Failed:
+                //we failed to block
+                DealDamage(dmgInfo.damage);
+                DealPoiseDamage(dmgInfo.poiseDamage);
+                break;
+            case BlockResult.Success:
+                //we successfully blocked
+                DealStaminaDamage(dmgInfo.staminaCost);
+                break;
+            case BlockResult.Partial:
+                //we tried to block a heavy attack without a shield
+                DealDamage(dmgInfo.damage);
                 DealPoiseDamage(dmgInfo.poiseDamage);
                 DealStaminaDamage(dmgInfo.staminaCost);
-                DealDamage(dmgInfo.damage);
-                return;
-            }
-            if (timed)
-            {
-                //heavy blows like this should not stagger the opponent when timed-blocked
-                DealStaminaDamage(dmgInfo.staminaCost *
-                    Settings.instance.TimedBlockStaminaCostCoefficient);
-                return;
-            }
-            DealStaminaDamage(dmgInfo.staminaCost);
-            return;
+                break;
         }
     }
     protected virtual void DealStaminaDamage(float staminaDamage)
@@ -167,10 +111,68 @@ public class EntityBase : MonoBehaviour
     {
         //this entity has been killed
         gameObject.SetActive(false);
-
     }
     protected virtual void OnDisable()
     {
         EntityManager.instance.Dead(this);
     }
+    //the following are just getters for the editor scripts
+    public float GetStrikeBlockAngle()
+    {
+        return CurrentWeapon.GetStrikeBlockAngle();
+    }
+    public float GetThrustBlockAngle()
+    {
+        return CurrentWeapon.GetThrustBlockAngle();
+    }
+    public bool HasWeapon()
+    {
+        //used so the debug script doesn't have a stroke when selecting an unarmed entity
+        return CurrentWeapon != null;
+    }
+    public Transform GetBlockPoint()
+    {
+        return CurrentWeapon.GetBlockPoint();
+    }
+    public bool GetShowDebug()
+    {
+        return ShowDebug;
+    }
 }
+#if UNITY_EDITOR
+[CustomEditor(typeof(EntityBase), true)]
+public class EntityDebug : Editor
+{
+    protected void OnSceneGUI()
+    {
+        EntityBase entity = (EntityBase)target;
+        if (entity.GetShowDebug() && entity.HasWeapon() && entity.GetBlockPoint() != null)
+        {
+            Handles.color = Color.green;
+            Handles.DrawWireArc(entity.GetBlockPoint().position, Vector3.up,
+                entity.GetBlockPoint().forward, 360, 2);
+            //show the angle at which we'll block a strike in yellow
+            {
+                float angle = Mathf.Deg2Rad * (90 - entity.GetStrikeBlockAngle());
+                Vector3 p1 = entity.GetBlockPoint().position + Mathf.Sin(angle) * 2 * entity.
+                    GetBlockPoint().forward + Mathf.Cos(angle) * 2 * entity.GetBlockPoint().right;
+                Handles.DrawLine(entity.GetBlockPoint().position, p1);
+                p1 = entity.GetBlockPoint().position + Mathf.Sin(angle) * 2 * entity.GetBlockPoint().
+                    forward - Mathf.Cos(angle) * 2 * entity.GetBlockPoint().right;
+                Handles.DrawLine(entity.GetBlockPoint().position, p1);
+            }
+            //show the angle at which we'll block a thrust in red
+            {
+                Handles.color = Color.red;
+                float angle = Mathf.Deg2Rad * (90 - entity.GetThrustBlockAngle());
+                Vector3 p1 = entity.GetBlockPoint().position + Mathf.Sin(angle) * 2 * entity.
+                    GetBlockPoint().forward + Mathf.Cos(angle) * 2 * entity.GetBlockPoint().right;
+                Handles.DrawLine(entity.GetBlockPoint().position, p1);
+                p1 = entity.GetBlockPoint().position + Mathf.Sin(angle) * 2 * entity.GetBlockPoint().
+                    forward - Mathf.Cos(angle) * 2 * entity.GetBlockPoint().right;
+                Handles.DrawLine(entity.GetBlockPoint().position, p1);
+            }
+        }
+    }
+}
+#endif

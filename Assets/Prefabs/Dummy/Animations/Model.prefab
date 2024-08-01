@@ -125,6 +125,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4221050312803480710}
   - component: {fileID: 7403120881588160883}
+  - component: {fileID: 3548479018477498857}
+  - component: {fileID: 3843675568332715248}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -141,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 1196261016250174232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -170,6 +172,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3548479018477498857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196261016250174232}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddab23f892bbd64a86f94c4fccfd8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 1c1c593d7e5018347b1c67729df19d01, type: 2}
+  hurtboxes:
+  - maxEntities: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 0
+    hits: []
+    points:
+    - {fileID: 38690963700739015}
+    floats:
+    - 0.05
+    - 1
+    - 0.05
+  meshRenderer: {fileID: 6682146349653926064}
+--- !u!114 &3843675568332715248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196261016250174232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409806822a5f20b4c8ab1423314b5e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 3548479018477498857}
 --- !u!1 &2240598236919139388
 GameObject:
   m_ObjectHideFlags: 0
