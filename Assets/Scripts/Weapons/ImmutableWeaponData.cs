@@ -5,9 +5,9 @@ public class ImmutableWeaponData : ScriptableObject
 {
     public string Name;
     public float CheckInterval = 0.01f;//how often should the hurtboxes check for
-    //collisions; this value seems to be reliable, anything slower will cause quick
+    //collisions; 0.01f seems to be reliable, anything slower will cause quick
     //animations to sometimes not register hits
-    public int MaxHurtboxEntities = 1;
+    public int MaxHurtboxEntities = 10;
     //the enemy's layermask
     public LayerMask mask;
     //used for behaviour trees

@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+//a partial block refers to blocking a heavy attack without a shield
+//a perfect block refers to a timed block
+public enum BlockResult { Perfect, Success, Partial, Failed }
 public class Weapon : MonoBehaviour
 {
     //main weapon class which can manage multiple hitboxes
+    //also manages blocking attacks
     [SerializeField]
     protected ImmutableWeaponData weaponData;
     public HashSet<Transform> hits { get; protected set; } = new HashSet<Transform>();
@@ -12,6 +16,12 @@ public class Weapon : MonoBehaviour
     protected WaitForSeconds wait;
     [SerializeField]
     protected Hurtbox[] hurtboxes = null;
+    [SerializeField]
+    MeshRenderer meshRenderer;
+    protected float StartedBlocking;
+    public bool blocking;
+    [SerializeField]
+    protected Transform BlockPoint;
     protected void Awake()
     {
         //set up all the information of the dmgInfo class which will
@@ -33,16 +43,15 @@ public class Weapon : MonoBehaviour
     }
     protected void OnEnable()
     {
-        //will come in handy for object pooling
-        hits.Clear();
-        //EnableWeapon();
+        EnableWeapon();
     }
-    public void EnableWeapon1()
+    public void EnableWeapon()
     {
         //the weapon is enabled, so we begin checking for collisions
         coroutine = StartCoroutine(collisionCheck());
+        meshRenderer.material.color = Color.red;
     }
-    public void DisableWeapon1()
+    public void DisableWeapon()
     {
         //we disable the weapon hurtboxes; in this case we just stop the coroutine
         //and clear the set of hits
@@ -51,13 +60,11 @@ public class Weapon : MonoBehaviour
             StopCoroutine(coroutine);
         }
         hits.Clear();
+        meshRenderer.material.color = Color.green;
     }
     protected void OnDisable()
     {
-        if (coroutine != null)
-        {
-            StopCoroutine(coroutine);
-        }
+        DisableWeapon();
     }
     protected IEnumerator collisionCheck()
     {
@@ -94,6 +101,81 @@ public class Weapon : MonoBehaviour
         //Debug.Log(target);
         EntityManager.instance.DealDamage(target, weaponData.dmgInfo);
     }
+    public void StartBlocking()
+    {
+        blocking = true;
+        DisableWeapon();
+        Debug.Log("Blocking");
+        StartedBlocking = Time.time;
+    }
+    public void StopBlocking()
+    {
+        blocking = false;
+        Debug.Log("Not blocking");
+    }
+    public BlockResult Block(DmgInfo dmgInfo)
+    {
+        if (blocking)
+        {
+            if (Time.time <= StartedBlocking + Settings.instance.TimedBlockWindow)
+            {
+                //a timed block was executed
+                return SuccessfullBlock(dmgInfo, true);
+            }
+            //we need to calculate the angle at which the attack hit us
+            float strikeangle = Mathf.Acos(Vector3.Dot(BlockPoint.forward,
+                BlockPoint.position - dmgInfo.ContactPoint)) * Mathf.Rad2Deg;
+            if (dmgInfo.attackType == DmgInfo.AttackType.Strike)
+            {
+                if (strikeangle <= weaponData.StrikeBlockAngle)
+                {
+                    //we successfully blocked a strike
+                    return SuccessfullBlock(dmgInfo);
+                }
+            }
+            else
+            {
+                if (dmgInfo.attackType == DmgInfo.AttackType.Thrust)
+                {
+                    if (strikeangle <= weaponData.ThrustBlockAngle)
+                    {
+                        //we successfully blocked a thrust
+                        return SuccessfullBlock(dmgInfo);
+                    }
+                }
+            }
+        }
+        return BlockResult.Failed;
+    }
+    public BlockResult SuccessfullBlock(DmgInfo dmgInfo, bool timed = false)
+    {
+        if (dmgInfo.strength == DmgInfo.AttackStrength.Regular)
+        {
+            //we successfully blocked a regular attack
+            if (timed)
+            {
+                //maybe we want to stagger the opponent?
+                return BlockResult.Perfect;
+            }
+            return BlockResult.Success;
+        }
+        if (dmgInfo.strength == DmgInfo.AttackStrength.Heavy)
+        {
+            //we need a shield to block this
+            if (!weaponData.shield)
+            {
+                //a heavy blow like this can only be blocked with a shield
+                return BlockResult.Partial;
+            }
+            if (timed)
+            {
+                return BlockResult.Perfect;
+            }
+            return BlockResult.Success;
+        }
+        return BlockResult.Failed;
+    }
+    //the following are just getters for the editor and other scripts
     public float GetStrikeBlockAngle()
     {
         return weaponData.StrikeBlockAngle;
@@ -110,6 +192,10 @@ public class Weapon : MonoBehaviour
     {
         return weaponData.shield;
     }
+    public Transform GetBlockPoint()
+    {
+        return BlockPoint;
+    }
 }
 #if UNITY_EDITOR
 [CustomEditor(typeof(Weapon))]
@@ -121,18 +207,21 @@ public class WeaponDebug : Editor
         Weapon weapon = (Weapon)target;
         var hurts = weapon.getHurtboxes();
         Handles.color = Color.yellow;
-        for (int i = 0; i < hurts.Length; i++)
+        if (hurts != null)
         {
-            //cache the current hurtbox and find out its type with dynamic casting
-            if (hurts[i].points.Length == 2)
+            for (int i = 0; i < hurts.Length; i++)
             {
-                //we have a capsule-shaped hurtbox
-                DrawCapsuleHurtbox(hurts[i]);
-            }
-            else
-            {
-                //we have a box-shaped hurtbox
-                DrawBoxHurtbox(hurts[i]);
+                //cache the current hurtbox and find out its type with dynamic casting
+                if (hurts[i].points.Length == 2 && hurts[i].floats.Length == 1)
+                {
+                    //we have a capsule-shaped hurtbox
+                    DrawCapsuleHurtbox(hurts[i]);
+                }
+                else if (hurts[i].points.Length == 1 && hurts[i].floats.Length == 3)
+                {
+                    //we have a box-shaped hurtbox
+                    DrawBoxHurtbox(hurts[i]);
+                }
             }
         }
     }
