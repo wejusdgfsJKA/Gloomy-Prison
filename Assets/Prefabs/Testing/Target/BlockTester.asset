@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3936c27b6a4fd47bb65a0beae28f3b, type: 3}
+  m_Name: BlockTester
+  m_EditorClassIdentifier: 
+  Name: 
+  CheckInterval: 0.01
+  MaxHurtboxEntities: 10
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
+  reach: 0
+  StrikeBlockAngle: 30
+  ThrustBlockAngle: 15
+  shield: 1
+  dmgInfo:
+    damage: 0
+    staminaCost: 0
+    poiseDamage: 0
+    attackType: 0
+    strength: 0
+    owner: {fileID: 0}
+    ContactPoint: {x: 0, y: 0, z: 0}
