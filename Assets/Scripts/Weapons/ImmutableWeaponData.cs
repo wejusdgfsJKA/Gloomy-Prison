@@ -23,7 +23,7 @@ public class ImmutableWeaponData : ScriptableObject
 [System.Serializable]
 public struct DmgInfo
 {
-    public float damage, staminaCost, poiseDamage;
+    public float damage, staminaCost;
     public AttackType attackType;
     public AttackStrength strength;
     //who dealt this damage
