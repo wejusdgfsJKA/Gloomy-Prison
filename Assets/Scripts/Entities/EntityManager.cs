@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this script will handle pooling, taking damage etc.
 public class EntityManager : MonoBehaviour
 {
     public static EntityManager instance { get; private set; }
-    //we handle pooling and damage here
     [SerializeField]
     protected Dictionary<string, EntityBase> roster;
     public Dictionary<Transform, EntityBase> entities { get; private set; }
@@ -31,7 +31,7 @@ public class EntityManager : MonoBehaviour
             b1 = false;
             try
             {
-                Spawn("Dummy Player", p1.position, p1.rotation);
+                Spawn("Detectable", p1.position, p1.rotation);
             }
             catch (System.Exception e)
             {
@@ -91,7 +91,7 @@ public class EntityManager : MonoBehaviour
             Debug.Log(e.Message);
         }
     }
-    public void DealDamage(Transform entity, DmgInfo dmgInfo)
+    public void SendAttack(Transform entity, DmgInfo dmgInfo)
     {
         //send the entity the damage package
         try
@@ -103,17 +103,29 @@ public class EntityManager : MonoBehaviour
             Debug.LogException(e);
         }
     }
+    public void SendAttackResult(BlockResult blockResult, DmgInfo dmgInfo)
+    {
+        //send the damage dealer information about what happened to the defender
+        try
+        {
+            entities[dmgInfo.owner].ReceiveAttackResult(blockResult, dmgInfo);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogException(e);
+        }
+    }
     public void Dead(EntityBase entity)
     {
         //this entity just died
         try
         {
-            pool[entity.entityData.Name].Enqueue(entity);
+            pool[entity.Name].Enqueue(entity);
         }
         catch (KeyNotFoundException)
         {
-            pool.Add(entity.entityData.Name, new Queue<EntityBase>());
-            pool[entity.entityData.Name].Enqueue(entity);
+            pool.Add(entity.Name, new Queue<EntityBase>());
+            pool[entity.Name].Enqueue(entity);
         }
     }
     public void AddToRoster(EntityData entityData)

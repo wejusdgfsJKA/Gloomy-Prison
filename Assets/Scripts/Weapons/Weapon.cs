@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     protected WaitForSeconds wait;
     [SerializeField]
     protected Hurtbox[] hurtboxes = null;
-    public float StartedBlocking { get; protected set; }
+    protected float StartedBlocking;
     [SerializeField]
     protected Transform BlockPoint, Center;
     protected void Awake()
@@ -26,17 +26,11 @@ public class Weapon : MonoBehaviour
         //set up all the hurtboxes, which is a PITA to do manually; WIP
         for (int i = 0; i < hurtboxes.Length; i++)
         {
-            hurtboxes[i].mask = weaponData.mask;
-            hurtboxes[i].maxEntities = weaponData.MaxHurtboxEntities;
-            hurtboxes[i].hits = new Collider[hurtboxes[i].maxEntities];
+            hurtboxes[i].Init(weaponData.mask, weaponData.MaxHurtboxEntities);
         }
         //cache the WaitForSeconds
         wait = new WaitForSeconds(weaponData.CheckInterval);
         StartedBlocking = -1;
-    }
-    protected void OnEnable()
-    {
-        EnableWeapon();
     }
     public Hurtbox[] getHurtboxes()
     {
@@ -46,7 +40,7 @@ public class Weapon : MonoBehaviour
     {
         return weaponData.dmgInfo.attackType;
     }
-    public void EnableWeapon()
+    public void EnableCollision()
     {
         StopBlocking();
         //the weapon is enabled, so we begin checking for collisions
@@ -56,7 +50,7 @@ public class Weapon : MonoBehaviour
         }
         coroutine = StartCoroutine(collisionCheck());
     }
-    public void DisableWeapon()
+    public void DisableCollision()
     {
         //we disable the weapon hurtboxes; this means just stopping the coroutine
         //and clearing the set of hits
@@ -65,10 +59,6 @@ public class Weapon : MonoBehaviour
             StopCoroutine(coroutine);
         }
         hits.Clear();
-    }
-    protected void OnDisable()
-    {
-        DisableWeapon();
     }
     protected IEnumerator collisionCheck()
     {
@@ -83,7 +73,7 @@ public class Weapon : MonoBehaviour
     {
         foreach (var hurtbox in hurtboxes)
         {
-            hurtbox.AddPrevious(hurtbox.collider.transform.position);
+            hurtbox.AddPrevious();
             int count = hurtbox.CheckVolume();
             //we need to use this count because if we use array.length it will go over
             //all the NULL elements as well
@@ -105,7 +95,7 @@ public class Weapon : MonoBehaviour
     }
     protected Vector3 CalculateContactPoint(Hurtbox hurtbox, Collider hit)
     {
-        Vector3 point = hurtbox.collider.ClosestPointOnBounds(hit.transform.position);
+        Vector3 point = hurtbox.GetCollider().ClosestPointOnBounds(hit.transform.position);
         Vector3 prev = hurtbox.PreviousPositions.First.Value;
         foreach (var p in hurtbox.PreviousPositions)
         {
@@ -123,10 +113,11 @@ public class Weapon : MonoBehaviour
     protected void DealDamage(Transform target)
     {
         //Debug.Log(target);
-        EntityManager.instance.DealDamage(target, weaponData.dmgInfo);
+        EntityManager.instance.SendAttack(target, weaponData.dmgInfo);
     }
     public void StartBlocking()
     {
+        DisableCollision();
         StartedBlocking = Time.time;
     }
     public void StopBlocking()
