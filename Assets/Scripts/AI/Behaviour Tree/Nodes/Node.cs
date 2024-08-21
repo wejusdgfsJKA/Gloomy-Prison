@@ -17,12 +17,14 @@ public class Node : ElementBase
     protected List<Decorator> Decorators = new();
     protected System.Func<NodeState> EnterFunc;
     protected System.Func<NodeState> EvaluateFunc;
+    protected System.Action OnExitFunc;
     public bool DecoratorsPermitRunning { get; protected set; } = true;
-    public Node(string Name = "No Name", System.Func<NodeState> EnterFunc = null, System.Func<NodeState> EvaluateFunc = null)
+    public Node(string Name = "No Name", System.Func<NodeState> EnterFunc = null, System.Func<NodeState> EvaluateFunc = null, System.Action onExitFunc = null)
     {
         this.Name = Name;
         this.EnterFunc = EnterFunc;
         this.EvaluateFunc = EvaluateFunc;
+        this.OnExitFunc = onExitFunc;
     }
     public Node Attach(Node node)
     {
@@ -90,7 +92,26 @@ public class Node : ElementBase
     }
     protected virtual void Abort()
     {
-        Reset();
+        if (OnExitFunc != null)
+        {
+            OnExitFunc();
+        }
+        LastState = NodeState.UNKNOWN;
+        foreach (Node child in Children)
+        {
+            child.Abort();
+        }
+    }
+    protected void Exit()
+    {
+        if (OnExitFunc != null)
+        {
+            OnExitFunc();
+        }
+        foreach (Node child in Children)
+        {
+            child.Exit();
+        }
     }
     protected virtual void OnEnter()
     {
@@ -122,6 +143,7 @@ public class Node : ElementBase
         if (!EvaluateDecorators())
         {
             LastState = NodeState.FAILURE;
+            Exit();
             tickednodes = true;
             return tickednodes;
         }

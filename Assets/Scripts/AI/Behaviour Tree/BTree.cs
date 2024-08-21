@@ -42,7 +42,6 @@ public abstract class BTree : MonoBehaviour
     protected abstract Node SetupTree();
     public string GetDebugText()
     {
-        return root.
-            GetDebugText();
+        return root.GetDebugText();
     }
 }
