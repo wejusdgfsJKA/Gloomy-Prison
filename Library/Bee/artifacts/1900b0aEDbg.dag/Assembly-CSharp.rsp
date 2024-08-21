@@ -381,6 +381,7 @@
 "Assets/Scripts/AI/Detection/TargetData.cs"
 "Assets/Scripts/Entities/Base/AI/AIEntityActions.cs"
 "Assets/Scripts/Entities/Base/AI/MobActions.cs"
+"Assets/Scripts/Entities/Base/AI/MobCombatantActions.cs"
 "Assets/Scripts/Entities/Base/EntityActions.cs"
 "Assets/Scripts/Entities/Base/EntityBase.cs"
 "Assets/Scripts/Entities/Base/EntityData.cs"
