@@ -4,10 +4,10 @@ public class DetectableTarget : MonoBehaviour
 {
     private void OnEnable()
     {
-        DetectionManager.instance.RegisterTarget(transform.root);
+        DetectionManager.Instance.RegisterTarget(transform.root);
     }
     private void OnDisable()
     {
-        DetectionManager.instance.DeRegisterTarget(transform.root);
+        DetectionManager.Instance.DeRegisterTarget(transform.root);
     }
 }

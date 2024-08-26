@@ -4,24 +4,24 @@ using UnityEngine;
 //this script will handle pooling, taking damage etc.
 public class EntityManager : MonoBehaviour
 {
-    public static EntityManager instance { get; private set; }
+    public static EntityManager Instance { get; protected set; }
     [SerializeField]
     protected Dictionary<string, EntityBase> roster;
-    public Dictionary<Transform, EntityBase> entities { get; private set; }
-    public Dictionary<string, Queue<EntityBase>> pool { get; private set; }
+    public Dictionary<Transform, EntityBase> Entities { get; private set; }
+    protected Dictionary<string, Queue<EntityBase>> pool;
     public bool b1, b2;
     public Transform p1, p2;
     protected void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
     }
     private void OnEnable()
     {
         roster = new();
-        entities = new();
+        Entities = new();
         pool = new();
     }
     private void Update()
@@ -84,7 +84,7 @@ public class EntityManager : MonoBehaviour
             EntityBase entity = Instantiate(roster[EntityName], position, rotation);
             //register the script in the transform dictionary, to allow damage to pass to it
             //via its transform
-            entities.Add(entity.transform, entity);
+            Entities.Add(entity.transform, entity);
         }
         catch (System.Exception e)
         {
@@ -96,7 +96,7 @@ public class EntityManager : MonoBehaviour
         //send the entity the damage package
         try
         {
-            entities[entity].ReceiveAttack(dmgInfo);
+            Entities[entity].ReceiveAttack(dmgInfo);
         }
         catch (System.Exception e)
         {
@@ -108,7 +108,7 @@ public class EntityManager : MonoBehaviour
         //send the damage dealer information about what happened to the defender
         try
         {
-            entities[dmgInfo.owner].ReceiveAttackResult(blockResult, dmgInfo);
+            Entities[dmgInfo.owner].ReceiveAttackResult(blockResult, dmgInfo);
         }
         catch (System.Exception e)
         {
@@ -158,7 +158,7 @@ public class EntityManager : MonoBehaviour
         Instantiate(entity);
         //register the script in the transform dictionary, to allow damage to pass to it
         //via its transform
-        entities.Add(entity.transform, entity);
+        Entities.Add(entity.transform, entity);
         entity.gameObject.SetActive(false);
     }
 }

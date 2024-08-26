@@ -1,6 +1,8 @@
 using UnityEngine;
 public class Receiver : MonoBehaviour
 {
+    //this component will serve as a communication channel between
+    //code and animations
     protected System.Action mainAction;
     protected void Awake()
     {

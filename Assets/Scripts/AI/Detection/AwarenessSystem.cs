@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 public class AwarenessSystem : MonoBehaviour
 {
@@ -10,9 +9,7 @@ public class AwarenessSystem : MonoBehaviour
     protected Coroutine coroutine;
     [SerializeField]
     protected Transform eye;
-    [SerializeField]
-    protected bool ShowDebug;
-    public Dictionary<Transform, TargetData> targets { get; protected set; } = new();
+    public Dictionary<Transform, TargetData> Targets { get; protected set; } = new();
     public TargetData ClosestTarget { get; protected set; }
     protected void Awake()
     {
@@ -20,17 +17,17 @@ public class AwarenessSystem : MonoBehaviour
     }
     protected void OnEnable()
     {
-        DetectionManager.instance.RegisterListener(this);
+        DetectionManager.Instance.RegisterListener(this);
         coroutine = StartCoroutine(enumerator());
     }
     protected void OnDisable()
     {
-        DetectionManager.instance.DeRegisterListener(this);
+        DetectionManager.Instance.DeRegisterListener(this);
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
         }
-        targets.Clear();
+        Targets.Clear();
     }
     protected IEnumerator enumerator()
     {
@@ -43,16 +40,15 @@ public class AwarenessSystem : MonoBehaviour
     }
     protected void Detect()
     {
-        if (DetectionManager.instance.teams != null)
+        var teams = DetectionManager.Instance.Teams;
+        if (teams != null)
         {
-            for (int i = 0; i < DetectionManager.instance.teams.Length; i++)
+            for (int i = 0; i < teams.Length; i++)
             {
-                if (DetectionManager.instance.teams[i] != transform.root.
-                    gameObject.layer.ToString())
+                if (teams[i] != transform.root.gameObject.layer.ToString())
                 {
                     //this is an enemy team
-                    var team = DetectionManager.instance.targets[DetectionManager.
-                        instance.teams[i]];
+                    var team = DetectionManager.Instance.Targets[teams[i]];
                     foreach (Transform entity in team)
                     {
                         //we go through all entities in this team and check if we
@@ -73,7 +69,7 @@ public class AwarenessSystem : MonoBehaviour
         Queue<Transform> queue = new Queue<Transform>();
         ClosestTarget = null;
         //we determine the closest target to us here for efficiency's sake
-        foreach (var data in targets)
+        foreach (var data in Targets)
         {
             if (!data.Key.gameObject.activeSelf)
             {
@@ -87,16 +83,11 @@ public class AwarenessSystem : MonoBehaviour
                 queue.Enqueue(data.Key);
                 continue;
             }
-            if (data.Value.spotted || Time.time - data.Value.TimeLastDetected <= parameters.TimeToLose)
+            if (data.Value.Spotted || Time.time - data.Value.TimeLastDetected <= parameters.TimeToLose)
             {
                 data.Value.WeakRefresh();
             }
-            if (ShowDebug)
-            {
-                Debug.DrawLine(transform.position, data.Value.KnownPos, Color.blue, 1);
-                //Debug.DrawLine(transform.position, data.Value.target.position, Color.cyan, 1);
-            }
-            if (ClosestTarget == null || !targets.ContainsKey(ClosestTarget.target))
+            if (ClosestTarget == null || !Targets.ContainsKey(ClosestTarget.Target))
             {
                 ClosestTarget = data.Value;
             }
@@ -113,7 +104,7 @@ public class AwarenessSystem : MonoBehaviour
         while (queue.Count > 0)
         {
             //we can't remove targets in the foreach loop, we must do it separately
-            targets.Remove(queue.Dequeue());
+            Targets.Remove(queue.Dequeue());
         }
     }
     protected void HasDetected(Transform t)
@@ -121,24 +112,24 @@ public class AwarenessSystem : MonoBehaviour
         //we have detected this target
         try
         {
-            targets[t].Refresh();
+            Targets[t].Refresh();
         }
         catch (KeyNotFoundException)
         {
-            targets.Add(t, new TargetData(t));
+            Targets.Add(t, new TargetData(t));
         }
     }
     public void Hear(Sound sound)
     {
         if (CanHear(sound))
         {
-            HasDetected(sound.data.source);
+            HasDetected(sound.Data.Source);
         }
     }
     protected bool CanHear(Sound sound)
     {
         //can we hear a given sound? WIP
-        return Vector3.Distance(transform.position, sound.data.source.position) <= parameters.HearingRange;
+        return Vector3.Distance(transform.position, sound.Data.Source.position) <= parameters.HearingRange;
     }
     protected bool CanSee(Transform target)
     {
@@ -166,76 +157,4 @@ public class AwarenessSystem : MonoBehaviour
         //simple distance check for now
         return Vector3.Distance(transform.position, target.position) <= parameters.ProximityDetectionRange;
     }
-    //the following are just getters for the editor scripts
-    public float GetProximityDetectionRange()
-    {
-        return parameters.ProximityDetectionRange;
-    }
-    public float GetSightRange()
-    {
-        return parameters.SightRange;
-    }
-    public float GetSightAngle()
-    {
-        return parameters.SightAngle;
-    }
-    public float GetHearingRange()
-    {
-        return parameters.HearingRange;
-    }
-    public bool GetShowDebug()
-    {
-        return ShowDebug;
-    }
 }
-#if UNITY_EDITOR
-[CustomEditor(typeof(AwarenessSystem))]
-public class AwarenessDebug : Editor
-{
-    private void OnSceneGUI()
-    {
-        AwarenessSystem awarenessSystem = (AwarenessSystem)target;
-        if (awarenessSystem.GetShowDebug())
-        {
-            //show the targets
-            {
-                Handles.color = Color.blue;
-                foreach (var pair in awarenessSystem.targets)
-                {
-                    Handles.DrawLine(awarenessSystem.transform.position, pair.Value.KnownPos);
-                }
-            }
-            //show proximity detection
-            {
-                Handles.color = Color.cyan;
-                Handles.DrawWireArc(awarenessSystem.transform.position, Vector3.up,
-                    awarenessSystem.transform.forward, 360, awarenessSystem.GetProximityDetectionRange());
-            }
-            //show visual detection
-            {
-                Handles.color = Color.yellow;
-                Handles.DrawWireArc(awarenessSystem.transform.position, Vector3.up,
-                    awarenessSystem.transform.forward, 360, awarenessSystem.
-                    GetSightRange());
-                float angle = Mathf.Deg2Rad * (90 - awarenessSystem.GetSightAngle());
-                Vector3 p1 = awarenessSystem.transform.position + Mathf.Sin(angle) *
-                    awarenessSystem.GetSightRange() * awarenessSystem.transform.
-                    forward + Mathf.Cos(angle) * awarenessSystem.GetSightRange() *
-                    awarenessSystem.transform.right;
-                Handles.DrawLine(awarenessSystem.transform.position, p1);
-                p1 = awarenessSystem.transform.position + Mathf.Sin(angle) *
-                    awarenessSystem.GetSightRange() * awarenessSystem.transform.
-                    forward - Mathf.Cos(angle) * awarenessSystem.GetSightRange() *
-                    awarenessSystem.transform.right;
-                Handles.DrawLine(awarenessSystem.transform.position, p1);
-            }
-            //show hearing
-            {
-                Handles.color = Color.magenta;
-                Handles.DrawWireArc(awarenessSystem.transform.position, Vector3.up,
-                    awarenessSystem.transform.forward, 360, awarenessSystem.GetHearingRange());
-            }
-        }
-    }
-}
-#endif

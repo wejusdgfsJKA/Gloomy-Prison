@@ -3,26 +3,26 @@ using UnityEngine;
 [System.Serializable]
 public class TargetData
 {
-    public bool spotted { get; protected set; }
-    public Transform target { get; protected set; }
+    public bool Spotted { get; protected set; }
+    public Transform Target { get; protected set; }
     public float TimeLastDetected { get; private set; }
     public Vector3 KnownPos { get; private set; }
-    public EntityBase data { get; private set; }
+    public EntityBase Entity { get; private set; }
     public TargetData(Transform target)
     {
-        this.target = target;
-        data = EntityManager.instance.entities[target];
+        Target = target;
+        Entity = EntityManager.Instance.Entities[target];
         Refresh();
     }
     public void Refresh()
     {
         TimeLastDetected = Time.time;
-        KnownPos = target.position;
-        spotted = true;
+        KnownPos = Target.position;
+        Spotted = true;
     }
     public void WeakRefresh()
     {
-        spotted = false;
-        KnownPos = target.position;
+        Spotted = false;
+        KnownPos = Target.position;
     }
 }

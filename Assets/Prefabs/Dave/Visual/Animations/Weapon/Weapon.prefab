@@ -43,10 +43,8 @@ GameObject:
   m_Component:
   - component: {fileID: 758192216371569393}
   - component: {fileID: 749624479854247648}
-  - component: {fileID: 6184294845812258336}
   - component: {fileID: 5023197283731476222}
   - component: {fileID: 7614190736476833441}
-  - component: {fileID: 12446333570198257}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -84,29 +82,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: d5be905b4f5d3e44cadf454951f098aa, type: 2}
+  attackReceiver: {fileID: 0}
+  idleReceiver: {fileID: 0}
+  windupReceiver: {fileID: 0}
+  blockReceiver: {fileID: 0}
+  pushReceiver: {fileID: 0}
   hurtboxes:
-  - maxEntities: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 0
-    hits: []
-    collider: {fileID: 6109554824845609341}
-    NumberOfPreviouses: 2
-  BlockPoint: {fileID: 2580936633392808363}
-  Center: {fileID: 3925719375166592854}
---- !u!114 &6184294845812258336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3980673568538288964}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fd779ff708e7cf49b27e5cb29799a33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 749624479854247648}
+  - <Collider>k__BackingField: {fileID: 0}
+    numberOfPreviouses: 2
+  blockPoint: {fileID: 0}
+  centerPoint: {fileID: 0}
 --- !u!95 &5023197283731476222
 Animator:
   serializedVersion: 5
@@ -140,21 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94d5bf149b42784187917eed21874af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &12446333570198257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3980673568538288964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Animator: {fileID: 5023197283731476222}
-  _Transitions: {fileID: 0}
-  _ActionOnDisable: 0
 --- !u!1 &4403461526214095714
 GameObject:
   m_ObjectHideFlags: 0

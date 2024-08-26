@@ -34,7 +34,7 @@ public class EntityBase : MonoBehaviour
             //we had no weapon, so we return the default block result
             blockResult = weapon.Block(dmgInfo);
         }
-        EntityManager.instance.SendAttackResult(blockResult, dmgInfo);
+        EntityManager.Instance.SendAttackResult(blockResult, dmgInfo);
         switch (blockResult)
         {
             //WIP

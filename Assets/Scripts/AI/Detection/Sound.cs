@@ -3,11 +3,11 @@ using UnityEngine;
 [System.Serializable]
 public class Sound : ScriptableObject
 {
-    public float intensity;
-    public MutableData data;
+    public float Intensity { get; protected set; }
+    public SoundData Data { get; protected set; }
 }
 [System.Serializable]
-public struct MutableData
+public class SoundData
 {
-    public Transform source;
+    public Transform Source { get; protected set; }
 }

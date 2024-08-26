@@ -3,29 +3,29 @@ using UnityEngine;
 
 public class DetectionManager : MonoBehaviour
 {
-    public static DetectionManager instance { get; private set; }
-    public Dictionary<string, HashSet<Transform>> targets { get; private set; } = new();
-    public Dictionary<string, HashSet<AwarenessSystem>> listeners { get; private set; } = new();
-    public string[] teams { get; private set; }
+    public static DetectionManager Instance { get; private set; }
+    public Dictionary<string, HashSet<Transform>> Targets { get; private set; } = new();
+    public Dictionary<string, HashSet<AwarenessSystem>> Listeners { get; private set; } = new();
+    public string[] Teams { get; private set; }
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
     }
     public void SetTeams(string[] teams)
     {
-        this.teams = teams;
+        Teams = teams;
         for (int i = 0; i < teams.Length; i++)
         {
-            if (!targets.ContainsKey(teams[i]))
+            if (!Targets.ContainsKey(teams[i]))
             {
-                targets.Add(teams[i], new HashSet<Transform>());
+                Targets.Add(teams[i], new HashSet<Transform>());
             }
-            if (!listeners.ContainsKey(teams[i]))
+            if (!Listeners.ContainsKey(teams[i]))
             {
-                listeners.Add(teams[i], new HashSet<AwarenessSystem>());
+                Listeners.Add(teams[i], new HashSet<AwarenessSystem>());
             }
         }
     }
@@ -34,12 +34,12 @@ public class DetectionManager : MonoBehaviour
         //each team will be identified by a layer
         try
         {
-            targets[entity.gameObject.layer.ToString()].Add(entity);
+            Targets[entity.gameObject.layer.ToString()].Add(entity);
         }
         catch (KeyNotFoundException)
         {
-            targets.Add(entity.gameObject.layer.ToString(), new HashSet<Transform>());
-            targets[entity.gameObject.layer.ToString()].Add(entity);
+            Targets.Add(entity.gameObject.layer.ToString(), new HashSet<Transform>());
+            Targets[entity.gameObject.layer.ToString()].Add(entity);
         }
         //Debug.Log("Registered " + entity.name + " in team " + entity.gameObject.layer.ToString());
     }
@@ -47,7 +47,7 @@ public class DetectionManager : MonoBehaviour
     {
         try
         {
-            targets[entity.gameObject.layer.ToString()].Remove(entity);
+            Targets[entity.gameObject.layer.ToString()].Remove(entity);
         }
         catch (KeyNotFoundException)
         {
@@ -57,12 +57,12 @@ public class DetectionManager : MonoBehaviour
     public void MakeNoise(Sound sound)
     {
         //we must notify all relevant listeners
-        foreach (var team in teams)
+        foreach (var team in Teams)
         {
-            if (team != sound.data.source.gameObject.layer.ToString())
+            if (team != sound.Data.Source.gameObject.layer.ToString())
             {
                 //this is an enemy team of the source
-                foreach (var sensor in listeners[team])
+                foreach (var sensor in Listeners[team])
                 {
                     sensor.Hear(sound);
                 }
@@ -73,19 +73,19 @@ public class DetectionManager : MonoBehaviour
     {
         try
         {
-            listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
+            Listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
         }
         catch (KeyNotFoundException)
         {
-            listeners.Add(sensor.transform.root.gameObject.layer.ToString(), new HashSet<AwarenessSystem>());
-            listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
+            Listeners.Add(sensor.transform.root.gameObject.layer.ToString(), new HashSet<AwarenessSystem>());
+            Listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
         }
     }
     public void DeRegisterListener(AwarenessSystem sensor)
     {
         try
         {
-            listeners[sensor.transform.root.gameObject.layer.ToString()].Remove(sensor);
+            Listeners[sensor.transform.root.gameObject.layer.ToString()].Remove(sensor);
         }
         catch (KeyNotFoundException)
         {

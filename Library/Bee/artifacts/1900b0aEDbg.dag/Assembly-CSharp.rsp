@@ -377,7 +377,6 @@
 "Assets/Scripts/AI/Detection/DetectableTarget.cs"
 "Assets/Scripts/AI/Detection/DetectionManager.cs"
 "Assets/Scripts/AI/Detection/DetectionParameters.cs"
-"Assets/Scripts/AI/Detection/SensorBase.cs"
 "Assets/Scripts/AI/Detection/Sound.cs"
 "Assets/Scripts/AI/Detection/TargetData.cs"
 "Assets/Scripts/Animations/Receiver.cs"

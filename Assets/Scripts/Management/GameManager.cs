@@ -12,28 +12,28 @@ public class GameManager : MonoBehaviour
     //the integer determines how many of
     //each prefab should be instantiated into the level at the start
     [SerializeField]
-    EntityManager entityManager;
+    protected EntityManager entityManager;
     [SerializeField]
-    DetectionManager detectionManager;
-    private void OnEnable()
+    protected DetectionManager detectionManager;
+    protected void OnEnable()
     {
         HandleDetectionManager();
         HandleEntityManager();
     }
-    void HandleDetectionManager()
+    protected void HandleDetectionManager()
     {
         detectionManager.enabled = true;
         detectionManager.SetTeams(teams);
     }
-    void HandleEntityManager()
+    protected void HandleEntityManager()
     {
         entityManager.enabled = true;
         for (int i = 0; i < roster.Length; i++)
         {
-            EntityManager.instance.AddToRoster(roster[i]);
+            EntityManager.Instance.AddToRoster(roster[i]);
             for (int j = 0; j < InitialCreation[i]; j++)
             {
-                EntityManager.instance.SpawnAndKill(roster[i].prefab);
+                EntityManager.Instance.SpawnAndKill(roster[i].prefab);
             }
         }
     }

@@ -11,9 +11,9 @@ public class Weapon : MonoBehaviour
     //also manages blocking
     [SerializeField]
     protected WeaponData weaponData;
+    [SerializeField] protected Receiver windupReceiver;
     [SerializeField] protected Receiver attackReceiver;
     [SerializeField] protected Receiver idleReceiver;
-    [SerializeField] protected Receiver windupReceiver;
     [SerializeField] protected Receiver blockReceiver;
     [SerializeField] protected Receiver pushReceiver;
     public HashSet<Transform> Hits { get; protected set; }
@@ -59,10 +59,10 @@ public class Weapon : MonoBehaviour
     protected void SetupReceivers()
     {
         //assign all receivers their corresponding methods
-        attackReceiver.AddAction(EnterDamageState);
-        blockReceiver.AddAction(EnterBlockState);
-        idleReceiver.AddAction(EnterIdleState);
         windupReceiver.AddAction(EnterWindupState);
+        attackReceiver.AddAction(EnterDamageState);
+        idleReceiver.AddAction(EnterIdleState);
+        blockReceiver.AddAction(EnterBlockState);
         pushReceiver.AddAction(EnterPushingState);
     }
     public void EnterDamageState()
@@ -140,7 +140,7 @@ public class Weapon : MonoBehaviour
     protected void DealDamage(Transform target)
     {
         //Debug.Log(target);
-        EntityManager.instance.SendAttack(target, dmgInfo);
+        EntityManager.Instance.SendAttack(target, dmgInfo);
     }
     //block-related functions
     protected void EnterBlockState()
@@ -156,7 +156,7 @@ public class Weapon : MonoBehaviour
     {
         if (startedBlocking > 0)
         {
-            if (Time.time <= startedBlocking + Settings.instance.TimedBlockWindow)
+            if (Time.time <= startedBlocking + Settings.Instance.TimedBlockWindow)
             {
                 //a timed block was executed
                 return SuccessfullBlock(dmgInfo, true);
