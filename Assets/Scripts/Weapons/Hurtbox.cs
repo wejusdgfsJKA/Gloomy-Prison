@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 //wrapper class for a more reliable hitbox than a trigger collider
@@ -5,31 +6,29 @@ using UnityEngine;
 public class Hurtbox
 {
     //basic capsule shaped hurtbox
-    [HideInInspector]
-    public int maxEntities;
-    [HideInInspector]
-    public LayerMask mask;
-    public Collider[] hits;
-    [SerializeField]
-    protected Collider collider;
+    public int MaxEntities { get; protected set; }
+    public LayerMask Mask { get; protected set; }
+    public Collider[] Hits { get; protected set; }
+    [field: SerializeField]
+    public Collider Collider { get; protected set; }
     protected CapsuleCollider capsule;
     protected BoxCollider box;
     public LinkedList<Vector3> PreviousPositions { get; protected set; } = null;
     [SerializeField]
-    protected int NumberOfPreviouses = 2;
-    public void Init(LayerMask mask, int MaxEntities)
+    protected int numberOfPreviouses = 2;
+    public void Init(LayerMask mask, int maxEntities)
     {
-        this.mask = mask;
-        this.maxEntities = MaxEntities;
-        this.hits = new Collider[MaxEntities];
-        if (collider is CapsuleCollider)
+        Mask = mask;
+        MaxEntities = maxEntities;
+        Hits = new Collider[MaxEntities];
+        if (Collider is CapsuleCollider)
         {
-            capsule = (CapsuleCollider)collider;
+            capsule = (CapsuleCollider)Collider;
             return;
         }
-        if (collider is BoxCollider)
+        if (Collider is BoxCollider)
         {
-            box = (BoxCollider)collider;
+            box = (BoxCollider)Collider;
             return;
         }
     }
@@ -46,7 +45,7 @@ public class Hurtbox
     }
     public void AddPrevious()
     {
-        if (NumberOfPreviouses > 0)
+        if (numberOfPreviouses > 0)
         {
             if (PreviousPositions == null)
             {
@@ -57,8 +56,8 @@ public class Hurtbox
                 var v = PreviousPositions.Last.Value;
                 Debug.DrawLine(v, vector3, Color.green, 5);
             }*/
-            PreviousPositions.AddLast(collider.transform.position);
-            while (PreviousPositions.Count > NumberOfPreviouses)
+            PreviousPositions.AddLast(Collider.transform.position);
+            if (PreviousPositions.Count > numberOfPreviouses)
             {
                 PreviousPositions.RemoveFirst();
             }
@@ -66,47 +65,38 @@ public class Hurtbox
     }
     public int CheckVolume()
     {
+        Array.Clear(Hits, 0, Hits.Length);
+        BoxCollider box = (BoxCollider)Collider;
         if (box != null)
         {
-            //this represents a box collider
-            return Physics.OverlapBoxNonAlloc(box.center, box.size / 2, hits,
-                box.transform.rotation, mask);
+            //this is a box collider
+            return Physics.OverlapBoxNonAlloc(box.center, box.size / 2, Hits, box.transform.rotation, Mask);
         }
         if (capsule != null)
         {
-            //this represents a capsule collider
+            //this is a capsule collider
             Vector3 p1 = capsule.center;
             Vector3 p2 = capsule.center;
             switch (capsule.direction)
             {
                 case 0:
                     //the capsule is oriented on the X axis
-                    p1 += capsule.transform.right * (capsule.height / 2 -
-                        capsule.radius);
-                    p2 -= capsule.transform.right * (capsule.height / 2 -
-                        capsule.radius);
+                    p1 += capsule.transform.right * (capsule.height / 2 - capsule.radius);
+                    p2 -= capsule.transform.right * (capsule.height / 2 - capsule.radius);
                     break;
                 case 1:
                     //the capsule is oriented on the Y axis
-                    p1 += capsule.transform.up * (capsule.height / 2 -
-                        capsule.radius);
-                    p2 -= capsule.transform.up * (capsule.height / 2 -
-                        capsule.radius);
+                    p1 += capsule.transform.up * (capsule.height / 2 - capsule.radius);
+                    p2 -= capsule.transform.up * (capsule.height / 2 - capsule.radius);
                     break;
                 case 2:
                     //the capsule is oriented on the Z axis
-                    p1 += capsule.transform.forward * (capsule.height / 2 -
-                        capsule.radius);
-                    p2 -= capsule.transform.forward * (capsule.height / 2 -
-                        capsule.radius);
+                    p1 += capsule.transform.forward * (capsule.height / 2 - capsule.radius);
+                    p2 -= capsule.transform.forward * (capsule.height / 2 - capsule.radius);
                     break;
             }
-            return Physics.OverlapCapsuleNonAlloc(p1, p2, capsule.radius, hits, mask);
+            return Physics.OverlapCapsuleNonAlloc(p1, p2, capsule.radius, Hits, Mask);
         }
         return 0;
-    }
-    public Collider GetCollider()
-    {
-        return collider;
     }
 }

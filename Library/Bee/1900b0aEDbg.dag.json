@@ -427,7 +427,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 110,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.TestRunner.UnityAdditionalFile.txt"
@@ -2580,7 +2580,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 53177,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.UnityAdditionalFile.txt"
@@ -3272,7 +3272,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 101322,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.TestRunner.UnityAdditionalFile.txt"
@@ -3975,7 +3975,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 160618,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.UnityAdditionalFile.txt"
@@ -4584,7 +4584,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 206233,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.AI.Navigation.Editor.ConversionSystem.UnityAdditionalFile.txt"
@@ -5151,7 +5151,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 250025,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.AI.Navigation.UnityAdditionalFile.txt"
@@ -5681,7 +5681,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 291693,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.EditorCoroutines.Editor.UnityAdditionalFile.txt"
@@ -6225,7 +6225,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 334860,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.InputSystem.UnityAdditionalFile.txt"
@@ -7121,7 +7121,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 413325,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.Performance.Profile-Analyzer.Editor.UnityAdditionalFile.txt"
@@ -7694,7 +7694,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 459278,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.PlasticSCM.Editor.UnityAdditionalFile.txt"
@@ -8523,7 +8523,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 533111,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.Rider.Editor.UnityAdditionalFile.txt"
@@ -9083,7 +9083,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 578073,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.Settings.Editor.UnityAdditionalFile.txt"
@@ -9636,7 +9636,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 621957,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.UnityAdditionalFile.txt"
@@ -10191,7 +10191,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 666700,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.UnityAdditionalFile.txt"
@@ -10735,7 +10735,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 710213,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.TextMeshPro.UnityAdditionalFile.txt"
@@ -11319,7 +11319,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 756606,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.Timeline.UnityAdditionalFile.txt"
@@ -11917,7 +11917,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 804064,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.UnityAdditionalFile.txt"
@@ -12465,7 +12465,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 847569,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualStudio.Editor.UnityAdditionalFile.txt"
@@ -13030,7 +13030,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 892840,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.AI.Navigation.Editor.UnityAdditionalFile.txt"
@@ -13624,7 +13624,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 936851,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.CollabProxy.Editor.UnityAdditionalFile.txt"
@@ -14187,7 +14187,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 979894,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.InputSystem.ForUI.UnityAdditionalFile.txt"
@@ -14736,7 +14736,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1021514,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.InputSystem.TestFramework.UnityAdditionalFile.txt"
@@ -15248,7 +15248,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1061499,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.TestTools.CodeCoverage.Editor.UnityAdditionalFile.txt"
@@ -15883,7 +15883,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1108481,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.TextMeshPro.Editor.UnityAdditionalFile.txt"
@@ -16493,7 +16493,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1155833,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.Timeline.Editor.UnityAdditionalFile.txt"
@@ -17327,7 +17327,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1222793,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualScripting.Core.UnityAdditionalFile.txt"
@@ -18285,7 +18285,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1318025,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.AI.Navigation.Updater.UnityAdditionalFile.txt"
@@ -18860,7 +18860,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1361834,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualScripting.Core.Editor.UnityAdditionalFile.txt"
@@ -19892,7 +19892,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1461310,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualScripting.Flow.UnityAdditionalFile.txt"
@@ -20827,7 +20827,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1551993,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualScripting.Flow.Editor.UnityAdditionalFile.txt"
@@ -21588,7 +21588,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1615752,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualScripting.State.UnityAdditionalFile.txt"
@@ -22152,7 +22152,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1660634,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualScripting.SettingsProvider.Editor.UnityAdditionalFile.txt"
@@ -22758,7 +22758,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1705596,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualScripting.State.Editor.UnityAdditionalFile.txt"
@@ -23386,7 +23386,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1757295,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VisualScripting.Shared.Editor.UnityAdditionalFile.txt"
@@ -23969,7 +23969,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1801288,
       "PayloadLength": 31,
-      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy Priso",
+      "PayloadDebugContentSnippet": "C:\\Users\\ATPEngie\\Gloomy-Priso",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.UnityAdditionalFile.txt"
@@ -23981,7 +23981,7 @@
       "DisplayName": "Writing Assembly-CSharp.rsp",
       "ActionType": "WriteFile",
       "PayloadOffset": 1801408,
-      "PayloadLength": 35016,
+      "PayloadLength": 35150,
       "PayloadDebugContentSnippet": "-target:library\n-out:\"Library/",
       "Inputs": [],
       "Outputs": [
@@ -23993,7 +23993,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.rsp2",
       "DisplayName": "Writing Assembly-CSharp.rsp2",
       "ActionType": "WriteFile",
-      "PayloadOffset": 1836514,
+      "PayloadOffset": 1836648,
       "PayloadLength": 0,
       "PayloadDebugContentSnippet": "",
       "Inputs": [],
@@ -24246,6 +24246,7 @@
         "Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.ref.dll",
         "Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll",
         "Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll",
+        "Assets/Prefabs/Dave/Scripts/DaveBTree.cs",
         "Assets/Scripts/AI/Behaviour Tree/BTDebug.cs",
         "Assets/Scripts/AI/Behaviour Tree/BTree.cs",
         "Assets/Scripts/AI/Behaviour Tree/Information/BlackBoard.cs",
@@ -24263,6 +24264,8 @@
         "Assets/Scripts/AI/Detection/SensorBase.cs",
         "Assets/Scripts/AI/Detection/Sound.cs",
         "Assets/Scripts/AI/Detection/TargetData.cs",
+        "Assets/Scripts/Animations/Receiver.cs",
+        "Assets/Scripts/Animations/WeaponTriggerResetter.cs",
         "Assets/Scripts/Entities/Base/AI/AIEntityActions.cs",
         "Assets/Scripts/Entities/Base/AI/MobActions.cs",
         "Assets/Scripts/Entities/Base/AI/MobCombatantActions.cs",
@@ -24275,11 +24278,12 @@
         "Assets/Scripts/Management/Settings.cs",
         "Assets/Scripts/Player/Player Controls/PlayerController.cs",
         "Assets/Scripts/Player/PlayerActions.cs",
+        "Assets/Scripts/Weapons/Data/Attack.cs",
+        "Assets/Scripts/Weapons/Data/DmgInfo.cs",
+        "Assets/Scripts/Weapons/Data/WeaponData.cs",
         "Assets/Scripts/Weapons/Hurtbox.cs",
-        "Assets/Scripts/Weapons/ImmutableWeaponData.cs",
-        "Assets/Scripts/Weapons/InputReceivers/AttackInputReceiver.cs",
-        "Assets/Scripts/Weapons/InputReceivers/BlockInputReceiver.cs",
         "Assets/Scripts/Weapons/Weapon.cs",
+        "Assets/Scripts/Weapons/WeaponAnimHandler.cs",
         "C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll",
         "C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll",
         "Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.rsp"
@@ -24560,7 +24564,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.dll.mvfrm.rsp",
       "DisplayName": "Writing Assembly-CSharp.dll.mvfrm.rsp",
       "ActionType": "WriteFile",
-      "PayloadOffset": 1836613,
+      "PayloadOffset": 1836747,
       "PayloadLength": 10133,
       "PayloadDebugContentSnippet": "Library\\Bee\\artifacts\\mvdfrm\\U",
       "Inputs": [],
@@ -25872,7 +25876,7 @@
     {
       "Annotation": "BuildPlayerDataGenerator Library/BuildPlayerData/Editor/TypeDb-All.json",
       "DisplayName": "BuildPlayerDataGenerator TypeDb-All",
-      "Action": "\"C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data\\Tools\\netcorerun\\netcorerun.exe\" \"C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Assembly-CSharp.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.AI.Navigation.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.InputSystem.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.InputSystem.ForUI.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.InputSystem.TestFramework.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.TextMeshPro.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.Timeline.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.VisualScripting.Core.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.VisualScripting.Flow.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\Unity.VisualScripting.State.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\UnityEngine.TestRunner.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\\UnityEngine.UI.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\\nunit.framework.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\\ReportGeneratorMerged.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\Managed\\UnityEngine\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netfx\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netstandard\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\NetStandard\\Extensions\\2.0.0\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\NetStandard\\ref\\2.1.0\" -s=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\ScriptAssemblies\" -s=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\" -s=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\" -s=\"C:\\Users\\ATPEngie\\Gloomy Prison\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\" -o=\"Library/BuildPlayerData/Editor\" -rn=\"\" -tn=\"TypeDb-All.json\"",
+      "Action": "\"C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data\\Tools\\netcorerun\\netcorerun.exe\" \"C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Assembly-CSharp.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.AI.Navigation.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.InputSystem.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.InputSystem.ForUI.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.InputSystem.TestFramework.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.TextMeshPro.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.Timeline.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.VisualScripting.Core.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.VisualScripting.Flow.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\Unity.VisualScripting.State.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\UnityEngine.TestRunner.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\\UnityEngine.UI.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\\nunit.framework.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\\ReportGeneratorMerged.dll\" -a=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\Managed\\UnityEngine\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netfx\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netstandard\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\NetStandard\\Extensions\\2.0.0\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.37f1\\Editor\\Data\\NetStandard\\ref\\2.1.0\" -s=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\ScriptAssemblies\" -s=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\" -s=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\" -s=\"C:\\Users\\ATPEngie\\Gloomy-Prison\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\" -o=\"Library/BuildPlayerData/Editor\" -rn=\"\" -tn=\"TypeDb-All.json\"",
       "Inputs": [
         "C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Tools/netcorerun/netcorerun.exe",
         "C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe",
@@ -26187,6 +26191,6 @@
   "SharedResources": [],
   "Scanners": [],
   "Identifier": "Library/Bee/1900b0aEDbg.dag.json",
-  "PayloadsFile": "C:/Users/ATPEngie/Gloomy Prison/Library/Bee/1900b0aEDbg.dag.payloads",
+  "PayloadsFile": "C:/Users/ATPEngie/Gloomy-Prison/Library/Bee/1900b0aEDbg.dag.payloads",
   "RelativePathToRoot": "../.."
 }
