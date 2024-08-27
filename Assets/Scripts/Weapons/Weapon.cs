@@ -4,17 +4,19 @@ using UnityEngine;
 //a partial block refers to blocking a heavy attack without a shield
 //a perfect block refers to a timed block
 public enum BlockResult { Perfect, Success, Partial, Failed }
-public enum WeaponState { Idle, WindingUp, Attacking, Pushing, Blocking }
 public class Weapon : MonoBehaviour
 {
     //main weapon class which can manage multiple hitboxes
     //also manages blocking
+    //this states will be used by the AI to make decisions
+    public enum State { Idle, WindingUp, Attacking, Blocking, PushWindingUp, Pushing }
     [SerializeField]
     protected WeaponData weaponData;
+    [SerializeField] protected Receiver idleReceiver;
     [SerializeField] protected Receiver windupReceiver;
     [SerializeField] protected Receiver attackReceiver;
-    [SerializeField] protected Receiver idleReceiver;
     [SerializeField] protected Receiver blockReceiver;
+    [SerializeField] protected Receiver pushWindupReceiver;
     [SerializeField] protected Receiver pushReceiver;
     public HashSet<Transform> Hits { get; protected set; }
     protected Coroutine coroutine;
@@ -31,7 +33,7 @@ public class Weapon : MonoBehaviour
     public float Reach { get { return weaponData.Reach; } }
     protected DmgInfo dmgInfo;
     public int CurrentAttack { get; set; }
-    public WeaponState CurrentState
+    public State CurrentState
     {
         get; protected set;
     }
@@ -52,6 +54,10 @@ public class Weapon : MonoBehaviour
         AnimHandler = GetComponentInChildren<WeaponAnimHandler>();
         Hits = new();
     }
+    protected void OnEnable()
+    {
+        EnterIdleState();
+    }
     protected void Start()
     {
         SetupReceivers();
@@ -59,16 +65,17 @@ public class Weapon : MonoBehaviour
     protected void SetupReceivers()
     {
         //assign all receivers their corresponding methods
+        idleReceiver.AddAction(EnterIdleState);
         windupReceiver.AddAction(EnterWindupState);
         attackReceiver.AddAction(EnterDamageState);
-        idleReceiver.AddAction(EnterIdleState);
         blockReceiver.AddAction(EnterBlockState);
+        pushWindupReceiver.AddAction(EnterPushWindupState);
         pushReceiver.AddAction(EnterPushingState);
     }
     public void EnterDamageState()
     {
         ExitBlockState();
-        CurrentState = WeaponState.Attacking;
+        CurrentState = State.Attacking;
         dmgInfo.attack = weaponData.Attacks[CurrentAttack];
         //the weapon is enabled, so we begin checking for collisions
         for (int i = 0; i < hurtboxes.Length; i++)
@@ -220,14 +227,18 @@ public class Weapon : MonoBehaviour
         //we are now idle (or staggered)
         ExitBlockState();
         ExitDamageState();
-        CurrentState = WeaponState.Idle;
+        CurrentState = State.Idle;
     }
     protected void EnterWindupState()
     {
-        CurrentState = WeaponState.WindingUp;
+        CurrentState = State.WindingUp;
+    }
+    protected void EnterPushWindupState()
+    {
+        CurrentState = State.PushWindingUp;
     }
     protected void EnterPushingState()
     {
-        CurrentState = WeaponState.Pushing;
+        CurrentState = State.Pushing;
     }
 }
