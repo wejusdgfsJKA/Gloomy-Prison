@@ -331,6 +331,10 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Types.dll"
 -r:"Library/PackageCache/com.unity.testtools.codecoverage@1.2.5/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Packages/com.kybernetik.animancer/Runtime/Utilities/Animancer Lite/Animancer Lite Editor/Kybernetik.Animancer.Lite.dll"
+-r:"Library/Bee/artifacts/1900b0aEDbg.dag/Kybernetik.Animancer.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aEDbg.dag/Kybernetik.Animancer.FSM.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aEDbg.dag/Kybernetik.Animancer.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.AI.Navigation.Editor.ConversionSystem.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.AI.Navigation.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.AI.Navigation.ref.dll"
@@ -395,10 +399,14 @@
 "Assets/Scripts/Player/PlayerActions.cs"
 "Assets/Scripts/Weapons/Data/Attack.cs"
 "Assets/Scripts/Weapons/Data/DmgInfo.cs"
-"Assets/Scripts/Weapons/Data/WeaponData.cs"
+"Assets/Scripts/Weapons/Data/WeaponBlockData.cs"
+"Assets/Scripts/Weapons/Data/WeaponDamageData.cs"
 "Assets/Scripts/Weapons/Hurtbox.cs"
 "Assets/Scripts/Weapons/Weapon.cs"
 "Assets/Scripts/Weapons/WeaponAnimHandler.cs"
+"Assets/Scripts/Weapons/WeaponBlockComponent.cs"
+"Assets/Scripts/Weapons/WeaponDamageComponent.cs"
+"Assets/Scripts/Weapons/WeaponState.cs"
 -langversion:9.0
 /deterministic
 /optimize-

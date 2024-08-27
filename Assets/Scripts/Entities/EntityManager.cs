@@ -108,7 +108,7 @@ public class EntityManager : MonoBehaviour
         //send the damage dealer information about what happened to the defender
         try
         {
-            Entities[dmgInfo.owner].ReceiveAttackResult(blockResult, dmgInfo);
+            Entities[dmgInfo.Owner].ReceiveAttackResult(blockResult, dmgInfo);
         }
         catch (System.Exception e)
         {

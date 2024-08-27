@@ -1,244 +1,83 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 //a partial block refers to blocking a heavy attack without a shield
-//a perfect block refers to a timed block
-public enum BlockResult { Perfect, Success, Partial, Failed }
+public enum BlockResult { Success, Failure, Partial }
+[RequireComponent(typeof(WeaponDamageComponent))]
+[RequireComponent(typeof(WeaponBlockComponent))]
 public class Weapon : MonoBehaviour
 {
-    //main weapon class which can manage multiple hitboxes
-    //also manages blocking
+    //base weapon class, handles animations and states
     //this states will be used by the AI to make decisions
-    public enum State { Idle, WindingUp, Attacking, Blocking, PushWindingUp, Pushing }
+    public enum AnimState
+    {
+        Idle, Winding, Attacking, Blocking
+    }
     [SerializeField]
-    protected WeaponData weaponData;
-    [SerializeField] protected Receiver idleReceiver;
-    [SerializeField] protected Receiver windupReceiver;
-    [SerializeField] protected Receiver attackReceiver;
-    [SerializeField] protected Receiver blockReceiver;
-    [SerializeField] protected Receiver pushWindupReceiver;
-    [SerializeField] protected Receiver pushReceiver;
-    public HashSet<Transform> Hits { get; protected set; }
-    protected Coroutine coroutine;
-    protected WaitForSeconds wait;
+    protected WeaponDamageComponent damageComponent;
     [SerializeField]
-    protected Hurtbox[] hurtboxes = null;
-    protected float startedBlocking;
-    [SerializeField]
-    protected Transform blockPoint, centerPoint;//the center will be used
+    protected WeaponBlockComponent blockComponent;
+    [field: SerializeField]
+    public Transform CenterPoint { get; protected set; }
+    //the center will be used
     //for the AI to know in which direction to block
-    public WeaponAnimHandler AnimHandler { get; protected set; }
-    public bool IsShield
-    { get { return weaponData.Shield; } }
-    public float Reach { get { return weaponData.Reach; } }
-    protected DmgInfo dmgInfo;
-    public int CurrentAttack { get; set; }
-    public State CurrentState
+    protected AnimState animState
+    {
+        get
+        {
+            return animState;
+        }
+        set
+        {
+            if (value != animState)
+            {
+                switch (animState)
+                {
+                    case AnimState.Idle:
+                        damageComponent.ExitDamageState();
+                        break;
+                    case AnimState.Attacking:
+                        damageComponent.EnterDamageState();
+                        feinted = false;
+                        break;
+                    case AnimState.Blocking:
+                        feinted = false;
+                        break;
+                }
+                animState = CurrentState.AnimState = value;
+            }
+        }
+    }
+    public WeaponState CurrentState
     {
         get; protected set;
     }
-    protected void Awake()
-    {
-        //set up all the information of the dmgInfo class which will
-        //not change for this object
-        dmgInfo = new DmgInfo(transform.root);
-        CurrentAttack = 0;
-        //set up all the hurtboxes, which is a PITA to do manually; WIP
-        for (int i = 0; i < hurtboxes.Length; i++)
-        {
-            hurtboxes[i].Init(weaponData.Mask, weaponData.MaxHurtboxEntities);
-        }
-        //cache the WaitForSeconds
-        wait = new WaitForSeconds(weaponData.CheckInterval);
-        startedBlocking = -1;
-        AnimHandler = GetComponentInChildren<WeaponAnimHandler>();
-        Hits = new();
-    }
+    protected bool feinted;
     protected void OnEnable()
     {
-        EnterIdleState();
+        animState = AnimState.Idle;
     }
-    protected void Start()
+    protected void Feint(Attack newattack)
     {
-        SetupReceivers();
-    }
-    protected void SetupReceivers()
-    {
-        //assign all receivers their corresponding methods
-        idleReceiver.AddAction(EnterIdleState);
-        windupReceiver.AddAction(EnterWindupState);
-        attackReceiver.AddAction(EnterDamageState);
-        blockReceiver.AddAction(EnterBlockState);
-        pushWindupReceiver.AddAction(EnterPushWindupState);
-        pushReceiver.AddAction(EnterPushingState);
-    }
-    public void EnterDamageState()
-    {
-        ExitBlockState();
-        CurrentState = State.Attacking;
-        dmgInfo.attack = weaponData.Attacks[CurrentAttack];
-        //the weapon is enabled, so we begin checking for collisions
-        for (int i = 0; i < hurtboxes.Length; i++)
+        if (!feinted && animState == AnimState.Winding)
         {
-            hurtboxes[i].ResetPreviouses();
-        }
-        coroutine = StartCoroutine(collisionCheck());
-    }
-    public void ExitDamageState()
-    {
-        //we disable the weapon hurtboxes; this means just stopping the coroutine
-        //and clearing the set of hits
-        if (coroutine != null)
-        {
-            StopCoroutine(coroutine);
-        }
-        Hits.Clear();
-    }
-    protected IEnumerator collisionCheck()
-    {
-        while (true)
-        {
-            //check all hurtboxes
-            checkHurtboxes();
-            yield return wait;
+            //change attack
+            feinted = true;
+            CurrentState.Attack = newattack;
+            damageComponent.CurrentAttack = newattack;
         }
     }
-    protected void checkHurtboxes()
+    public void Cancel()
     {
-        foreach (var hurtbox in hurtboxes)
+        if (!feinted && animState == AnimState.Winding)
         {
-            hurtbox.AddPrevious();
-            int count = hurtbox.CheckVolume();
-            //we need to use this count because if we use array.length it will go over
-            //all the NULL elements as well
-            for (int j = 0; j < count; j++)
-            {
-                Transform parent = hurtbox.Hits[j].transform.root;
-                if (!Hits.Contains(parent))
-                {
-                    //we have not hit this object before during this swing;this is to
-                    //account for objects with multiple colliders, otherwise they
-                    //might be hit multiple times during a swing
-                    //we need the contact point to determine if a block is successful or not
-                    dmgInfo.ContactPoint = CalculateContactPoint(hurtbox, hurtbox.Hits[j]);
-                    DealDamage(parent);
-                    Hits.Add(parent);
-                }
-            }
+            //cancel the current attack
         }
-    }
-    protected Vector3 CalculateContactPoint(Hurtbox hurtbox, Collider hit)
-    {
-        Vector3 point = hurtbox.Collider.ClosestPointOnBounds(hit.transform.position);
-        Vector3 prev = hurtbox.PreviousPositions.First.Value;
-        foreach (var p in hurtbox.PreviousPositions)
-        {
-            if (prev != p)
-            {
-                //Debug.DrawRay(point, dir, Color.green, 10);
-                point = hit.ClosestPoint(hit.ClosestPointOnBounds(point + prev - p));
-                prev = p;
-            }
-        }
-        point = hit.ClosestPoint(hit.ClosestPointOnBounds(point));
-        //Debug.DrawLine(point, hit.transform.GetComponent<EntityBase>().GetBlockPoint().position, Color.red, 10);
-        return point;
-    }
-    protected void DealDamage(Transform target)
-    {
-        //Debug.Log(target);
-        EntityManager.Instance.SendAttack(target, dmgInfo);
-    }
-    //block-related functions
-    protected void EnterBlockState()
-    {
-        ExitDamageState();
-        startedBlocking = Time.time;
-    }
-    protected void ExitBlockState()
-    {
-        startedBlocking = -1;
     }
     public BlockResult Block(DmgInfo dmgInfo)
     {
-        if (startedBlocking > 0)
+        if (animState == AnimState.Blocking)
         {
-            if (Time.time <= startedBlocking + Settings.Instance.TimedBlockWindow)
-            {
-                //a timed block was executed
-                return SuccessfullBlock(dmgInfo, true);
-            }
-            //we need to calculate the angle at which the attack hit us
-            float strikeangle = Mathf.Acos(Vector3.Dot(blockPoint.forward,
-                 (dmgInfo.ContactPoint - blockPoint.position).normalized)) * Mathf.Rad2Deg;
-            //Debug.Log(strikeangle);
-            if (dmgInfo.attackType == AttackType.Strike)
-            {
-                if (strikeangle <= weaponData.StrikeBlockAngle)
-                {
-                    //we successfully blocked a strike
-                    return SuccessfullBlock(dmgInfo);
-                }
-            }
-            else
-            {
-                if (dmgInfo.attackType == AttackType.Thrust)
-                {
-                    if (strikeangle <= weaponData.ThrustBlockAngle)
-                    {
-                        //we successfully blocked a thrust
-                        return SuccessfullBlock(dmgInfo);
-                    }
-                }
-            }
+            return blockComponent.Block(dmgInfo);
         }
-        return BlockResult.Failed;
-    }
-    protected BlockResult SuccessfullBlock(DmgInfo dmgInfo, bool timed = false)
-    {
-        if (dmgInfo.strength == AttackStrength.Regular)
-        {
-            //we successfully blocked a regular attack
-            if (timed)
-            {
-                //maybe we want to stagger the opponent?
-                return BlockResult.Perfect;
-            }
-            return BlockResult.Success;
-        }
-        if (dmgInfo.strength == AttackStrength.Heavy)
-        {
-            //we need a shield to block this
-            if (!weaponData.Shield)
-            {
-                //a heavy blow like this can only be blocked with a shield
-                return BlockResult.Partial;
-            }
-            if (timed)
-            {
-                return BlockResult.Perfect;
-            }
-            return BlockResult.Success;
-        }
-        return BlockResult.Failed;
-    }
-    protected void EnterIdleState()
-    {
-        //we are now idle (or staggered)
-        ExitBlockState();
-        ExitDamageState();
-        CurrentState = State.Idle;
-    }
-    protected void EnterWindupState()
-    {
-        CurrentState = State.WindingUp;
-    }
-    protected void EnterPushWindupState()
-    {
-        CurrentState = State.PushWindingUp;
-    }
-    protected void EnterPushingState()
-    {
-        CurrentState = State.Pushing;
+        return BlockResult.Failure;
     }
 }
