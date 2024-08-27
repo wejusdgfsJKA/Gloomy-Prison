@@ -537,8 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28652ee322f6a2a4d8151de20be49fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimedBlockWindow: 1
-  TimedBlockStaminaCostCoefficient: 0
+  <TimedBlockWindow>k__BackingField: 1
+  <TimedBlockStaminaCostCoefficient>k__BackingField: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
