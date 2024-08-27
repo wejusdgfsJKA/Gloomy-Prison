@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 758192216371569393}
   - component: {fileID: 749624479854247648}
   - component: {fileID: 5023197283731476222}
-  - component: {fileID: 7614190736476833441}
+  - component: {fileID: 26664701097358494}
+  - component: {fileID: 1698156467183627515}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -81,17 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ddab23f892bbd64a86f94c4fccfd8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: d5be905b4f5d3e44cadf454951f098aa, type: 2}
-  attackReceiver: {fileID: 0}
-  idleReceiver: {fileID: 0}
-  windupReceiver: {fileID: 0}
-  blockReceiver: {fileID: 0}
-  pushReceiver: {fileID: 0}
-  hurtboxes:
-  - <Collider>k__BackingField: {fileID: 0}
-    numberOfPreviouses: 2
-  blockPoint: {fileID: 0}
-  centerPoint: {fileID: 0}
+  <CenterPoint>k__BackingField: {fileID: 3925719375166592854}
 --- !u!95 &5023197283731476222
 Animator:
   serializedVersion: 5
@@ -113,7 +104,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7614190736476833441
+--- !u!114 &26664701097358494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,9 +113,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 3980673568538288964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94d5bf149b42784187917eed21874af, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a5dd9fcda5f88b4f9e2ea902ebabe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
+  hurtboxes: []
+--- !u!114 &1698156467183627515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3980673568538288964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a698d5657fe7acf43887ee8694e23c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 0}
+  blockPoint: {fileID: 2580936633392808363}
 --- !u!1 &4403461526214095714
 GameObject:
   m_ObjectHideFlags: 0

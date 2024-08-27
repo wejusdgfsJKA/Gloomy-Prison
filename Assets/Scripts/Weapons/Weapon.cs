@@ -2,18 +2,15 @@ using UnityEngine;
 //a partial block refers to blocking a heavy attack without a shield
 public enum BlockResult { Success, Failure, Partial }
 [RequireComponent(typeof(WeaponDamageComponent))]
-[RequireComponent(typeof(WeaponBlockComponent))]
 public class Weapon : MonoBehaviour
 {
     //base weapon class, handles animations and states
-    //this states will be used by the AI to make decisions
+    //these states will be used by the AI to make decisions
     public enum AnimState
     {
-        Idle, Winding, Attacking, Blocking
+        Idle, Winding, Attacking, Blocking, Recovering
     }
-    [SerializeField]
     protected WeaponDamageComponent damageComponent;
-    [SerializeField]
     protected WeaponBlockComponent blockComponent;
     [field: SerializeField]
     public Transform CenterPoint { get; protected set; }
@@ -32,7 +29,6 @@ public class Weapon : MonoBehaviour
                 switch (animState)
                 {
                     case AnimState.Idle:
-                        damageComponent.ExitDamageState();
                         break;
                     case AnimState.Attacking:
                         damageComponent.EnterDamageState();
@@ -41,43 +37,73 @@ public class Weapon : MonoBehaviour
                     case AnimState.Blocking:
                         feinted = false;
                         break;
+                    case AnimState.Recovering:
+                        damageComponent.ExitDamageState();
+                        feinted = false;
+                        break;
                 }
                 animState = CurrentState.AnimState = value;
             }
         }
     }
-    public WeaponState CurrentState
-    {
-        get; protected set;
-    }
+    public WeaponState CurrentState { get; protected set; }
     protected bool feinted;
+    protected void Awake()
+    {
+        damageComponent = GetComponent<WeaponDamageComponent>();
+        blockComponent = GetComponent<WeaponBlockComponent>();
+    }
     protected void OnEnable()
     {
         animState = AnimState.Idle;
     }
-    protected void Feint(Attack newattack)
+    public bool Feint(Attack newattack)
     {
-        if (!feinted && animState == AnimState.Winding)
+        if (!feinted && animState == AnimState.Winding && damageComponent.
+            CurrentAttack.Feintable)
         {
             //change attack
             feinted = true;
             CurrentState.Attack = newattack;
             damageComponent.CurrentAttack = newattack;
+            return true;
         }
+        return false;
     }
-    public void Cancel()
+    public bool Cancel()
     {
-        if (!feinted && animState == AnimState.Winding)
+        if (!feinted && animState == AnimState.Winding && damageComponent.
+            CurrentAttack.Cancelable)
         {
             //cancel the current attack
+            return true;
         }
+        return false;
+    }
+    public bool BeginBlocking()
+    {
+        if (animState == AnimState.Idle)
+        {
+            animState = AnimState.Blocking;
+            return true;
+        }
+        if (animState == AnimState.Winding && !feinted)
+        {
+            animState = AnimState.Blocking;
+            return true;
+        }
+        return false;
     }
     public BlockResult Block(DmgInfo dmgInfo)
     {
-        if (animState == AnimState.Blocking)
+        if (blockComponent != null && animState == AnimState.Blocking)
         {
             return blockComponent.Block(dmgInfo);
         }
         return BlockResult.Failure;
+    }
+    public void Interrupt()
+    {
+        damageComponent.ExitDamageState();
     }
 }

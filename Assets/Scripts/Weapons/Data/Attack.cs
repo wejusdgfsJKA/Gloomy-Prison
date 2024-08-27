@@ -17,5 +17,9 @@ public class Attack : ScriptableObject
     [field: SerializeField]
     public bool Alternate { get; } = false;
     [field: SerializeField]
-    public AnimationClip clip { get; }
+    public AnimationClip Clip { get; }
+    [field: SerializeField]
+    public bool Cancelable { get; } = true;
+    [field: SerializeField]
+    public bool Feintable { get; } = true;
 }

@@ -397,15 +397,14 @@
 "Assets/Scripts/Management/Settings.cs"
 "Assets/Scripts/Player/Player Controls/PlayerController.cs"
 "Assets/Scripts/Player/PlayerActions.cs"
+"Assets/Scripts/Weapons/Components/WeaponBlockComponent.cs"
+"Assets/Scripts/Weapons/Components/WeaponDamageComponent.cs"
 "Assets/Scripts/Weapons/Data/Attack.cs"
 "Assets/Scripts/Weapons/Data/DmgInfo.cs"
 "Assets/Scripts/Weapons/Data/WeaponBlockData.cs"
 "Assets/Scripts/Weapons/Data/WeaponDamageData.cs"
 "Assets/Scripts/Weapons/Hurtbox.cs"
 "Assets/Scripts/Weapons/Weapon.cs"
-"Assets/Scripts/Weapons/WeaponAnimHandler.cs"
-"Assets/Scripts/Weapons/WeaponBlockComponent.cs"
-"Assets/Scripts/Weapons/WeaponDamageComponent.cs"
 "Assets/Scripts/Weapons/WeaponState.cs"
 -langversion:9.0
 /deterministic
