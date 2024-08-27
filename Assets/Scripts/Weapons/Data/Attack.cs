@@ -3,14 +3,19 @@ using UnityEngine;
 [System.Serializable]
 public class Attack : ScriptableObject
 {
+    public enum Type { Light, Overhead, Jab, Thrust, Kick };
+    //heavy attacks can only be successfully blocked with shields
+    public enum Strength { Regular, Heavy };
     [field: SerializeField]
-    public float damage { get; }
+    public float Damage { get; }
     [field: SerializeField]
-    public float staminaCost { get; }
+    public float StaminaDrain { get; }
     [field: SerializeField]
-    public float selfStaminaCost { get; }
+    public Type AttackType { get; }
     [field: SerializeField]
-    public AttackType type { get; }
+    public Strength AttackStrength { get; } = Strength.Regular;
     [field: SerializeField]
-    public AttackStrength strength { get; }
+    public bool Alternate { get; } = false;
+    [field: SerializeField]
+    public AnimationClip clip { get; }
 }

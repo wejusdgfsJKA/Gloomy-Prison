@@ -12,7 +12,7 @@ public class EntityBase : MonoBehaviour
     [SerializeField]
     protected EntityData data;
     [SerializeField]
-    protected BlockResult DefaultBlockResult = BlockResult.Failed;
+    protected BlockResult DefaultBlockResult = BlockResult.Failure;
     public string Name
     {
         get
@@ -38,16 +38,13 @@ public class EntityBase : MonoBehaviour
         switch (blockResult)
         {
             //WIP
-            case BlockResult.Failed:
-                hpComponent.TakeDamage(dmgInfo.damage);
+            case BlockResult.Failure:
+                hpComponent.TakeDamage(dmgInfo.Attack.Damage);
                 break;
             case BlockResult.Partial:
-                hpComponent.TakeDamage(dmgInfo.damage);
+                hpComponent.TakeDamage(dmgInfo.Attack.Damage);
                 break;
             case BlockResult.Success:
-                break;
-            case BlockResult.Perfect:
-                //give bonus attack speed
                 break;
         }
     }
