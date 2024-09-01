@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4751849598038452791}
   - component: {fileID: 7910932075781092316}
   - component: {fileID: 6170783645133763606}
+  - component: {fileID: 3753575729538757034}
   m_Layer: 0
   m_Name: Dave
   m_TagString: Untagged
@@ -67,7 +68,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parameters: {fileID: 11400000, guid: 8bda9d6d949414149a6f4c234fc3ae7e, type: 2}
   eye: {fileID: 6908931041945773237}
-  ShowDebug: 1
 --- !u!114 &7931969913977498426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7910932075781092316
@@ -140,7 +140,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   data: {fileID: 11400000, guid: 654658719a4b6dc4895b94e52d5826e1, type: 2}
-  DefaultBlockResult: 3
+  defaultBlockResult: 1
+--- !u!114 &3753575729538757034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120977944514188069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5bb7ca749afba42b40850d8a6bd746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2667029880232467445
 PrefabInstance:
   m_ObjectHideFlags: 0

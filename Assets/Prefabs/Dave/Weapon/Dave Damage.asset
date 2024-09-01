@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd153a5db61026a4b930b1d632036460, type: 3}
+  m_Name: Dave Damage
+  m_EditorClassIdentifier: 
+  <CheckInterval>k__BackingField: 0.01
+  <MaxHurtboxEntities>k__BackingField: 10
+  <Mask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
+  <Reach>k__BackingField: 1
+  <Attacks>k__BackingField:
+  - {fileID: 11400000, guid: 9885f68d3ca01a64baf1a28ad147b81c, type: 2}
+  - {fileID: 11400000, guid: aa3a7df3b929e8a499469320c8f48a1c, type: 2}
+  - {fileID: 11400000, guid: 6c0efb61785db854f83966edc02ba7f7, type: 2}
+  - {fileID: 11400000, guid: bb760dd86e7fe364282ebc2860861e6b, type: 2}

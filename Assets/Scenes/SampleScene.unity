@@ -506,7 +506,7 @@ MonoBehaviour:
   - 7
   - 6
   roster: []
-  InitialCreation: 0000000000000000
+  initialCreation: 
   entityManager: {fileID: 1982594599}
   detectionManager: {fileID: 1982594597}
 --- !u!114 &1982594599

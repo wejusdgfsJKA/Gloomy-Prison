@@ -4,9 +4,11 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     [field: SerializeField]
-    public string Name { get; private set; }
+    public string Name { get; protected set; }
     [field: SerializeField]
-    public EntityBase prefab { get; private set; }
+    public EntityBase Prefab { get; protected set; }
     [field: SerializeField]
-    public float maxhp { get; private set; }
+    public float MaxHp { get; protected set; }
+    [field: SerializeField]
+    public float MaxStamina { get; protected set; }
 }
