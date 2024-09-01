@@ -7,6 +7,13 @@ public class WeaponDamageComponent : MonoBehaviour
     //manages the damage part of a weapon
     [SerializeField]
     protected WeaponDamageData data;
+    public Attack[] Attacks
+    {
+        get
+        {
+            return data.Attacks;
+        }
+    }
     public HashSet<Transform> Hits { get; protected set; } = new();
     protected Coroutine coroutine;
     protected WaitForSeconds wait;
@@ -52,7 +59,10 @@ public class WeaponDamageComponent : MonoBehaviour
         {
             StopCoroutine(coroutine);
         }
-        Hits.Clear();
+        if (Hits.Count > 0)
+        {
+            Hits.Clear();
+        }
     }
     protected IEnumerator collisionCheck()
     {

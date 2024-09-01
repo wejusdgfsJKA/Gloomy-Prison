@@ -165,6 +165,7 @@ public class Node : ElementBase
             //if we succeeded or failed, we exit
             if (LastState != NodeState.RUNNING)
             {
+                Exit();
                 return tickednodes;
             }
         }
@@ -174,6 +175,7 @@ public class Node : ElementBase
             if (EvaluateFunc == null)
             {
                 LastState = NodeState.SUCCESS;
+                Exit();
                 return tickednodes;
             }
         }

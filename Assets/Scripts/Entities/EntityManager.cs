@@ -133,7 +133,7 @@ public class EntityManager : MonoBehaviour
         //add an entity to the roster
         try
         {
-            roster.Add(entityData.Name, entityData.prefab);
+            roster.Add(entityData.Name, entityData.Prefab);
             //Debug.Log("Added " + entityData.Name + " to roster.");
         }
         catch (System.Exception e)

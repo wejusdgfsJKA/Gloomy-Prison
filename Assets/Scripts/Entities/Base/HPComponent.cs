@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class HPComponent : MonoBehaviour
 {
-    public float maxhp { get; protected set; } = -1;
-    public float currenthp { get; protected set; }
+    public float MaxHP { get; protected set; } = -1;
+    public float CurrentHP { get; protected set; }
     public void SetMaxHP(float maxhp)
     {
-        if (this.maxhp < 0)
+        if (MaxHP < 0)
         {
-            this.maxhp = maxhp;
+            MaxHP = maxhp;
         }
     }
     private void OnEnable()
@@ -17,12 +17,12 @@ public class HPComponent : MonoBehaviour
     }
     public void Reset()
     {
-        currenthp = maxhp;
+        CurrentHP = MaxHP;
     }
     public void TakeDamage(float damage)
     {
-        currenthp -= damage;
-        if (currenthp <= 0)
+        CurrentHP -= damage;
+        if (CurrentHP <= 0)
         {
             Die();
         }

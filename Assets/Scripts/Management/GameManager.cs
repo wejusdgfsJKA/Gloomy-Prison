@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     protected EntityData[] roster;
     [SerializeField]
-    protected int[] InitialCreation;
+    protected int[] initialCreation;
     //the integer determines how many of
     //each prefab should be instantiated into the level at the start
     [SerializeField]
@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < roster.Length; i++)
         {
             EntityManager.Instance.AddToRoster(roster[i]);
-            for (int j = 0; j < InitialCreation[i]; j++)
+            for (int j = 0; j < initialCreation[i]; j++)
             {
-                EntityManager.Instance.SpawnAndKill(roster[i].prefab);
+                EntityManager.Instance.SpawnAndKill(roster[i].Prefab);
             }
         }
     }

@@ -1,10 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/WeaponData")]
+[CreateAssetMenu(menuName = "ScriptableObjects/WeaponBlockData")]
 [System.Serializable]
 public class WeaponBlockData : ScriptableObject
 {
-    public float BlockAngle { get; }
     [field: SerializeField]
-    public bool Shield { get; } = false;
+    public float BlockAngle { get; protected set; }
+    [field: SerializeField]
+    public bool Shield { get; protected set; } = false;
 }

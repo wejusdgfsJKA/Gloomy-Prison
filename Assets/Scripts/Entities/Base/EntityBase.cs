@@ -8,11 +8,18 @@ public class EntityBase : MonoBehaviour
     [SerializeField]
     protected Weapon weapon;
     protected HPComponent hpComponent;
+    protected StaminaComponent staminaComponent
+    {
+        get
+        {
+            return weapon.staminaComponent;
+        }
+    }
     protected EntityActions actions;
     [SerializeField]
     protected EntityData data;
     [SerializeField]
-    protected BlockResult DefaultBlockResult = BlockResult.Failure;
+    protected BlockResult defaultBlockResult = BlockResult.Failure;
     public string Name
     {
         get
@@ -23,16 +30,29 @@ public class EntityBase : MonoBehaviour
     protected virtual void Awake()
     {
         hpComponent = GetComponent<HPComponent>();
-        hpComponent.SetMaxHP(data.maxhp);
+        hpComponent.SetMaxHP(data.MaxHp);
         actions = GetComponent<EntityActions>();
+        if (weapon != null)
+        {
+            staminaComponent.SetMaxStamina(data.MaxStamina);
+        }
+    }
+    protected virtual void OnEnable()
+    {
+        hpComponent.Reset();
+        staminaComponent.Reset();
     }
     public void ReceiveAttack(DmgInfo dmgInfo)
     {
-        BlockResult blockResult = DefaultBlockResult;
+        BlockResult blockResult;
         if (weapon != null)
         {
             //we had no weapon, so we return the default block result
             blockResult = weapon.Block(dmgInfo);
+        }
+        else
+        {
+            blockResult = defaultBlockResult;
         }
         EntityManager.Instance.SendAttackResult(blockResult, dmgInfo);
         switch (blockResult)
