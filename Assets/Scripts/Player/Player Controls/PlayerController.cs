@@ -1,25 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField]
-    protected float walkSpeed;
-    [SerializeField]
-    bool grounded;
+    [SerializeField] protected float walkSpeed;
+    [Header("Jumping")]
+    [SerializeField] protected bool grounded;
+    [SerializeField] protected float jumpHeight;
     protected Vector2 WASD;
-    [SerializeField]
     protected CharacterController characterController;
     [Header("Look")]
-    [SerializeField]
-    protected float xSens, ySens;
-    [SerializeField]
-    float maxVerticalAngle;
-    [SerializeField]
-    Transform cam;
-    float xRot, yRot;
+    [SerializeField] protected float xSens;
+    [SerializeField] protected float ySens;
+    [SerializeField] protected float maxVerticalAngle;
+    [SerializeField] protected Transform cam;
+    protected float xRot, yRot;
     protected Vector2 mouseDelta;
     private void Awake()
     {
@@ -41,13 +39,13 @@ public class PlayerController : MonoBehaviour
     {
         return false;
     }
-    protected void OnWalk(InputValue value)
+    public void OnWalk(InputAction.CallbackContext context)
     {
-        WASD = value.Get<Vector2>();
+        WASD = context.ReadValue<Vector2>();
     }
-    protected void OnLook(InputValue value)
+    public void OnLook(InputAction.CallbackContext context)
     {
-        mouseDelta = value.Get<Vector2>();
+        mouseDelta = context.ReadValue<Vector2>();
         yRot += mouseDelta.x * ySens;
         xRot -= mouseDelta.y * xSens;
         xRot = Mathf.Clamp(xRot, -maxVerticalAngle, maxVerticalAngle);

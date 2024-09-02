@@ -142,6 +142,10 @@ public class Node : ElementBase
 
         if (!EvaluateDecorators())
         {
+            if (LastState == NodeState.RUNNING)
+            {
+                Exit();
+            }
             LastState = NodeState.FAILURE;
             tickednodes = true;
             return tickednodes;

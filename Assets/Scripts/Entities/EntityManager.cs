@@ -9,8 +9,6 @@ public class EntityManager : MonoBehaviour
     protected Dictionary<string, EntityBase> roster;
     public Dictionary<Transform, EntityBase> Entities { get; private set; }
     protected Dictionary<string, Queue<EntityBase>> pool;
-    public bool b1, b2;
-    public Transform p1, p2;
     protected void Awake()
     {
         if (Instance == null)
@@ -23,33 +21,6 @@ public class EntityManager : MonoBehaviour
         roster = new();
         Entities = new();
         pool = new();
-    }
-    private void Update()
-    {
-        if (b1)
-        {
-            b1 = false;
-            try
-            {
-                Spawn("Detectable", p1.position, p1.rotation);
-            }
-            catch (System.Exception e)
-            {
-                Debug.Log(e.Message);
-            }
-        }
-        if (b2)
-        {
-            b2 = false;
-            try
-            {
-                Spawn("Dummy Monster", p2.position, p2.rotation);
-            }
-            catch (System.Exception e)
-            {
-                Debug.Log(e.Message);
-            }
-        }
     }
     protected void Spawn(string entityName, Vector3 position, Quaternion rotation)
     {
