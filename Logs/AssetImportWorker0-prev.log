@@ -15,7 +15,7 @@ C:/Users/ATPEngie/Gloomy-Prison
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50563
+49701
 Successfully changed project path to: C:/Users/ATPEngie/Gloomy-Prison
 C:/Users/ATPEngie/Gloomy-Prison
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,12 +49,12 @@ C:/Users/ATPEngie/Gloomy-Prison
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [3208] Host "[IP] 172.30.240.191 [Port] 0 [Flags] 2 [Guid] 1929599906 [EditorId] 1929599906 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-P0BED7E) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [4340] Host "[IP] 192.168.0.45 [Port] 0 [Flags] 2 [Guid] 1035220307 [EditorId] 1035220307 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-P0BED7E) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [3208] Host "[IP] 172.30.240.191 [Port] 0 [Flags] 2 [Guid] 1929599906 [EditorId] 1929599906 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-P0BED7E) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [4340] Host "[IP] 192.168.0.45 [Port] 0 [Flags] 2 [Guid] 1035220307 [EditorId] 1035220307 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-P0BED7E) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Refreshing native plugins compatible for Editor in 24.92 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 28.92 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.37f1 (340ba89e4c23)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Resources/UnitySubsystems
@@ -70,47 +70,47 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56760
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56092
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.023733 seconds.
-- Loaded All Assemblies, in  0.982 seconds
+Registered in 0.029606 seconds.
+- Loaded All Assemblies, in  1.029 seconds
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 677 ms
+Android Extension - Scanning For ADB Devices 705 ms
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.651 seconds
-Domain Reload Profiling: 2629ms
-	BeginReloadAssembly (293ms)
+- Finished resetting the current domain, in  1.687 seconds
+Domain Reload Profiling: 2711ms
+	BeginReloadAssembly (286ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (2ms)
-	RebuildCommonClasses (104ms)
-	RebuildNativeTypeToScriptingClass (29ms)
-	initialDomainReloadingComplete (154ms)
-	LoadAllAssembliesAndSetupDomain (397ms)
-		LoadAssemblies (289ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (110ms)
+	RebuildNativeTypeToScriptingClass (31ms)
+	initialDomainReloadingComplete (169ms)
+	LoadAllAssembliesAndSetupDomain (428ms)
+		LoadAssemblies (283ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (391ms)
-			TypeCache.Refresh (388ms)
-				TypeCache.ScanAssembly (358ms)
+		AnalyzeDomain (422ms)
+			TypeCache.Refresh (418ms)
+				TypeCache.ScanAssembly (381ms)
 			ScanForSourceGeneratedMonoScriptInfo (1ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (1652ms)
+	FinalizeReload (1688ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1483ms)
+		SetupLoadedEditorAssemblies (1477ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (981ms)
-			SetLoadedEditorAssemblies (17ms)
+			InitializePlatformSupportModulesInManaged (984ms)
+			SetLoadedEditorAssemblies (14ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (10ms)
-			ProcessInitializeOnLoadAttributes (346ms)
-			ProcessInitializeOnLoadMethodAttributes (129ms)
+			BeforeProcessingInitializeOnLoad (9ms)
+			ProcessInitializeOnLoadAttributes (357ms)
+			ProcessInitializeOnLoadMethodAttributes (113ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -118,8 +118,8 @@ Domain Reload Profiling: 2629ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.915 seconds
-Refreshing native plugins compatible for Editor in 12.13 ms, found 3 plugins.
+- Loaded All Assemblies, in  2.280 seconds
+Refreshing native plugins compatible for Editor in 13.20 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Package Manager log level set to [2]
@@ -127,49 +127,49 @@ Package Manager log level set to [2]
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.788 seconds
-Domain Reload Profiling: 4695ms
-	BeginReloadAssembly (474ms)
+- Finished resetting the current domain, in  5.131 seconds
+Domain Reload Profiling: 7397ms
+	BeginReloadAssembly (462ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (14ms)
+		DisableScriptedObjects (24ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (50ms)
-	RebuildCommonClasses (88ms)
-	RebuildNativeTypeToScriptingClass (28ms)
-	initialDomainReloadingComplete (115ms)
-	LoadAllAssembliesAndSetupDomain (1201ms)
-		LoadAssemblies (904ms)
+		CreateAndSetChildDomain (51ms)
+	RebuildCommonClasses (181ms)
+	RebuildNativeTypeToScriptingClass (31ms)
+	initialDomainReloadingComplete (116ms)
+	LoadAllAssembliesAndSetupDomain (1474ms)
+		LoadAssemblies (1042ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (521ms)
-			TypeCache.Refresh (458ms)
-				TypeCache.ScanAssembly (417ms)
-			ScanForSourceGeneratedMonoScriptInfo (42ms)
-			ResolveRequiredComponents (18ms)
-	FinalizeReload (2789ms)
+		AnalyzeDomain (661ms)
+			TypeCache.Refresh (587ms)
+				TypeCache.ScanAssembly (533ms)
+			ScanForSourceGeneratedMonoScriptInfo (54ms)
+			ResolveRequiredComponents (17ms)
+	FinalizeReload (5132ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2360ms)
+		SetupLoadedEditorAssemblies (4488ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (69ms)
-			SetLoadedEditorAssemblies (8ms)
+			InitializePlatformSupportModulesInManaged (126ms)
+			SetLoadedEditorAssemblies (9ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (321ms)
-			ProcessInitializeOnLoadAttributes (1615ms)
-			ProcessInitializeOnLoadMethodAttributes (326ms)
-			AfterProcessingInitializeOnLoad (20ms)
+			BeforeProcessingInitializeOnLoad (413ms)
+			ProcessInitializeOnLoadAttributes (3321ms)
+			ProcessInitializeOnLoadMethodAttributes (602ms)
+			AfterProcessingInitializeOnLoad (17ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (20ms)
+		AwakeInstancesAfterBackupRestoration (16ms)
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
-Refreshing native plugins compatible for Editor in 18.40 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.56 seconds
+Refreshing native plugins compatible for Editor in 8.57 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3658 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (385.0 KB). Loaded Objects now: 4182.
+Unloading 44 unused Assets / (385.1 KB). Loaded Objects now: 4182.
 Memory consumption went from 140.8 MB to 140.4 MB.
-Total: 8.894600 ms (FindLiveObjects: 0.446100 ms CreateObjectMapping: 0.273900 ms MarkObjects: 7.648800 ms  DeleteObjects: 0.523100 ms)
+Total: 8.404500 ms (FindLiveObjects: 0.890100 ms CreateObjectMapping: 0.387000 ms MarkObjects: 6.810200 ms  DeleteObjects: 0.315000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -186,679 +186,372 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 10877.706125 seconds.
-  path: Assets/VertexModeler/LowpolyMedievalWeaponPack
-  artifactKey: Guid(4e1b7538ad23a8846b972c3ff7fb036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VertexModeler/LowpolyMedievalWeaponPack using Guid(4e1b7538ad23a8846b972c3ff7fb036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'f6888f00a2dd51aac24cc9f2642a880c') in 0.004098 seconds
+  Time since last request: 557.454850 seconds.
+  path: Assets/Scripts/AI/Behaviour Tree/Nodes/Node.cs
+  artifactKey: Guid(da9df7e8c5560b5449699ac774d8095a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/AI/Behaviour Tree/Nodes/Node.cs using Guid(da9df7e8c5560b5449699ac774d8095a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: '564a9d573f6830bb41c0e121ece81175') in 0.005628 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/Animancer Settings.asset
-  artifactKey: Guid(62150ef6b7f7cee4c8d69aa37d420f8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animancer Settings.asset using Guid(62150ef6b7f7cee4c8d69aa37d420f8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '151158ef4db83c1f304acb615a82b9a4') in 0.025591 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.000049 seconds.
-  path: Assets/VertexModeler
-  artifactKey: Guid(df05a38c1e168c345a13d53c3e5f2986) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VertexModeler using Guid(df05a38c1e168c345a13d53c3e5f2986) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'bcbb15ca023890096e511d54ebfcc6d6') in 0.000900 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 11.036637 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Material
-  artifactKey: Guid(34a4e9157648c15429a2c5142e356e06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Material using Guid(34a4e9157648c15429a2c5142e356e06) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '634d37aeb1b08c842ed2f3000b53fa1d') in 0.001276 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.281248 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Material/MedievalWeapon.mat
-  artifactKey: Guid(714fb05c38fafe044b8f47faf6a24154) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Material/MedievalWeapon.mat using Guid(714fb05c38fafe044b8f47faf6a24154) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'a00af6920e43a528e98134c2da282a29') in 0.183775 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.000074 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Material/New Material.mat
-  artifactKey: Guid(33f9315ef6e80fa448da3f08a36e6718) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Material/New Material.mat using Guid(33f9315ef6e80fa448da3f08a36e6718) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '6cf8163a6a3e22737528584070a2dd3c') in 0.035835 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.010545 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Texture/MedievalWeapon_Albedo.png
-  artifactKey: Guid(2f441154066ad6b4eb0887cdb3b4ab52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Texture/MedievalWeapon_Albedo.png using Guid(2f441154066ad6b4eb0887cdb3b4ab52) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'dd3d3b2af427a2345eaa751109a60eef') in 0.059017 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 1.489172 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Falchion.001.fbx
-  artifactKey: Guid(26d575c57a6808d4894d162de99bf7f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Falchion.001.fbx using Guid(26d575c57a6808d4894d162de99bf7f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '74e9f837415c416c27206be459d407f1') in 0.119373 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000089 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/LongSword.002.fbx
-  artifactKey: Guid(5d9270e384a78374ea3b73da474a3426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/LongSword.002.fbx using Guid(5d9270e384a78374ea3b73da474a3426) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '3ab5e4956c635eaf65c34b0f79f54e95') in 0.048421 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000079 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.002.fbx
-  artifactKey: Guid(f7b26a5df670f434cb8fcbfe1ea8f927) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.002.fbx using Guid(f7b26a5df670f434cb8fcbfe1ea8f927) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'c966aca7d5f9a58523dc196b547c7f3e') in 0.047434 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000061 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.005.fbx
-  artifactKey: Guid(8d0b153e9992d0245a2fb83917a243c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.005.fbx using Guid(8d0b153e9992d0245a2fb83917a243c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '415e264a897d8e396ac6e62eba76dc8b') in 0.048324 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Mace.001.fbx
-  artifactKey: Guid(6929948006fb083408b54739dfe1bce2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Mace.001.fbx using Guid(6929948006fb083408b54739dfe1bce2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'c895b9a61c09b127768e0d153df465e6') in 0.048017 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.006.fbx
-  artifactKey: Guid(cd3a3b46a35a16c4f86ca2fb2d802191) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.006.fbx using Guid(cd3a3b46a35a16c4f86ca2fb2d802191) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '9c96d24aa080f3d00f4cbe5078d5e911') in 0.047658 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.001.fbx
-  artifactKey: Guid(38cb65f76699c174389d6f4d4996e709) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.001.fbx using Guid(38cb65f76699c174389d6f4d4996e709) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '595782420d396dc5220274d8dcbdccd9') in 0.044292 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000049 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.008.fbx
-  artifactKey: Guid(17ec7637ac593504ca70d07780984674) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.008.fbx using Guid(17ec7637ac593504ca70d07780984674) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '23f5e3d45514af4987e02ff311b75495') in 0.044794 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000051 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.003.fbx
-  artifactKey: Guid(8daf532570840fc469030e684582d108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.003.fbx using Guid(8daf532570840fc469030e684582d108) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '7dcf423b5da8091ad4ae8356c183abbd') in 0.046196 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.002.fbx
-  artifactKey: Guid(dafcfbd41ebed97429377bc02bcbcc42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.002.fbx using Guid(dafcfbd41ebed97429377bc02bcbcc42) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '8b06098b609890854e8e9a8b73be2949') in 0.045925 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000066 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.007.fbx
-  artifactKey: Guid(6ae8dd9dea4252344a89b6c51d8bc79a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.007.fbx using Guid(6ae8dd9dea4252344a89b6c51d8bc79a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '11cfc0d472beffed891fbe7fcb19e294') in 0.049468 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.004.fbx
-  artifactKey: Guid(abfa0d1913b45a34880c0e2346e9b361) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.004.fbx using Guid(abfa0d1913b45a34880c0e2346e9b361) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'bf05b8bbdb54fdde1e44a36f31b5a76b') in 0.047208 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000074 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Langets.002.fbx
-  artifactKey: Guid(a19de1e08682625419dfeadda108db9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Langets.002.fbx using Guid(a19de1e08682625419dfeadda108db9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '4c750cf9ebc6b2b68149d6fc06fe00ee') in 0.046334 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.005.fbx
-  artifactKey: Guid(10c8a67cb2eb6a5429cc0d6e37c6d4a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Poleaxe.005.fbx using Guid(10c8a67cb2eb6a5429cc0d6e37c6d4a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '83530e9b4ba4a06e373adc063a58aa09') in 0.049171 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.003.fbx
-  artifactKey: Guid(5f38fb8fcaffbdc46a29c4bd9ce4a04c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.003.fbx using Guid(5f38fb8fcaffbdc46a29c4bd9ce4a04c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '4c4b2bb31c6e1fc4720fdfb9d87aa286') in 0.047135 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Falchion.002.fbx
-  artifactKey: Guid(ba4b0ff03be8729409c498917cbffad7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Falchion.002.fbx using Guid(ba4b0ff03be8729409c498917cbffad7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '87f487a5013972daef3804cf8a4c5fe8') in 0.046052 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000044 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.001.fbx
-  artifactKey: Guid(ee38138e3917c3f449e55f7b568caed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.001.fbx using Guid(ee38138e3917c3f449e55f7b568caed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '8918536622a99983d5770ac45a35ebc0') in 0.049106 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000035 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.004.fbx
-  artifactKey: Guid(d2104d5c3418bec4087c98fc3d6fb8e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Sword.004.fbx using Guid(d2104d5c3418bec4087c98fc3d6fb8e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'c52a615572339942b8c394c954cfec33') in 0.046047 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Langets.001.fbx
-  artifactKey: Guid(959a405ee131d3b41a5b0f6e86daf05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Langets.001.fbx using Guid(959a405ee131d3b41a5b0f6e86daf05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '85b0f38465ade53154afbb8680faeb1d') in 0.049085 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
 ========================================================================
 Received Import Request.
   Time since last request: 0.000046 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/LongSword.001.fbx
-  artifactKey: Guid(41925da96a1517b43a5683e7038e5ea8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/LongSword.001.fbx using Guid(41925da96a1517b43a5683e7038e5ea8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+  path: Assets/Scripts/AI/Behaviour Tree/Nodes
+  artifactKey: Guid(a817f11f627f8c4449c3a7acc10d725f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/AI/Behaviour Tree/Nodes using Guid(a817f11f627f8c4449c3a7acc10d725f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: '0bcfbe42d692a9f45fcb4175219b294c') in 0.001256 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000070 seconds.
+  path: Assets/Scripts/AI/Behaviour Tree/Nodes/ElementBase.cs
+  artifactKey: Guid(e3b70ccaf55d6c947811f69762055f59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/AI/Behaviour Tree/Nodes/ElementBase.cs using Guid(e3b70ccaf55d6c947811f69762055f59) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: '781b91dcec72a1c1d767f938cfcd8c0b') in 0.001111 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 193.307285 seconds.
+  path: Assets/Scripts/AI/Behaviour Tree/Nodes/Node.cs
+  artifactKey: Guid(da9df7e8c5560b5449699ac774d8095a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/AI/Behaviour Tree/Nodes/Node.cs using Guid(da9df7e8c5560b5449699ac774d8095a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: '4dfa2f871e9d73086dd0557168941880') in 0.033730 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in 13.688 seconds
+Refreshing native plugins compatible for Editor in 21.40 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 41.484 seconds
+Domain Reload Profiling: 55161ms
+	BeginReloadAssembly (783ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (23ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (1ms)
+		CreateAndSetChildDomain (209ms)
+	RebuildCommonClasses (150ms)
+	RebuildNativeTypeToScriptingClass (45ms)
+	initialDomainReloadingComplete (117ms)
+	LoadAllAssembliesAndSetupDomain (12581ms)
+		LoadAssemblies (12787ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (208ms)
+			TypeCache.Refresh (87ms)
+				TypeCache.ScanAssembly (4ms)
+			ScanForSourceGeneratedMonoScriptInfo (81ms)
+			ResolveRequiredComponents (36ms)
+	FinalizeReload (41486ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (3172ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (122ms)
+			SetLoadedEditorAssemblies (20ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (424ms)
+			ProcessInitializeOnLoadAttributes (2367ms)
+			ProcessInitializeOnLoadMethodAttributes (185ms)
+			AfterProcessingInitializeOnLoad (52ms)
+			EditorAssembliesLoaded (2ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (385ms)
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'd879c3ccc2eec48c3a55e50469a92047') in 0.049344 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000048 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Mesh/Falchion.003.fbx
-  artifactKey: Guid(5efb5e3d397802448817dc29e16bc368) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Mesh/Falchion.003.fbx using Guid(5efb5e3d397802448817dc29e16bc368) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'ad9c495817cc172a36faf13092df8a17') in 0.048350 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
+Refreshing native plugins compatible for Editor in 15.36 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3635 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 28 unused Assets / (356.9 KB). Loaded Objects now: 4185.
+Memory consumption went from 135.7 MB to 135.4 MB.
+Total: 10.189800 ms (FindLiveObjects: 0.383400 ms CreateObjectMapping: 0.445900 ms MarkObjects: 8.625000 ms  DeleteObjects: 0.733500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 23.540630 seconds.
-  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
-  artifactKey: Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset using Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'af833f0bd0761d46467badb781986c98') in 0.146748 seconds
+  Time since last request: 141.612282 seconds.
+  path: Assets/Prefabs/Testing/TestBT.cs
+  artifactKey: Guid(b1aedb029edde784d954ed53acbc0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Testing/TestBT.cs using Guid(b1aedb029edde784d954ed53acbc0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: '68a1fec7a406b265ab57fe9029c56515') in 0.073178 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
+Number of asset objects unloaded after import = 0
 ========================================================================
-Received Import Request.
-  Time since last request: 344.312282 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Mace.001.prefab
-  artifactKey: Guid(5e9c4246294c2ce4ca210a5b0d0d0129) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Mace.001.prefab using Guid(5e9c4246294c2ce4ca210a5b0d0d0129) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  2.471 seconds
+Refreshing native plugins compatible for Editor in 19.40 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  6.032 seconds
+Domain Reload Profiling: 8482ms
+	BeginReloadAssembly (820ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (23ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (132ms)
+	RebuildCommonClasses (197ms)
+	RebuildNativeTypeToScriptingClass (42ms)
+	initialDomainReloadingComplete (243ms)
+	LoadAllAssembliesAndSetupDomain (1146ms)
+		LoadAssemblies (1640ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (89ms)
+			TypeCache.Refresh (24ms)
+				TypeCache.ScanAssembly (2ms)
+			ScanForSourceGeneratedMonoScriptInfo (43ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (6033ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2441ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (93ms)
+			SetLoadedEditorAssemblies (16ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (400ms)
+			ProcessInitializeOnLoadAttributes (1790ms)
+			ProcessInitializeOnLoadMethodAttributes (115ms)
+			AfterProcessingInitializeOnLoad (26ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (295ms)
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '135b13afd9353ce58ca465d2e75d96cc') in 0.037423 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.002.prefab
-  artifactKey: Guid(6d99246f707891c4fb86f597132cf406) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.002.prefab using Guid(6d99246f707891c4fb86f597132cf406) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'f9e850c36c553c3e29fdbc0c6dde0223') in 0.034738 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
+Refreshing native plugins compatible for Editor in 34.14 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3636 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 28 unused Assets / (357.2 KB). Loaded Objects now: 4189.
+Memory consumption went from 135.8 MB to 135.4 MB.
+Total: 24.119600 ms (FindLiveObjects: 1.454600 ms CreateObjectMapping: 0.738100 ms MarkObjects: 21.242600 ms  DeleteObjects: 0.681900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.004.prefab
-  artifactKey: Guid(5afa9c7d4ab95e8409401fca8630fd29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.004.prefab using Guid(5afa9c7d4ab95e8409401fca8630fd29) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+  Time since last request: 27.299305 seconds.
+  path: Assets/Prefabs/Testing/TestBT.cs
+  artifactKey: Guid(b1aedb029edde784d954ed53acbc0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Testing/TestBT.cs using Guid(b1aedb029edde784d954ed53acbc0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: '5ff4dcbc76b98bcab80cdcab2bef3de0') in 0.006774 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 592.211887 seconds.
+  path: Assets/Prefabs/Testing/TestBT.cs
+  artifactKey: Guid(b1aedb029edde784d954ed53acbc0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Testing/TestBT.cs using Guid(b1aedb029edde784d954ed53acbc0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: 'd4bc59a5036ecfd2beab2dba9aa2f11d') in 0.002258 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.981 seconds
+Refreshing native plugins compatible for Editor in 18.14 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  6.674 seconds
+Domain Reload Profiling: 8643ms
+	BeginReloadAssembly (480ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (15ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (94ms)
+	RebuildCommonClasses (104ms)
+	RebuildNativeTypeToScriptingClass (37ms)
+	initialDomainReloadingComplete (118ms)
+	LoadAllAssembliesAndSetupDomain (1228ms)
+		LoadAssemblies (1419ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (114ms)
+			TypeCache.Refresh (32ms)
+				TypeCache.ScanAssembly (3ms)
+			ScanForSourceGeneratedMonoScriptInfo (52ms)
+			ResolveRequiredComponents (27ms)
+	FinalizeReload (6676ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (3221ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (108ms)
+			SetLoadedEditorAssemblies (20ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (386ms)
+			ProcessInitializeOnLoadAttributes (2497ms)
+			ProcessInitializeOnLoadMethodAttributes (166ms)
+			AfterProcessingInitializeOnLoad (43ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (409ms)
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '258b9638f7b5a3471335348299b31eee') in 0.060770 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000053 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.003.prefab
-  artifactKey: Guid(54e0b7f75d3a96548bc19a9d38d2a4ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.003.prefab using Guid(54e0b7f75d3a96548bc19a9d38d2a4ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '10bfe45d9b85c109fe0fb6f6487bd59d') in 0.035686 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
+Refreshing native plugins compatible for Editor in 17.70 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3636 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 28 unused Assets / (357.1 KB). Loaded Objects now: 4192.
+Memory consumption went from 135.8 MB to 135.4 MB.
+Total: 12.281300 ms (FindLiveObjects: 0.691100 ms CreateObjectMapping: 0.388900 ms MarkObjects: 10.753300 ms  DeleteObjects: 0.444400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000048 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.001.prefab
-  artifactKey: Guid(46f408bffdd30d34a8b6b82ef46fa341) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.001.prefab using Guid(46f408bffdd30d34a8b6b82ef46fa341) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+  Time since last request: 72.919829 seconds.
+  path: Assets/Prefabs/Debugging/BTreeDebugger.prefab
+  artifactKey: Guid(0f4e7321265f5ef429f877e8d76bad94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Debugging/BTreeDebugger.prefab using Guid(0f4e7321265f5ef429f877e8d76bad94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: 'a9c783b843071c21e75049d371611b31') in 0.205517 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 11.111147 seconds.
+  path: Assets/Prefabs/Debugging/BTreeDebugger.prefab
+  artifactKey: Guid(0f4e7321265f5ef429f877e8d76bad94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Debugging/BTreeDebugger.prefab using Guid(0f4e7321265f5ef429f877e8d76bad94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: '070a4e6c197b3b80b2080a311f7edbc4') in 0.061179 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 16.471242 seconds.
+  path: Assets/Prefabs/Debugging/BTreeDebugger.prefab
+  artifactKey: Guid(0f4e7321265f5ef429f877e8d76bad94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Debugging/BTreeDebugger.prefab using Guid(0f4e7321265f5ef429f877e8d76bad94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: 'e0a61311ead517bf86b54e70257d4afd') in 0.057889 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 26
+========================================================================
+Received Import Request.
+  Time since last request: 19.755563 seconds.
+  path: Assets/Prefabs/Debugging/BTreeDebugger.prefab
+  artifactKey: Guid(0f4e7321265f5ef429f877e8d76bad94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Debugging/BTreeDebugger.prefab using Guid(0f4e7321265f5ef429f877e8d76bad94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
+ -> (artifact id: 'f2e2194b8d6643917ca92633f095f8fe') in 0.048105 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 26
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  2.012 seconds
+Refreshing native plugins compatible for Editor in 22.54 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  6.454 seconds
+Domain Reload Profiling: 8455ms
+	BeginReloadAssembly (471ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (124ms)
+	RebuildCommonClasses (109ms)
+	RebuildNativeTypeToScriptingClass (47ms)
+	initialDomainReloadingComplete (146ms)
+	LoadAllAssembliesAndSetupDomain (1226ms)
+		LoadAssemblies (1407ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (63ms)
+			TypeCache.Refresh (24ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (2ms)
+			ResolveRequiredComponents (34ms)
+	FinalizeReload (6456ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (3401ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (144ms)
+			SetLoadedEditorAssemblies (21ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (476ms)
+			ProcessInitializeOnLoadAttributes (2576ms)
+			ProcessInitializeOnLoadMethodAttributes (154ms)
+			AfterProcessingInitializeOnLoad (29ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (387ms)
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '0cd8799cf0f58b4465d887c91f05b1b5') in 0.036423 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000048 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.007.prefab
-  artifactKey: Guid(c2ad228859b6e904a96d236f6effbf5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.007.prefab using Guid(c2ad228859b6e904a96d236f6effbf5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
 Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '7ebe45045d3036d12003f3c930e14bb1') in 0.041174 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.003.prefab
-  artifactKey: Guid(4b9c064d7b481b840b9744f864e1feb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.003.prefab using Guid(4b9c064d7b481b840b9744f864e1feb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'c07112d993ea7c166fed63967a3e4add') in 0.037142 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.005.prefab
-  artifactKey: Guid(aa29e85ae4fab4a4cb84deb68661993c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.005.prefab using Guid(aa29e85ae4fab4a4cb84deb68661993c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'd08ac95a635c18cb182a20c6bb34f7da') in 0.034214 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000040 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.002.prefab
-  artifactKey: Guid(397d62fa1d87eeb4086c9f486707ce0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.002.prefab using Guid(397d62fa1d87eeb4086c9f486707ce0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'c054ab30bbcd571990da9ef02064beb8') in 0.036765 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000084 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.005.prefab
-  artifactKey: Guid(8d122fec989648f4b90c42426479d4cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.005.prefab using Guid(8d122fec989648f4b90c42426479d4cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '3cd779106ce7b403dbdda8c99a35e31e') in 0.036490 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000058 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.004.prefab
-  artifactKey: Guid(bb9b0ffb9d9a31d40a06a10980acb579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.004.prefab using Guid(bb9b0ffb9d9a31d40a06a10980acb579) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'afa46ec76043ab0cf1f17d19cf682bcb') in 0.033394 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.001.prefab
-  artifactKey: Guid(ffde4b4c06e41364bb857f56662c2a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.001.prefab using Guid(ffde4b4c06e41364bb857f56662c2a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'f7b856a345a5693b129ef11a28fba7f9') in 0.036471 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.008.prefab
-  artifactKey: Guid(69ddb1fa4f870464c9bf72cba4f1cefd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Sword.008.prefab using Guid(69ddb1fa4f870464c9bf72cba4f1cefd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '3288010433c696101659b6b2235640aa') in 0.036559 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.006.prefab
-  artifactKey: Guid(9c60c44a17943ff4e96cee7126c78ef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Poleaxe.006.prefab using Guid(9c60c44a17943ff4e96cee7126c78ef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '8992be6fd32515983a49cb0b727c0e9b') in 0.034052 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 2.532693 seconds.
-  path: Assets/Prefabs/Dave/Dave.prefab
-  artifactKey: Guid(3185b052165647047a45277307f329e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Dave.prefab using Guid(3185b052165647047a45277307f329e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'f04f2988d366f7980617e3906cbc34b4') in 0.234142 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 156
-========================================================================
-Received Import Request.
-  Time since last request: 1.319344 seconds.
-  path: Assets/Prefabs/Dave/Weapon/Weapon.prefab
-  artifactKey: Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Weapon/Weapon.prefab using Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: 'b9e2714959bbfc07eb5ccf3da8b79e0b') in 0.045860 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 34
-========================================================================
-Received Import Request.
-  Time since last request: 301.457163 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Falchion.001.prefab
-  artifactKey: Guid(ee8f3af414b011040ba7f57c80161833) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Falchion.001.prefab using Guid(ee8f3af414b011040ba7f57c80161833) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '036d4999f604f1a3fbd7dc0467f87300') in 0.041276 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/LongSword.001.prefab
-  artifactKey: Guid(d676545c711e60140895b08e5875a80b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/LongSword.001.prefab using Guid(d676545c711e60140895b08e5875a80b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '4cdfd372b4e569454c5bd8b689ee6d95') in 0.036902 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000067 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Langets.001.prefab
-  artifactKey: Guid(514de45e2bea1374db4d75201e637367) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Langets.001.prefab using Guid(514de45e2bea1374db4d75201e637367) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '48e13baa468ed25d902f1038cd1333dd') in 0.040478 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Langets.002.prefab
-  artifactKey: Guid(ea0067ecf75606343a955c92ccb9c510) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Langets.002.prefab using Guid(ea0067ecf75606343a955c92ccb9c510) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '7be6f110525321be2a402e7c3630e3f2') in 0.036261 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000035 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Falchion.003.prefab
-  artifactKey: Guid(369e1ac85bd879e40bb43d0a032d421f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Falchion.003.prefab using Guid(369e1ac85bd879e40bb43d0a032d421f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'df02d82619389d49d85553e267220624') in 0.036394 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/Falchion.002.prefab
-  artifactKey: Guid(d7b40bdbefba4f84dacf46e855f5e502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/Falchion.002.prefab using Guid(d7b40bdbefba4f84dacf46e855f5e502) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '1c470faf5de13b97bb9fbf3c8aea7897') in 0.038197 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Models/LowpolyMedievalWeaponPack/Prefab/LongSword.002.prefab
-  artifactKey: Guid(0fe8c4ad20ce8b946a61d68e14e204e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/LowpolyMedievalWeaponPack/Prefab/LongSword.002.prefab using Guid(0fe8c4ad20ce8b946a61d68e14e204e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'd50840fb4f6d252ec16a49151add8f76') in 0.038223 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 6.201116 seconds.
-  path: Assets/Prefabs/Dave/Dave.prefab
-  artifactKey: Guid(3185b052165647047a45277307f329e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Dave.prefab using Guid(3185b052165647047a45277307f329e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'b36ae17307157603f29864af530621bf') in 0.086858 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 167
-========================================================================
-Received Import Request.
-  Time since last request: 15.501312 seconds.
-  path: Assets/Prefabs/Dave/Dave.prefab
-  artifactKey: Guid(3185b052165647047a45277307f329e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Dave.prefab using Guid(3185b052165647047a45277307f329e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'a4e3618e4448720157b03a57be1a0ea0') in 0.050526 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 167
-========================================================================
-Received Import Request.
-  Time since last request: 29.884499 seconds.
-  path: Assets/Prefabs/Dave/Weapon/Weapon.prefab
-  artifactKey: Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Weapon/Weapon.prefab using Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '78fe4cd35c2a3882b2bdba027bf239d6') in 0.075771 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 45
-========================================================================
-Received Import Request.
-  Time since last request: 5.632715 seconds.
-  path: Assets/Prefabs/Dave/Weapon/Weapon.prefab
-  artifactKey: Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Weapon/Weapon.prefab using Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '1f3f86a9e37a1a07ee0dad3c83660a86') in 0.035995 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 45
-========================================================================
-Received Import Request.
-  Time since last request: 18.738279 seconds.
-  path: Assets/Prefabs/Dave/Weapon/Weapon.prefab
-  artifactKey: Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Weapon/Weapon.prefab using Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '97b9fb93e87fcedbb9a8b6302aae6c68') in 0.044178 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 45
-========================================================================
-Received Import Request.
-  Time since last request: 3.476153 seconds.
-  path: Assets/Prefabs/Dave/Weapon/Weapon.prefab
-  artifactKey: Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Weapon/Weapon.prefab using Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '7f4ff486a443cbffc424a05c74857bfb') in 0.049601 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 45
-========================================================================
-Received Import Request.
-  Time since last request: 3.301115 seconds.
-  path: Assets/Prefabs/Dave/Weapon/Weapon.prefab
-  artifactKey: Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Weapon/Weapon.prefab using Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: 'e15862d20b8b227c69134463e40a5711') in 0.065257 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 45
-========================================================================
-Received Import Request.
-  Time since last request: 198.379561 seconds.
-  path: Assets/Prefabs/Dave/Weapon/Weapon.prefab
-  artifactKey: Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Weapon/Weapon.prefab using Guid(082316ff1c6b9234aa9e06dde6810ad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
-Shader 'VertexModelerUniversal': fallback shader 'Hidden/Shader Graph/FallbackError' not found
- -> (artifact id: '3f3c6a0f83be8a027f8345be64b3dfe6') in 0.067595 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 45
-========================================================================
-Received Import Request.
-  Time since last request: 1.791139 seconds.
-  path: Assets/Prefabs/Dave/Weapon/Attacks/LightAttacks/LightAttack.asset
-  artifactKey: Guid(9885f68d3ca01a64baf1a28ad147b81c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Dave/Weapon/Attacks/LightAttacks/LightAttack.asset using Guid(9885f68d3ca01a64baf1a28ad147b81c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 4 workers.
- -> (artifact id: '3f98204ca2d56c6d7792b3ef1b8452a7') in 0.004306 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
+Refreshing native plugins compatible for Editor in 20.88 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3636 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 28 unused Assets / (357.1 KB). Loaded Objects now: 4196.
+Memory consumption went from 135.8 MB to 135.4 MB.
+Total: 11.935600 ms (FindLiveObjects: 0.992800 ms CreateObjectMapping: 0.567200 ms MarkObjects: 10.040300 ms  DeleteObjects: 0.331400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

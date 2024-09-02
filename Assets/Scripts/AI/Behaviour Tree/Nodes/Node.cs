@@ -143,7 +143,6 @@ public class Node : ElementBase
         if (!EvaluateDecorators())
         {
             LastState = NodeState.FAILURE;
-            Exit();
             tickednodes = true;
             return tickednodes;
         }
@@ -175,7 +174,6 @@ public class Node : ElementBase
             if (EvaluateFunc == null)
             {
                 LastState = NodeState.SUCCESS;
-                Exit();
                 return tickednodes;
             }
         }

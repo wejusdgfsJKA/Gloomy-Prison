@@ -13,8 +13,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638603519949817778
-    m_Hash: 165854014
+      ticks: 638607735167267227
+    m_Hash: 1903894495
 m_EmbeddedPackageManifests:
   m_ManifestsStatus:
     C:/Users/ATPEngie/Gloomy-Prison/Packages/com.kybernetik.animancer/package.json:
@@ -23,7 +23,7 @@ m_EmbeddedPackageManifests:
       m_ContentTrackingEnabled: 1
       m_ModificationDate:
         serializedVersion: 2
-        ticks: 638596597050000000
+        ticks: 638607735159985447
       m_Hash: 2464383434
 m_LocalPackages:
   m_LocalFileStatus: []
@@ -65,6 +65,7 @@ m_ResolvedPackages:
     - 2.0.0-pre.4
     - 2.0.0
     - 2.0.3
+    - 2.0.4
     compatible:
     - 1.1.5
     recommended: 1.1.5
