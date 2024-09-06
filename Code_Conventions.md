@@ -6,4 +6,4 @@ Exposed variables: uppercase
 
 Protected/private variables: camelcase
 
-Local variables: lowercase
+Local variables: lowercase beggining with underscore
