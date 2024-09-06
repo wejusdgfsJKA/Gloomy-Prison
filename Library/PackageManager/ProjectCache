@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638602703772416426
-    m_Hash: 949147273
+      ticks: 638612132204332712
+    m_Hash: 3972732109
   m_LockFileStatus:
     m_FilePath: C:/Users/ATPEngie/Gloomy-Prison/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638607735167267227
-    m_Hash: 1903894495
+      ticks: 638612132398659549
+    m_Hash: 2439995259
 m_EmbeddedPackageManifests:
   m_ManifestsStatus:
     C:/Users/ATPEngie/Gloomy-Prison/Packages/com.kybernetik.animancer/package.json:
@@ -28,7 +28,7 @@ m_EmbeddedPackageManifests:
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: C:/Users/ATPEngie/Gloomy-Prison/Packages
-m_EditorVersion: 2022.3.37f1 (340ba89e4c23)
+m_EditorVersion: 2022.3.45f1 (a13dfa44d684)
 m_ResolvedPackages:
 - packageId: com.unity.ai.navigation@1.1.5
   testable: 0
@@ -104,12 +104,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.collab-proxy@2.4.3
+- packageId: com.unity.collab-proxy@2.4.4
   testable: 0
   isDirectDependency: 1
-  version: 2.4.3
+  version: 2.4.4
   source: 1
-  resolvedPath: C:\Users\ATPEngie\Gloomy-Prison\Library\PackageCache\com.unity.collab-proxy@2.4.3
+  resolvedPath: C:\Users\ATPEngie\Gloomy-Prison\Library\PackageCache\com.unity.collab-proxy@2.4.4
   assetPath: Packages/com.unity.collab-proxy
   name: com.unity.collab-proxy
   displayName: Version Control
@@ -200,7 +200,6 @@ m_ResolvedPackages:
     - 2.4.3
     - 2.4.4
     compatible:
-    - 2.4.3
     - 2.4.4
     recommended: 2.4.4
     deprecated: []
@@ -231,16 +230,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638549067850000000
+  datePublishedTicks: 638573492230000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.collab-proxy@2.4/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: d4c8fa70dd9679b33019945dc0a483c8c7e8038f
+    revision: 03b1de8d838eb1e427cb1b1d8bf9157f33377542
     path: 
   unityLifecycle:
-    version: 2.4.3
+    version: 2.4.4
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -303,7 +302,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   - name: com.unity.ide.rider
-    version: 3.0.28
+    version: 3.0.31
   - name: com.unity.ide.vscode
     version: 1.2.5
   - name: com.unity.editorcoroutines
@@ -311,7 +310,7 @@ m_ResolvedPackages:
   - name: com.unity.performance.profile-analyzer
     version: 1.2.2
   - name: com.unity.testtools.codecoverage
-    version: 1.2.5
+    version: 1.2.6
   - name: com.unity.settings-manager
     version: 2.0.1
   keywords: []
@@ -3091,12 +3090,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.ide.rider@3.0.28
+- packageId: com.unity.ide.rider@3.0.31
   testable: 0
   isDirectDependency: 0
-  version: 3.0.28
+  version: 3.0.31
   source: 1
-  resolvedPath: C:\Users\ATPEngie\Gloomy-Prison\Library\PackageCache\com.unity.ide.rider@3.0.28
+  resolvedPath: C:\Users\ATPEngie\Gloomy-Prison\Library\PackageCache\com.unity.ide.rider@3.0.31
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -3157,7 +3156,6 @@ m_ResolvedPackages:
     - 3.0.28
     - 3.0.31
     compatible:
-    - 3.0.28
     - 3.0.31
     recommended: 3.0.31
     deprecated: []
@@ -3178,16 +3176,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638447139880000000
+  datePublishedTicks: 638548308080000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: f4880c72477e9bbd7321c0dbda4428fa10d916df
+    revision: ccd778a2275ff09f1a83bc924cfb2fb4d5b63566
     path: 
   unityLifecycle:
-    version: 3.0.28
+    version: 3.0.31
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3542,12 +3540,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.testtools.codecoverage@1.2.5
+- packageId: com.unity.testtools.codecoverage@1.2.6
   testable: 0
   isDirectDependency: 0
-  version: 1.2.5
+  version: 1.2.6
   source: 1
-  resolvedPath: C:\Users\ATPEngie\Gloomy-Prison\Library\PackageCache\com.unity.testtools.codecoverage@1.2.5
+  resolvedPath: C:\Users\ATPEngie\Gloomy-Prison\Library\PackageCache\com.unity.testtools.codecoverage@1.2.6
   assetPath: Packages/com.unity.testtools.codecoverage
   name: com.unity.testtools.codecoverage
   displayName: Code Coverage
@@ -3598,7 +3596,6 @@ m_ResolvedPackages:
     - 1.2.5
     - 1.2.6
     compatible:
-    - 1.2.5
     - 1.2.6
     recommended: 1.2.6
     deprecated: []
@@ -3633,16 +3630,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638386640140000000
+  datePublishedTicks: 638575857900000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.2/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.testtools.codecoverage.git
-    revision: afeb9febf6597fcc31c99ca116d6a82b1e97b9f5
+    revision: 959db8ff97eedf9b211ad5cf320b87ac01f1e90f
     path: 
   unityLifecycle:
-    version: 1.2.5
+    version: 1.2.6
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3785,4 +3782,4 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-m_BuiltInPackagesHash: 4cb4cee98364a430a85e2e4e48100e562db8ef30
+m_BuiltInPackagesHash: 4bf036992e66df8542a0e2a381a825a4a2452a54

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(CharacterController))]
@@ -19,23 +20,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Transform cam;
     protected float xRot, yRot;
     protected Vector2 mouseDelta;
-    private void Awake()
+    protected void Awake()
     {
         characterController = GetComponent<CharacterController>();
     }
-    private void OnEnable()
+    protected void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         xRot = yRot = 0;
     }
-    private void Update()
+    protected void Update()
     {
         grounded = groundCheck();
         Vector3 movedir = transform.forward * WASD.y + transform.right * WASD.x;
         characterController.Move(movedir.normalized * walkSpeed * Time.deltaTime);
     }
-    bool groundCheck()
+    protected bool groundCheck()
     {
         return false;
     }
@@ -51,5 +52,12 @@ public class PlayerController : MonoBehaviour
         xRot = Mathf.Clamp(xRot, -maxVerticalAngle, maxVerticalAngle);
         cam.localRotation = Quaternion.Euler(xRot, 0, 0);
         transform.rotation = Quaternion.Euler(0, yRot, 0);
+    }
+    public void OnExitGame(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
