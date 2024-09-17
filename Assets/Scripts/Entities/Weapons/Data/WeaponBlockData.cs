@@ -1,3 +1,4 @@
+using Animancer;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/WeaponBlockData")]
@@ -8,4 +9,6 @@ public class WeaponBlockData : ScriptableObject
     public float BlockAngle { get; protected set; }
     [field: SerializeField]
     public bool Shield { get; protected set; } = false;
+    [field: SerializeField]
+    public ClipTransition BlockAnim { get; protected set; }
 }

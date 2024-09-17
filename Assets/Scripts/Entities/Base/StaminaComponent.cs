@@ -1,34 +1,29 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StaminaComponent : MonoBehaviour
 {
-    public float MaxStamina { get; protected set; } = -1;
-    public float CurrentStamina { get; protected set; }
-    public void SetMaxStamina(float maxhp)
+    public int MaxStamina { get; protected set; } = -1;
+    public int CurrentStamina { get; protected set; }
+    [field: SerializeField]
+    public UnityEvent OnStagger { get; protected set; }
+    public void SetMaxStamina(int maxhp)
     {
         if (MaxStamina < 0)
         {
             MaxStamina = maxhp;
         }
     }
-    protected void OnEnable()
-    {
-        Reset();
-    }
     public void Reset()
     {
         CurrentStamina = MaxStamina;
     }
-    public void DrainStamina(float damage)
+    public void DrainStamina(int _value)
     {
-        CurrentStamina -= damage;
+        CurrentStamina -= _value;
         if (CurrentStamina <= 0)
         {
-            Die();
+            OnStagger?.Invoke();
         }
-    }
-    public void Die()
-    {
-        transform.root.gameObject.SetActive(false);
     }
 }

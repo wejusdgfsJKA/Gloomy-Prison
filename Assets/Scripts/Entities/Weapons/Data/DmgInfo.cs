@@ -7,8 +7,8 @@ public class DmgInfo
     //who dealt this damage
     public readonly Transform Owner;
     public Vector3 ContactPoint { get; set; }
-    public DmgInfo(Transform owner)
+    public DmgInfo(Transform _owner)
     {
-        Owner = owner;
+        Owner = _owner;
     }
 }

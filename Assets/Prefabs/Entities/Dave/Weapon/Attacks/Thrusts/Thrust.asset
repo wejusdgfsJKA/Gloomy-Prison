@@ -12,11 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6d1f5faf55301408027f3ce440333f, type: 3}
   m_Name: Thrust
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 40
-  <StaminaDrain>k__BackingField: 3
+  <Damage>k__BackingField: 0
+  <StaminaDamage>k__BackingField: 0
   <AttackType>k__BackingField: 1
   <AttackStrength>k__BackingField: 0
-  <Clip>k__BackingField: {fileID: 7400000, guid: 9ac01b85a81a43d42ad5f63d50c7c5d4, type: 2}
-  <AltClip>k__BackingField: {fileID: 7400000, guid: 21ceb1a891a12e340a932aa9a392c714, type: 2}
-  <Cancelable>k__BackingField: 1
+  <Cancellable>k__BackingField: 1
   <Feintable>k__BackingField: 1
+  <Regular>k__BackingField:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 9ac01b85a81a43d42ad5f63d50c7c5d4, type: 2}
+    _NormalizedStartTime: NaN
+  <Alternate>k__BackingField:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 21ceb1a891a12e340a932aa9a392c714, type: 2}
+    _NormalizedStartTime: NaN
+  references:
+    version: 2
+    RefIds: []

@@ -1,201 +1,138 @@
-using System.Threading.Tasks;
+using Animancer;
+using System.Collections.Generic;
 using UnityEngine;
-//a partial block refers to blocking a heavy attack without a shield
-public enum BlockResult { Success = 0, Failure = 1, Partial = 2 }
+
+//base weapon class, handles animations and states
+public enum BlockResult { Success = 0, Failure = 1, Partial = 2, Counter = 3 }
 [RequireComponent(typeof(WeaponDamageComponent))]
 [RequireComponent(typeof(StaminaComponent))]
+[RequireComponent(typeof(AnimancerComponent))]
 public class Weapon : MonoBehaviour
 {
-    //base weapon class, handles animations and states
-    //these states will be used by the AI to make decisions
-    public enum AnimState
-    {
-        Idle = 0, Winding = 1, Attacking = 2, Blocking = 3, Recovering = 4, Staggered = 5
-    }
-    protected Animator animator;
-    protected WeaponDamageComponent damageComponent;
-    protected WeaponBlockComponent blockComponent;
-    [field: SerializeField]
-    public Transform CenterPoint { get; protected set; }
-    //the center will be used
-    //for the AI to know in which direction to block
-    protected AnimState animState
+    public enum State { Idle = 0, Windup = 1, Release = 2, Recovery = 3, Blocking = 4 }
+    protected State currentState;
+    public State CurrentState
     {
         get
         {
-            return animState;
+            return currentState;
         }
-        set
+        protected set
         {
-            if (value != animState)
+            if (currentState != value)
             {
-                switch (animState)
+                switch (value)
                 {
-                    case AnimState.Idle:
-                        damageComponent.ExitDamageState();
+                    case State.Idle:
+                        usedAlt = false;
                         feinted = false;
-                        usedaltattack = false;
-                        lastUsedAttack = null;
+                        damageComponent.ExitDamageState();
                         break;
-                    case AnimState.Winding:
-                        break;
-                    case AnimState.Attacking:
+                    case State.Release:
+                        feinted = false;
                         damageComponent.EnterDamageState();
-                        feinted = false;
                         break;
-                    case AnimState.Blocking:
+                    case State.Recovery:
                         feinted = false;
-                        usedaltattack = false;
-                        lastUsedAttack = null;
-                        break;
-                    case AnimState.Recovering:
                         damageComponent.ExitDamageState();
+                        break;
+                    case State.Blocking:
+                        usedAlt = false;
                         feinted = false;
+                        damageComponent.ExitDamageState();
                         break;
                 }
-                animState = CurrentState.AnimState = value;
+                currentState = value;
             }
         }
     }
-    public WeaponState CurrentState { get; protected set; }
-    //we cannot feint more than once
-    protected bool feinted;
-    //attacks in a combo will alternate between normal and alternate directions
-    protected bool usedaltattack;
-    public bool Riposting { get; protected set; }
-    public bool Countering { get; protected set; }
-    public StaminaComponent staminaComponent { get; protected set; }
-    public Attack[] Attacks
+    protected WeaponDamageComponent damageComponent;
+    protected WeaponBlockComponent blockComponent;
+    protected AnimancerComponent AnimComp;
+    protected StaminaComponent staminaComponent;
+    [SerializeField] protected ClipTransition IdleAnim;
+    public StaminaComponent StaminaComp
     {
         get
         {
-            return damageComponent.Attacks;
+            return staminaComponent;
         }
     }
-    protected Attack lastUsedAttack
-    {
-        get
-        {
-            return lastUsedAttack;
-        }
-        set
-        {
-            lastUsedAttack = value;
-            CurrentState.Attack = value;
-        }
-    }
+    protected Dictionary<Attack.Type, Attack> attacks;
+    protected Attack lastAttack;
+    protected bool usedAlt, feinted;
     protected void Awake()
     {
-        animator = GetComponent<Animator>();
-        damageComponent = GetComponent<WeaponDamageComponent>();
-        blockComponent = GetComponent<WeaponBlockComponent>();
-        staminaComponent = GetComponent<StaminaComponent>();
+        //get all the necessary components
+        {
+            AnimComp = GetComponent<AnimancerComponent>();
+            damageComponent = GetComponent<WeaponDamageComponent>();
+            blockComponent = GetComponent<WeaponBlockComponent>();
+            staminaComponent = GetComponent<StaminaComponent>();
+        }
+        //internalize animations in a dictionary for ease of access
+        {
+            attacks = new();
+            foreach (Attack _atk in damageComponent.Attacks)
+            {
+                _atk.Regular.Events.OnEnd = ReturnToIdle;
+                _atk.Alternate.Events.OnEnd = ReturnToIdle;
+                attacks.Add(_atk.AttackType, _atk);
+            }
+        }
     }
     protected void OnEnable()
     {
-        Riposting = false;
-        Countering = false;
+        usedAlt = false;
+        feinted = false;
     }
-    public bool TryPerformAttack(Attack.Type type, bool alt)
+    public BlockResult Block(DmgInfo _dmgInfo)
     {
-        if (animState == AnimState.Idle)
+        return blockComponent.Block(_dmgInfo);
+    }
+    public void PerformAttack(Attack.Type _type, bool _alt)
+    {
+        switch (currentState)
         {
-            //the first attack from idle is free
-            PerformAttack(Attacks[(int)type], alt);
-            return true;
-        }
-        if (animState == AnimState.Recovering)
-        {
-            if (type == lastUsedAttack.AttackType)
-            {
-                //we are comboing
-                if (Attacks[(int)type].StaminaDrain <= staminaComponent.CurrentStamina)
+            case State.Idle:
+                PerformAttack(attacks[_type], _alt);
+                break;
+            case State.Windup:
+                if (_type != lastAttack.AttackType && !feinted && lastAttack.Feintable)
                 {
-                    //we have enough stamina for this attack
-                    PerformCombo();
-                    return true;
+                    //perform a feint, WIP
+                    feinted = true;
+                    PerformAttack(attacks[_type], _alt);
                 }
-                return false;
-            }
-            return false;
-        }
-        if (animState == AnimState.Winding)
-        {
-            //we are feinting
-            if (!feinted)
-            {
-                Attack attack = Attacks[(int)type];
-                if (attack.StaminaDrain <= staminaComponent.CurrentStamina)
+                break;
+            case State.Recovery:
+                if (lastAttack.AttackType == _type)
                 {
-                    //we have enough stamina for this attack
-                    PerformFeint(attack, alt);
-                    return true;
+                    //perform a combo, WIP
+                    PerformAttack(attacks[_type], usedAlt);
                 }
-            }
-            return false;
+                else
+                {
+                    //we are changing our attack, we need to buffer the input
+                }
+                break;
         }
-        return false;
     }
-    protected void PerformAttack(Attack attack, bool alt)
+    protected AnimancerState PerformAttack(Attack _attack, bool _alt)
     {
-
-    }
-    protected void PerformCombo()
-    {
-        staminaComponent.DrainStamina(lastUsedAttack.StaminaDrain);
-    }
-    protected void PerformFeint(Attack attack, bool alt)
-    {
-        staminaComponent.DrainStamina(attack.StaminaDrain);
-    }
-    protected async void PerformRiposte(Attack attack, bool alt)
-    {
-        Riposting = true;
-        await Task.Delay(50);
-        Riposting = false;
-    }
-    protected async void PerformCounter(Attack attack, bool alt)
-    {
-        Countering = true;
-        await Task.Delay(50);
-        Countering = false;
-    }
-    public bool Cancel()
-    {
-        if (!feinted && animState == AnimState.Winding && damageComponent.
-            CurrentAttack.Cancelable)
+        usedAlt = _alt;
+        lastAttack = _attack;
+        if (_alt)
         {
-            //cancel the current attack
-            return true;
+            return AnimComp.Play(_attack.Alternate);
         }
-        return false;
-    }
-    public bool BeginBlocking()
-    {
-        if (animState == AnimState.Idle)
+        else
         {
-            animState = AnimState.Blocking;
-            return true;
+            return AnimComp.Play(_attack.Regular);
         }
-        if (animState == AnimState.Winding && !feinted)
-        {
-            animState = AnimState.Blocking;
-            return true;
-        }
-        return false;
     }
-    public BlockResult Block(DmgInfo dmgInfo)
+    protected void ReturnToIdle()
     {
-        if (blockComponent != null && (animState == AnimState.Blocking ||
-            Riposting || Countering))
-        {
-            return blockComponent.Block(dmgInfo);
-        }
-        return BlockResult.Failure;
-    }
-    public void Interrupt()
-    {
-        damageComponent.ExitDamageState();
-        animState = AnimState.Idle;
+        AnimComp.Play(IdleAnim);
     }
 }

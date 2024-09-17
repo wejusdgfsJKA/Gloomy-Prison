@@ -5,8 +5,7 @@ using UnityEngine;
 public class WeaponDamageComponent : MonoBehaviour
 {
     //manages the damage part of a weapon
-    [SerializeField]
-    protected WeaponDamageData data;
+    [SerializeField] protected WeaponDamageData data;
     public Attack[] Attacks
     {
         get

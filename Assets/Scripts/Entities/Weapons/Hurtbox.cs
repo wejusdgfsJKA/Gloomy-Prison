@@ -16,10 +16,10 @@ public class Hurtbox
     public LinkedList<Vector3> PreviousPositions { get; protected set; } = null;
     [SerializeField]
     protected int numberOfPreviouses = 2;
-    public void Init(LayerMask mask, int maxEntities)
+    public void Init(LayerMask _mask, int _maxEntities)
     {
-        Mask = mask;
-        MaxEntities = maxEntities;
+        Mask = _mask;
+        MaxEntities = _maxEntities;
         Hits = new Collider[MaxEntities];
         if (Collider is CapsuleCollider)
         {

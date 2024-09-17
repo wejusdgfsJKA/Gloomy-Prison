@@ -1,10 +1,8 @@
 using UnityEngine;
 [RequireComponent(typeof(HPComponent))]
-[RequireComponent(typeof(EntityActions))]
 public class EntityBase : MonoBehaviour
 {
-    //handles basic stuff like taking damage, is the connection between
-    //all the other components
+    //is the connection between all the other components
     [SerializeField]
     protected Weapon weapon;
     protected HPComponent hpComponent;
@@ -12,13 +10,12 @@ public class EntityBase : MonoBehaviour
     {
         get
         {
-            return weapon.staminaComponent;
+            return weapon.StaminaComp;
         }
     }
     protected EntityActions actions;
     [SerializeField]
     protected EntityData data;
-    [SerializeField]
     protected BlockResult defaultBlockResult = BlockResult.Failure;
     public string Name
     {
@@ -42,33 +39,35 @@ public class EntityBase : MonoBehaviour
         hpComponent.Reset();
         staminaComponent.Reset();
     }
-    public void ReceiveAttack(DmgInfo dmgInfo)
+    public void ReceiveAttack(DmgInfo _dmginfo)
     {
-        BlockResult blockResult;
+        BlockResult _blockresult;
         if (weapon != null)
         {
-            //we had no weapon, so we return the default block result
-            blockResult = weapon.Block(dmgInfo);
+            _blockresult = weapon.Block(_dmginfo);
         }
         else
         {
-            blockResult = defaultBlockResult;
+            //we had no weapon, so we return the default block result
+            _blockresult = defaultBlockResult;
         }
-        EntityManager.Instance.SendAttackResult(blockResult, dmgInfo);
-        switch (blockResult)
+        EntityManager.Instance.SendAttackResult(_blockresult, _dmginfo);
+        switch (_blockresult)
         {
             //WIP
             case BlockResult.Failure:
-                hpComponent.TakeDamage(dmgInfo.Attack.Damage);
+                hpComponent.TakeDamage(_dmginfo.Attack.Damage);
                 break;
             case BlockResult.Partial:
-                hpComponent.TakeDamage(dmgInfo.Attack.Damage);
+                hpComponent.TakeDamage(_dmginfo.Attack.Damage);
+                staminaComponent.DrainStamina(_dmginfo.Attack.StaminaDamage);
                 break;
             case BlockResult.Success:
+                staminaComponent.DrainStamina(_dmginfo.Attack.StaminaDamage);
                 break;
         }
     }
-    public virtual void ReceiveAttackResult(BlockResult blockResult, DmgInfo dmgInfo)
+    public virtual void ReceiveAttackResult(BlockResult _blockResult, DmgInfo _dmginfo)
     {
 
     }

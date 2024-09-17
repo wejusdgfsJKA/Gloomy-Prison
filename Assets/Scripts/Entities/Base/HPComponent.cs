@@ -2,32 +2,28 @@ using UnityEngine;
 
 public class HPComponent : MonoBehaviour
 {
-    public float MaxHP { get; protected set; } = -1;
-    public float CurrentHP { get; protected set; }
-    public void SetMaxHP(float maxhp)
+    public int MaxHP { get; protected set; } = -1;
+    public int CurrentHP { get; protected set; }
+    public void SetMaxHP(int _maxhp)
     {
         if (MaxHP < 0)
         {
-            MaxHP = maxhp;
+            MaxHP = _maxhp;
         }
-    }
-    private void OnEnable()
-    {
-        Reset();
     }
     public void Reset()
     {
         CurrentHP = MaxHP;
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(int _damage)
     {
-        CurrentHP -= damage;
+        CurrentHP -= _damage;
         if (CurrentHP <= 0)
         {
             Die();
         }
     }
-    public void Die()
+    protected void Die()
     {
         transform.root.gameObject.SetActive(false);
     }

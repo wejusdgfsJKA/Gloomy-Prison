@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Bits: 64
   <Reach>k__BackingField: 1
   <Attacks>k__BackingField:
-  - {fileID: 11400000, guid: 9885f68d3ca01a64baf1a28ad147b81c, type: 2}
-  - {fileID: 11400000, guid: aa3a7df3b929e8a499469320c8f48a1c, type: 2}
-  - {fileID: 11400000, guid: 6c0efb61785db854f83966edc02ba7f7, type: 2}
-  - {fileID: 11400000, guid: bb760dd86e7fe364282ebc2860861e6b, type: 2}
+  - {fileID: 11400000, guid: 673800ac71038274397fc987ba2987d9, type: 2}
+  - {fileID: 11400000, guid: 6f792c652cee401469ae0246ae2d1b7d, type: 2}
+  - {fileID: 11400000, guid: 086136358aee4ae44a71cc122d2a068f, type: 2}
+  - {fileID: 11400000, guid: 8f7c0ec2910196a40b3d718a9d243f5c, type: 2}
