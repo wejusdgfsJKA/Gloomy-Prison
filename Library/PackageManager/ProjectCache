@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638612132204332712
-    m_Hash: 3972732109
+      ticks: 638622538683318096
+    m_Hash: 1930092214
   m_LockFileStatus:
     m_FilePath: C:/Users/ATPEngie/Gloomy-Prison/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638612132398659549
-    m_Hash: 2439995259
+      ticks: 638622538683318096
+    m_Hash: 25711542
 m_EmbeddedPackageManifests:
   m_ManifestsStatus:
     C:/Users/ATPEngie/Gloomy-Prison/Packages/com.kybernetik.animancer/package.json:
@@ -23,7 +23,7 @@ m_EmbeddedPackageManifests:
       m_ContentTrackingEnabled: 1
       m_ModificationDate:
         serializedVersion: 2
-        ticks: 638607735159985447
+        ticks: 638622538660452325
       m_Hash: 2464383434
 m_LocalPackages:
   m_LocalFileStatus: []
@@ -199,8 +199,10 @@ m_ResolvedPackages:
     - 2.3.1
     - 2.4.3
     - 2.4.4
+    - 2.5.1
     compatible:
     - 2.4.4
+    - 2.5.1
     recommended: 2.4.4
     deprecated: []
   dependencies: []
@@ -410,6 +412,7 @@ m_ResolvedPackages:
     - 1.8.2
     - 1.9.0
     - 1.10.0
+    - 1.11.0
     compatible:
     - 1.7.0
     - 1.8.0-pre.1
@@ -419,6 +422,7 @@ m_ResolvedPackages:
     - 1.8.2
     - 1.9.0
     - 1.10.0
+    - 1.11.0
     recommended: 1.7.0
     deprecated: []
   dependencies:

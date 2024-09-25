@@ -3,14 +3,14 @@ using UnityEngine;
 public class EntityBase : MonoBehaviour
 {
     //is the connection between all the other components
-    [SerializeField]
-    protected Weapon weapon;
+    [field: SerializeField]
+    public Weapon CurrentWeapon { get; protected set; }
     protected HPComponent hpComponent;
     protected StaminaComponent staminaComponent
     {
         get
         {
-            return weapon.StaminaComp;
+            return CurrentWeapon.StaminaComp;
         }
     }
     protected EntityActions actions;
@@ -29,7 +29,7 @@ public class EntityBase : MonoBehaviour
         hpComponent = GetComponent<HPComponent>();
         hpComponent.SetMaxHP(data.MaxHp);
         actions = GetComponent<EntityActions>();
-        if (weapon != null)
+        if (CurrentWeapon != null)
         {
             staminaComponent.SetMaxStamina(data.MaxStamina);
         }
@@ -42,9 +42,9 @@ public class EntityBase : MonoBehaviour
     public void ReceiveAttack(DmgInfo _dmginfo)
     {
         BlockResult _blockresult;
-        if (weapon != null)
+        if (CurrentWeapon != null)
         {
-            _blockresult = weapon.Block(_dmginfo);
+            _blockresult = CurrentWeapon.Block(_dmginfo);
         }
         else
         {

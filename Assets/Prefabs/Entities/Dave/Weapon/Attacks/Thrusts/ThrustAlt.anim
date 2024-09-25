@@ -444,23 +444,23 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: set_animState
+    functionName: set_CurrentState
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.35
-    functionName: set_animState
+  - time: 0.33333334
+    functionName: set_CurrentState
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 0.68333334
-    functionName: set_animState
+  - time: 0.6666667
+    functionName: set_CurrentState
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 4
+    intParameter: 3
     messageOptions: 0

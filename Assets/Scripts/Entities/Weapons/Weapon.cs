@@ -10,6 +10,7 @@ public enum BlockResult { Success = 0, Failure = 1, Partial = 2, Counter = 3 }
 public class Weapon : MonoBehaviour
 {
     public enum State { Idle = 0, Windup = 1, Release = 2, Recovery = 3, Blocking = 4 }
+    [SerializeField]
     protected State currentState;
     public State CurrentState
     {
@@ -50,7 +51,7 @@ public class Weapon : MonoBehaviour
     protected WeaponBlockComponent blockComponent;
     protected AnimancerComponent AnimComp;
     protected StaminaComponent staminaComponent;
-    [SerializeField] protected ClipTransition IdleAnim;
+    [SerializeField] protected AnimationClip IdleAnim;
     public StaminaComponent StaminaComp
     {
         get
@@ -59,6 +60,7 @@ public class Weapon : MonoBehaviour
         }
     }
     protected Dictionary<Attack.Type, Attack> attacks;
+    [SerializeField]
     protected Attack lastAttack;
     protected bool usedAlt, feinted;
     protected void Awake()
@@ -90,7 +92,7 @@ public class Weapon : MonoBehaviour
     {
         return blockComponent.Block(_dmgInfo);
     }
-    public void PerformAttack(Attack.Type _type, bool _alt)
+    public void PerformAttack(Attack.Type _type, bool _alt = false)
     {
         switch (currentState)
         {
@@ -109,7 +111,7 @@ public class Weapon : MonoBehaviour
                 if (lastAttack.AttackType == _type)
                 {
                     //perform a combo, WIP
-                    PerformAttack(attacks[_type], usedAlt);
+                    PerformAttack(attacks[_type], !usedAlt);
                 }
                 else
                 {
