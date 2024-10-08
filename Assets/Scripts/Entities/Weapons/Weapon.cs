@@ -22,6 +22,7 @@ public class Weapon : MonoBehaviour
         {
             if (currentState != value)
             {
+                ChangedState.Invoke();
                 switch (value)
                 {
                     case State.Idle:
@@ -42,6 +43,8 @@ public class Weapon : MonoBehaviour
                         feinted = false;
                         damageComponent.ExitDamageState();
                         break;
+                    case State.Windup:
+                        break;
                 }
                 currentState = value;
             }
@@ -50,8 +53,10 @@ public class Weapon : MonoBehaviour
     protected WeaponDamageComponent damageComponent;
     protected WeaponBlockComponent blockComponent;
     protected AnimancerComponent AnimComp;
+    [SerializeField]
     protected StaminaComponent staminaComponent;
     [SerializeField] protected AnimationClip IdleAnim;
+    public UnityEvent ChangedState { get; set; }
     public StaminaComponent StaminaComp
     {
         get
@@ -60,8 +65,8 @@ public class Weapon : MonoBehaviour
         }
     }
     protected Dictionary<Attack.Type, Attack> attacks;
-    [SerializeField]
-    protected Attack lastAttack;
+    [field: SerializeField]
+    public Attack LastAttack { get; protected set; }
     protected bool usedAlt, feinted;
     protected void Awake()
     {
@@ -82,11 +87,14 @@ public class Weapon : MonoBehaviour
                 attacks.Add(_atk.AttackType, _atk);
             }
         }
+
+        ChangedState = new();
     }
     protected void OnEnable()
     {
         usedAlt = false;
         feinted = false;
+        ReturnToIdle();
     }
     public BlockResult Block(DmgInfo _dmgInfo)
     {
@@ -100,7 +108,7 @@ public class Weapon : MonoBehaviour
                 PerformAttack(attacks[_type], _alt);
                 break;
             case State.Windup:
-                if (_type != lastAttack.AttackType && !feinted && lastAttack.Feintable)
+                if (_type != LastAttack.AttackType && !feinted && LastAttack.Feintable)
                 {
                     //perform a feint, WIP
                     feinted = true;
@@ -108,7 +116,7 @@ public class Weapon : MonoBehaviour
                 }
                 break;
             case State.Recovery:
-                if (lastAttack.AttackType == _type)
+                if (LastAttack.AttackType == _type)
                 {
                     //perform a combo, WIP
                     PerformAttack(attacks[_type], !usedAlt);
@@ -123,7 +131,7 @@ public class Weapon : MonoBehaviour
     protected AnimancerState PerformAttack(Attack _attack, bool _alt)
     {
         usedAlt = _alt;
-        lastAttack = _attack;
+        LastAttack = _attack;
         if (_alt)
         {
             return AnimComp.Play(_attack.Alternate);

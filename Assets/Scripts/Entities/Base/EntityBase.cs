@@ -27,15 +27,15 @@ public class EntityBase : MonoBehaviour
     protected virtual void Awake()
     {
         hpComponent = GetComponent<HPComponent>();
-        hpComponent.SetMaxHP(data.MaxHp);
         actions = GetComponent<EntityActions>();
-        if (CurrentWeapon != null)
-        {
-            staminaComponent.SetMaxStamina(data.MaxStamina);
-        }
     }
     protected virtual void OnEnable()
     {
+        hpComponent.SetMaxHP(data.MaxHp);
+        if (CurrentWeapon != null)
+        {
+            CurrentWeapon.StaminaComp.SetMaxStamina(data.MaxStamina);
+        }
         hpComponent.Reset();
         staminaComponent.Reset();
     }
