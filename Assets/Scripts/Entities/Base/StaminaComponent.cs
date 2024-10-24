@@ -18,12 +18,14 @@ public class StaminaComponent : MonoBehaviour
     {
         CurrentStamina = MaxStamina;
     }
-    public void DrainStamina(int _value)
+    public bool DrainStamina(int _value)
     {
         CurrentStamina -= _value;
         if (CurrentStamina <= 0)
         {
             OnStagger?.Invoke();
+            return false;
         }
+        return true;
     }
 }

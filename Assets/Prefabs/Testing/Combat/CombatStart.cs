@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatStart : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    protected EntitySpawner spawner;
+    public Transform DaveSpawn, DummySpawn;
+    public bool Dave, Dummy;
+    private void Awake()
     {
-        
+        spawner = GetComponent<EntitySpawner>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Dave)
+        {
+            spawner.Spawn("Dave", DaveSpawn.position, DaveSpawn.rotation);
+            Dave = false;
+        }
+        if (Dummy)
+        {
+            spawner.Spawn("EvilDave", DummySpawn.position, DummySpawn.rotation);
+            Dummy = false;
+        }
     }
 }

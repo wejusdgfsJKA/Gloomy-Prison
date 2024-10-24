@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6531260650260779264, guid: 3185b052165647047a45277307f329e0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d2d977bd325c979459ccd78db4fbb6ac, type: 2}
     - target: {fileID: 7311401123218197491, guid: 3185b052165647047a45277307f329e0, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -142,9 +146,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6183683130698038115}
     m_Modifications:
+    - target: {fileID: 4193976015157296227, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633818993208893035, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671170394731541652, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5057955713026776011, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
       propertyPath: m_Name
       value: EvilWeapon Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057955713026776011, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481859880590216173, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671361941601328356, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d2d977bd325c979459ccd78db4fbb6ac, type: 2}
+    - target: {fileID: 6837421194115902529, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8902180109735664254, guid: 90ab2f94fac7c544fb5c24693e6e9300, type: 3}
       propertyPath: m_LocalPosition.x

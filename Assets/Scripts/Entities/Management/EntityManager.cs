@@ -1,16 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//this script will handle pooling, spawning, taking damage etc.
+//this script will handle taking damage etc.
 public class EntityManager : MonoBehaviour
 {
     public static EntityManager Instance { get; protected set; }
-    [SerializeField]
-    protected Dictionary<string, EntityBase> roster;
+    public Dictionary<string, EntityBase> Roster { get; protected set; }
     public Dictionary<Transform, EntityBase> Entities { get; protected set; }
     protected Dictionary<string, Queue<EntityBase>> pool;
-    public Transform DaveSpawn, DummySpawn;
-    public bool Dave, Dummy;
     protected void Awake()
     {
         if (Instance == null)
@@ -20,29 +17,16 @@ public class EntityManager : MonoBehaviour
     }
     protected void OnEnable()
     {
-        roster = new();
+        Roster = new();
         Entities = new();
         pool = new();
-    }
-    private void Update()
-    {
-        if (Dave)
-        {
-            Spawn("Dave", DaveSpawn.position, DaveSpawn.rotation);
-            Dave = false;
-        }
-        if (Dummy)
-        {
-            Spawn("EvilDave", DummySpawn.position, DummySpawn.rotation);
-            Dummy = false;
-        }
     }
     public void AddToRoster(EntityData _entityData)
     {
         //add an entity to the roster
         try
         {
-            roster.Add(_entityData.Name, _entityData.Prefab);
+            Roster.Add(_entityData.Name, _entityData.Prefab);
             //Debug.Log("Added " + entityData.Name + " to roster.");
         }
         catch (System.Exception _e)
@@ -59,56 +43,21 @@ public class EntityManager : MonoBehaviour
             Debug.Log(_e.Message);
         }
     }
-    public void SpawnAndKill(EntityBase _entity)
+    public void RegisterEntity(EntityBase _entity)
     {
-        //create an entity and immediately deactivate it; used for generating a pool
-        //at the start of the level
-        Instantiate(_entity);
-        //register the script in the transform dictionary, to allow damage to
-        //pass to it via its transform
         Entities.Add(_entity.transform, _entity);
-        _entity.gameObject.SetActive(false);
     }
-    protected void CreateNew(string _entityname, Vector3 _position, Quaternion _rotation)
+    public void AddToPool(string _entity)
     {
-        try
-        {
-            //we instantiate a new prefab
-            EntityBase entity = Instantiate(roster[_entityname], _position, _rotation);
-            //register the script in the transform dictionary, to allow damage to pass to it
-            //via its transform
-            Entities.Add(entity.transform, entity);
-            entity.gameObject.SetActive(true);
-        }
-        catch (System.Exception _e)
-        {
-            Debug.Log(_e.Message);
-        }
+        pool.Add(_entity, new Queue<EntityBase>());
     }
-    public void Spawn(string _entityName, Vector3 _position, Quaternion _rotation)
+    public EntityBase GetFromPool(string _entity)
     {
-        try
+        if (pool[_entity].Count > 0)
         {
-            if (pool[_entityName].Count > 0)
-            {
-                //we have inactive entities we can reactivate
-                EntityBase _entity = pool[_entityName].Dequeue();
-                _entity.transform.position = _position;
-                _entity.transform.rotation = _rotation;
-                _entity.gameObject.SetActive(true);
-            }
-            else
-            {
-                //the pool was empty
-                CreateNew(_entityName, _position, _rotation);
-            }
+            return pool[_entity].Dequeue();
         }
-        catch (KeyNotFoundException)
-        {
-            //we had no available pool
-            pool.Add(_entityName, new Queue<EntityBase>());
-            CreateNew(_entityName, _position, _rotation);
-        }
+        return null;
     }
     public void Dead(EntityBase _entity)
     {

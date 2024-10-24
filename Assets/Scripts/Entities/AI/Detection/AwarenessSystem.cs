@@ -16,6 +16,7 @@ public class AwarenessSystem : MonoBehaviour
     }
     protected void OnEnable()
     {
+        DetectionManager.Instance.RegisterListener(this);
         coroutine = StartCoroutine(enumerator());
     }
     protected void OnDisable()

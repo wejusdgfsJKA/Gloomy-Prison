@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3785ef0f5336f6043ab5ca152ee85364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentHP>k__BackingField: 0
 --- !u!1001 &2667029880232467445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +237,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4423966843118817283, guid: 1befd9ed7318107459779658693e0078, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644443897996234758, guid: 1befd9ed7318107459779658693e0078, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}

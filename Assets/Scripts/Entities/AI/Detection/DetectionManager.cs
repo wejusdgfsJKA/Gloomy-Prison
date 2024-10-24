@@ -80,7 +80,7 @@ public class DetectionManager : MonoBehaviour
             Listeners.Add(sensor.transform.root.gameObject.layer.ToString(), new HashSet<AwarenessSystem>());
             Listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
         }
-        Debug.Log(sensor.transform.root);
+        //Debug.Log(sensor.transform.root);
     }
     public void DeRegisterListener(AwarenessSystem sensor)
     {

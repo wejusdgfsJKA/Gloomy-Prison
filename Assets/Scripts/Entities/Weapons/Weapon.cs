@@ -71,6 +71,7 @@ public class Weapon : MonoBehaviour
         {
             staminaComponent = value;
             staminaComponent.Reset();
+            blockComponent.StaminaComp = staminaComponent;
         }
     }
     protected Dictionary<Attack.Type, Attack> attacks;
@@ -186,6 +187,19 @@ public class Weapon : MonoBehaviour
                     PerformAttack(attacks[_type], !usedAlt);
                 }
                 break;
+        }
+    }
+    public void Block(bool block)
+    {
+        if (block && currentState == State.Idle)
+        {
+            //play the blocking animation
+            animancerComponent.Play(weaponData.BlockAnim, .25f);
+        }
+        else if (currentState == State.Blocking)
+        {
+            //exit block, likely go to idle
+            ReturnToIdle();
         }
     }
     protected AnimancerState PerformAttack(Attack _attack, bool _alt)

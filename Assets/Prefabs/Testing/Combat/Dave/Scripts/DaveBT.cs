@@ -85,7 +85,7 @@ public class DaveBT : BTree
         {
             actions.Stop();
         }));
-        /*Decorator _range = _atk.AddDecorator(new Decorator("Range Check", () =>
+        Decorator _range = _atk.AddDecorator(new Decorator("Range Check", () =>
         {
             var t = localMemory.GetData<EntityBase>("Target");
             if (t == null)
@@ -97,10 +97,9 @@ public class DaveBT : BTree
                 return false;
             }
             return true;
-        });
+        }));
         _range.MonitorValue(localMemory, "MyPos");
         _range.MonitorValue(localMemory, "Target");
-        */
         return _atk;
     }
 }
