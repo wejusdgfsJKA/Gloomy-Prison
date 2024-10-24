@@ -70,13 +70,14 @@ public class Hurtbox
         if (box != null)
         {
             //this is a box collider
-            return Physics.OverlapBoxNonAlloc(box.center, box.size / 2, Hits, box.transform.rotation, Mask);
+            return Physics.OverlapBoxNonAlloc(box.transform.position, box.size / 2,
+                Hits, box.transform.rotation, Mask);
         }
         if (capsule != null)
         {
             //this is a capsule collider
-            Vector3 p1 = capsule.center;
-            Vector3 p2 = capsule.center;
+            Vector3 p1 = capsule.transform.position;
+            Vector3 p2 = capsule.transform.position;
             switch (capsule.direction)
             {
                 case 0:

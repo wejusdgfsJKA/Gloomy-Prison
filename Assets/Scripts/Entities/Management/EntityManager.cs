@@ -7,8 +7,10 @@ public class EntityManager : MonoBehaviour
     public static EntityManager Instance { get; protected set; }
     [SerializeField]
     protected Dictionary<string, EntityBase> roster;
-    public Dictionary<Transform, EntityBase> Entities { get; private set; }
+    public Dictionary<Transform, EntityBase> Entities { get; protected set; }
     protected Dictionary<string, Queue<EntityBase>> pool;
+    public Transform DaveSpawn, DummySpawn;
+    public bool Dave, Dummy;
     protected void Awake()
     {
         if (Instance == null)
@@ -16,11 +18,24 @@ public class EntityManager : MonoBehaviour
             Instance = this;
         }
     }
-    private void OnEnable()
+    protected void OnEnable()
     {
         roster = new();
         Entities = new();
         pool = new();
+    }
+    private void Update()
+    {
+        if (Dave)
+        {
+            Spawn("Dave", DaveSpawn.position, DaveSpawn.rotation);
+            Dave = false;
+        }
+        if (Dummy)
+        {
+            Spawn("EvilDave", DummySpawn.position, DummySpawn.rotation);
+            Dummy = false;
+        }
     }
     public void AddToRoster(EntityData _entityData)
     {
@@ -63,13 +78,14 @@ public class EntityManager : MonoBehaviour
             //register the script in the transform dictionary, to allow damage to pass to it
             //via its transform
             Entities.Add(entity.transform, entity);
+            entity.gameObject.SetActive(true);
         }
         catch (System.Exception _e)
         {
             Debug.Log(_e.Message);
         }
     }
-    protected void Spawn(string _entityName, Vector3 _position, Quaternion _rotation)
+    public void Spawn(string _entityName, Vector3 _position, Quaternion _rotation)
     {
         try
         {

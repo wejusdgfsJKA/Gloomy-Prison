@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd153a5db61026a4b930b1d632036460, type: 3}
+  m_Name: EvilDave Damage
+  m_EditorClassIdentifier: 
+  <CheckInterval>k__BackingField: 0.01
+  <MaxHurtboxEntities>k__BackingField: 10
+  <Mask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
+  <Attacks>k__BackingField:
+  - {fileID: 11400000, guid: 673800ac71038274397fc987ba2987d9, type: 2}
+  - {fileID: 11400000, guid: 6f792c652cee401469ae0246ae2d1b7d, type: 2}
+  - {fileID: 11400000, guid: 086136358aee4ae44a71cc122d2a068f, type: 2}
+  - {fileID: 11400000, guid: 8f7c0ec2910196a40b3d718a9d243f5c, type: 2}

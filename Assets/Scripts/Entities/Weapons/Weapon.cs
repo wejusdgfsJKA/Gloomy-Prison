@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
 {
     public enum State { Idle = 0, Windup = 1, Release = 2, Recovery = 3, Blocking = 4 }
     [SerializeField]
-    protected State currentState;
+    protected State currentState = State.Idle;
     public State CurrentState
     {
         get
@@ -44,18 +44,22 @@ public class Weapon : MonoBehaviour
                         damageComponent.ExitDamageState();
                         break;
                     case State.Windup:
+                        if (LastAttack == null)
+                        {
+                            currentState = State.Idle;
+                        }
                         break;
                 }
                 currentState = value;
             }
         }
     }
+    [SerializeField]
+    protected WeaponData weaponData;
     protected WeaponDamageComponent damageComponent;
     protected WeaponBlockComponent blockComponent;
-    protected AnimancerComponent AnimComp;
-    [SerializeField]
+    protected AnimancerComponent animancerComponent;
     protected StaminaComponent staminaComponent;
-    [SerializeField] protected AnimationClip IdleAnim;
     public UnityEvent ChangedState { get; set; }
     public StaminaComponent StaminaComp
     {
@@ -63,20 +67,51 @@ public class Weapon : MonoBehaviour
         {
             return staminaComponent;
         }
+        set
+        {
+            staminaComponent = value;
+            staminaComponent.Reset();
+        }
     }
     protected Dictionary<Attack.Type, Attack> attacks;
-    [field: SerializeField]
-    public Attack LastAttack { get; protected set; }
+    public Attack LastAttack
+    {
+        get
+        {
+            return damageComponent.CurrentAttack;
+        }
+        protected set
+        {
+            if (LastAttack != value)
+            {
+                LastAttack = damageComponent.CurrentAttack = value;
+            }
+        }
+    }
     protected bool usedAlt, feinted;
+    public float Reach
+    {
+        get
+        {
+            return weaponData.Reach;
+        }
+    }
+    public float JabReach
+    {
+        get
+        {
+            return weaponData.JabReach;
+        }
+    }
     protected void Awake()
     {
         //get all the necessary components
         {
-            AnimComp = GetComponent<AnimancerComponent>();
+            animancerComponent = GetComponent<AnimancerComponent>();
             damageComponent = GetComponent<WeaponDamageComponent>();
             blockComponent = GetComponent<WeaponBlockComponent>();
-            staminaComponent = GetComponent<StaminaComponent>();
         }
+
         //internalize animations in a dictionary for ease of access
         {
             attacks = new();
@@ -98,7 +133,34 @@ public class Weapon : MonoBehaviour
     }
     public BlockResult Block(DmgInfo _dmgInfo)
     {
-        return blockComponent.Block(_dmgInfo);
+        switch (currentState)
+        {
+            case State.Blocking:
+                var result = blockComponent.Block(_dmgInfo);
+                if (result == BlockResult.Success)
+                {
+                    staminaComponent.DrainStamina(_dmgInfo.Attack.StaminaDamage);
+                    if (_dmgInfo.Attack.AttackStrength == Attack.Strength.Heavy && !weaponData.Shield)
+                    {
+                        return BlockResult.Partial;
+                    }
+                }
+                return result;
+
+            case State.Windup:
+                if (_dmgInfo.Attack.AttackType == LastAttack.AttackType)
+                {
+                    var res = blockComponent.Block(_dmgInfo);
+                    if (res == BlockResult.Success)
+                    {
+                        return BlockResult.Counter;
+                    }
+                }
+                return BlockResult.Failure;
+
+            default:
+                return BlockResult.Failure;
+        }
     }
     public void PerformAttack(Attack.Type _type, bool _alt = false)
     {
@@ -108,11 +170,15 @@ public class Weapon : MonoBehaviour
                 PerformAttack(attacks[_type], _alt);
                 break;
             case State.Windup:
-                if (_type != LastAttack.AttackType && !feinted && LastAttack.Feintable)
+                if (LastAttack != null)
                 {
-                    //perform a feint, WIP
-                    feinted = true;
-                    PerformAttack(attacks[_type], _alt);
+                    if (_type != LastAttack.AttackType && !feinted && LastAttack.Feintable)
+                    {
+                        //perform a feint, WIP
+                        feinted = true;
+                        var atk = attacks[_type];
+                        PerformAttack(atk, _alt);
+                    }
                 }
                 break;
             case State.Recovery:
@@ -120,10 +186,6 @@ public class Weapon : MonoBehaviour
                 {
                     //perform a combo, WIP
                     PerformAttack(attacks[_type], !usedAlt);
-                }
-                else
-                {
-                    //we are changing our attack, we need to buffer the input
                 }
                 break;
         }
@@ -134,15 +196,16 @@ public class Weapon : MonoBehaviour
         LastAttack = _attack;
         if (_alt)
         {
-            return AnimComp.Play(_attack.Alternate);
+            return animancerComponent.Play(_attack.Alternate);
         }
         else
         {
-            return AnimComp.Play(_attack.Regular);
+            return animancerComponent.Play(_attack.Regular);
         }
     }
     protected void ReturnToIdle()
     {
-        AnimComp.Play(IdleAnim);
+        var a = transform.root;
+        animancerComponent.Play(weaponData.IdleAnim);
     }
 }

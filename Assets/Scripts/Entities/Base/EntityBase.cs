@@ -3,17 +3,25 @@ using UnityEngine;
 public class EntityBase : MonoBehaviour
 {
     //is the connection between all the other components
-    [field: SerializeField]
-    public Weapon CurrentWeapon { get; protected set; }
-    protected HPComponent hpComponent;
-    protected StaminaComponent staminaComponent
+    [SerializeField]
+    protected Weapon weapon;
+    public Weapon CurrentWeapon
     {
         get
         {
-            return CurrentWeapon.StaminaComp;
+            return weapon;
+        }
+        protected set
+        {
+            weapon = value;
+            if (weapon != null)
+            {
+                weapon.StaminaComp = StaminaComp;
+            }
         }
     }
-    protected EntityActions actions;
+    public StaminaComponent StaminaComp { get; protected set; }
+    protected HPComponent hpComponent;
     [SerializeField]
     protected EntityData data;
     protected BlockResult defaultBlockResult = BlockResult.Failure;
@@ -26,18 +34,10 @@ public class EntityBase : MonoBehaviour
     }
     protected virtual void Awake()
     {
+        StaminaComp = GetComponent<StaminaComponent>();
+        StaminaComp?.SetMaxStamina(data.MaxStamina);
         hpComponent = GetComponent<HPComponent>();
-        actions = GetComponent<EntityActions>();
-    }
-    protected virtual void OnEnable()
-    {
         hpComponent.SetMaxHP(data.MaxHp);
-        if (CurrentWeapon != null)
-        {
-            CurrentWeapon.StaminaComp.SetMaxStamina(data.MaxStamina);
-        }
-        hpComponent.Reset();
-        staminaComponent.Reset();
     }
     public void ReceiveAttack(DmgInfo _dmginfo)
     {
@@ -56,14 +56,11 @@ public class EntityBase : MonoBehaviour
         {
             //WIP
             case BlockResult.Failure:
+                var a = this;
                 hpComponent.TakeDamage(_dmginfo.Attack.Damage);
                 break;
             case BlockResult.Partial:
                 hpComponent.TakeDamage(_dmginfo.Attack.Damage);
-                staminaComponent.DrainStamina(_dmginfo.Attack.StaminaDamage);
-                break;
-            case BlockResult.Success:
-                staminaComponent.DrainStamina(_dmginfo.Attack.StaminaDamage);
                 break;
         }
     }

@@ -13,13 +13,7 @@ public class WeaponBlockComponent : MonoBehaviour
         //Debug.Log(strikeangle);
         if (_strikeangle <= data.BlockAngle)
         {
-            //we blocked this attack
-            if (_dmgInfo.Attack.AttackStrength == Attack.Strength.Heavy &&
-                !data.Shield)
-            {
-                //we blocked a heavy attack without a shield
-                return BlockResult.Partial;
-            }
+            //the attack is within our block angle
             return BlockResult.Success;
         }
         return BlockResult.Failure;

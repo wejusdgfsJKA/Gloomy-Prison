@@ -40,13 +40,27 @@ public class BlackBoard
             data.Add(_key, new Data(_value));
         }
     }
-    public Data GetData(string _key)
+    public void AddListener(Action _action, string _key)
     {
         if (data.ContainsKey(_key))
         {
-            return data[_key];
+            data[_key].OnValueChanged += _action;
         }
-        throw new ArgumentException($"Could not find value for {_key} in Blackboard");
+    }
+    public void RemoveListener(Action _action, string _key)
+    {
+        if (data.ContainsKey(_key))
+        {
+            data[_key].OnValueChanged -= _action;
+        }
+    }
+    public T GetData<T>(string _key)
+    {
+        if (data.ContainsKey(_key))
+        {
+            return (T)data[_key].Value;
+        }
+        return default;
     }
     public BlackBoard()
     {

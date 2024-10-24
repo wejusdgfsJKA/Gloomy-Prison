@@ -13,9 +13,6 @@ public class WeaponDamageData : ScriptableObject
     //the enemy's layermask
     [field: SerializeField]
     public LayerMask Mask { get; protected set; }
-    //used for the AI to judge distances
-    [field: SerializeField]
-    public float Reach { get; protected set; }
     [field: SerializeField]
     public Attack[] Attacks { get; protected set; }
 }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UnityEngine;
 public enum NodeState
 {
     RUNNING,
@@ -59,7 +58,6 @@ public abstract class Node : ElementBase
         onExit = _exit;
         Abort += () =>
         {
-            Debug.Log("Aborted " + Name);
             State = NodeState.FAILURE;
         };
     }

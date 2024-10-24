@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class WeaponDamageComponent : MonoBehaviour
 {
     //manages the damage part of a weapon
@@ -18,15 +17,20 @@ public class WeaponDamageComponent : MonoBehaviour
     protected WaitForSeconds wait;
     [SerializeField]
     protected Hurtbox[] hurtboxes = null;
-    public float Reach
+    protected DmgInfo dmgInfo;
+
+    [SerializeField] protected Attack currentAttack;
+    public Attack CurrentAttack
     {
         get
         {
-            return data.Reach;
+            return currentAttack;
+        }
+        set
+        {
+            currentAttack = value;
         }
     }
-    protected DmgInfo dmgInfo;
-    public Attack CurrentAttack { get; set; }
     protected void Awake()
     {
         //set up all the information of the dmgInfo class which will
@@ -115,7 +119,10 @@ public class WeaponDamageComponent : MonoBehaviour
     }
     protected void DealDamage(Transform target)
     {
-        //Debug.Log(target);
         EntityManager.Instance.SendAttack(target, dmgInfo);
+    }
+    public Hurtbox[] GetHurtboxes()
+    {
+        return hurtboxes;
     }
 }

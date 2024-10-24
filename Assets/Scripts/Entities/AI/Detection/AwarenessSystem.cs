@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 public class AwarenessSystem : MonoBehaviour
 {
@@ -155,3 +156,18 @@ public class AwarenessSystem : MonoBehaviour
         return Vector3.Distance(transform.position, target.position) <= parameters.ProximityDetectionRange;
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(AwarenessSystem))]
+public class AwarenessViewer : Editor
+{
+    private void OnSceneGUI()
+    {
+        AwarenessSystem t = (AwarenessSystem)target;
+        if (t.ClosestTarget != null)
+        {
+            Handles.DrawLine(t.transform.position, t.ClosestTarget.KnownPos);
+        }
+    }
+}
+#endif

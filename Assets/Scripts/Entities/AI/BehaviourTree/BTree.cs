@@ -38,7 +38,6 @@ public abstract class BTree : MonoBehaviour
             yield return waitInterval;
             yield return waitForPermission;
             root?.Evaluate();
-            ShouldRun = false;
         }
     }
     protected abstract Composite SetupTree();

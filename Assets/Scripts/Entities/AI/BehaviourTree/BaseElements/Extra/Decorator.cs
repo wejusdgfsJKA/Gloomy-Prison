@@ -28,6 +28,7 @@ public class Decorator : ElementBase
         }
     }
     protected Action onDataChanged;
+
     public Action OnPass, OnFail;
     public Decorator(string _name, Func<bool> _onevaluate)
     {
@@ -38,7 +39,6 @@ public class Decorator : ElementBase
             //re-evaluate everytime the value of the data changes
             Result = OnEvaluate();
         };
-        onDataChanged();
     }
     public override void GetDebugTextInternal(StringBuilder _debug, int _indentlevel = 0)
     {
@@ -52,11 +52,11 @@ public class Decorator : ElementBase
     public void MonitorValue(BlackBoard _data, string _key)
     {
         //subscribe to relevant data
-        _data.GetData(_key).OnValueChanged += onDataChanged;
+        _data.AddListener(onDataChanged, _key);
     }
     public void StopMonitoringValue(BlackBoard _data, string _key)
     {
         //unsubscribe from data which is no longer relevant
-        _data.GetData(_key).OnValueChanged -= onDataChanged;
+        _data.AddListener(onDataChanged, _key);
     }
 }

@@ -3,7 +3,7 @@ public class LeafNode : Node
 {
     //action node
     protected Func<NodeState> onEvaluate;
-    public LeafNode(string _name, Func<NodeState> _evaluate = null, Action _enter = null,
+    public LeafNode(string _name, Func<NodeState> _evaluate, Action _enter = null,
         Action _exit = null) : base(_name, _enter, _exit)
     {
         onEvaluate = _evaluate;

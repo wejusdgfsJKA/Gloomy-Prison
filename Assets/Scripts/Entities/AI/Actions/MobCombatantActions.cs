@@ -1,14 +1,22 @@
-using UnityEngine;
 //the actions of a mobile AI which can engage in regular combat
-public class MobCombatantActions : MonoBehaviour
+public class MobCombatantActions : MobActions
 {
+    public EntityBase GetEntity
+    {
+        get
+        {
+            return entity;
+        }
+    }
+    public void PerformAttack(Attack.Type _type)
+    {
+        if (_type != Attack.Type.Kick)
+        {
+            entity.CurrentWeapon.PerformAttack(_type);
+        }
+    }
     public void Block()
     {
 
     }
-    public void Kick()
-    {
-
-    }
-
 }

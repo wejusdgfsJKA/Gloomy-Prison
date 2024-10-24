@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Text;
-using UnityEngine;
 
 public abstract class Composite : Node
 {
@@ -18,7 +17,6 @@ public abstract class Composite : Node
         //reset our starting point everytime we enter
         onEnter += () =>
         {
-            Debug.Log("Entered composite " + _name);
             leftmost = 0;
         };
     }
