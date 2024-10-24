@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4772807151728242193, guid: ee81300435771244b8d614412dc59f91, type: 3}
       propertyPath: Dummy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4772807151728242193, guid: ee81300435771244b8d614412dc59f91, type: 3}
       propertyPath: DaveSpawn

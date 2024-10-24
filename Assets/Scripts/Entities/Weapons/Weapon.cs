@@ -117,8 +117,6 @@ public class Weapon : MonoBehaviour
             attacks = new();
             foreach (Attack _atk in damageComponent.Attacks)
             {
-                _atk.Regular.Events.OnEnd = ReturnToIdle;
-                _atk.Alternate.Events.OnEnd = ReturnToIdle;
                 attacks.Add(_atk.AttackType, _atk);
             }
         }
@@ -194,18 +192,20 @@ public class Weapon : MonoBehaviour
     {
         usedAlt = _alt;
         LastAttack = _attack;
+        AnimancerState state;
         if (_alt)
         {
-            return animancerComponent.Play(_attack.Alternate);
+            state = animancerComponent.Play(_attack.Alternate, .25f);
         }
         else
         {
-            return animancerComponent.Play(_attack.Regular);
+            state = animancerComponent.Play(_attack.Regular, .25f);
         }
+        state.Events(this).OnEnd ??= ReturnToIdle;
+        return state;
     }
     protected void ReturnToIdle()
     {
-        var a = transform.root;
         animancerComponent.Play(weaponData.IdleAnim);
     }
 }

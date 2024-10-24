@@ -18,24 +18,5 @@ MonoBehaviour:
   <AttackStrength>k__BackingField: 0
   <Cancellable>k__BackingField: 1
   <Feintable>k__BackingField: 1
-  <Regular>k__BackingField:
-    _FadeDuration: 0.25
-    _Speed: 1
-    _Events:
-      _NormalizedTimes: []
-      _Callbacks: []
-      _Names: []
-    _Clip: {fileID: 7400000, guid: 9ac01b85a81a43d42ad5f63d50c7c5d4, type: 2}
-    _NormalizedStartTime: NaN
-  <Alternate>k__BackingField:
-    _FadeDuration: 0.25
-    _Speed: 1
-    _Events:
-      _NormalizedTimes: []
-      _Callbacks: []
-      _Names: []
-    _Clip: {fileID: 7400000, guid: 21ceb1a891a12e340a932aa9a392c714, type: 2}
-    _NormalizedStartTime: NaN
-  references:
-    version: 2
-    RefIds: []
+  <Regular>k__BackingField: {fileID: 7400000, guid: 9ac01b85a81a43d42ad5f63d50c7c5d4, type: 2}
+  <Alternate>k__BackingField: {fileID: 7400000, guid: 21ceb1a891a12e340a932aa9a392c714, type: 2}

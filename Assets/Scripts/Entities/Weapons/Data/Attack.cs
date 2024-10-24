@@ -1,4 +1,3 @@
-using Animancer;
 using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/AttackData")]
 [System.Serializable]
@@ -20,7 +19,7 @@ public class Attack : ScriptableObject
     [field: SerializeField]
     public bool Feintable { get; protected set; } = true;
     [field: SerializeField]
-    public ClipTransition Regular { get; protected set; }
+    public AnimationClip Regular { get; protected set; }
     [field: SerializeField]
-    public ClipTransition Alternate { get; protected set; }
+    public AnimationClip Alternate { get; protected set; }
 }
