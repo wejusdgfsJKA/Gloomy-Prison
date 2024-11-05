@@ -161,12 +161,40 @@ public class Weapon : MonoBehaviour
                 return BlockResult.Failure;
         }
     }
+    public void Block(bool block)
+    {
+        switch (currentState)
+        {
+            case State.Idle:
+                if (block)
+                {
+                    animancerComponent.Play(weaponData.BlockAnim, .25f);
+                }
+                break;
+            case State.Blocking:
+                if (!block)
+                {
+                    ReturnToIdle();
+                }
+                break;
+            case State.Windup:
+                if (block && !feinted)
+                {
+                    animancerComponent.Play(weaponData.BlockAnim, .25f);
+                }
+                break;
+        }
+    }
     public void PerformAttack(Attack.Type _type, bool _alt = false)
     {
         switch (currentState)
         {
             case State.Idle:
                 PerformAttack(attacks[_type], _alt);
+                break;
+            case State.Blocking:
+                PerformAttack(attacks[_type], _alt);
+                Block(false);
                 break;
             case State.Windup:
                 if (LastAttack != null)
@@ -189,19 +217,6 @@ public class Weapon : MonoBehaviour
                 break;
         }
     }
-    public void Block(bool block)
-    {
-        if (block && currentState == State.Idle)
-        {
-            //play the blocking animation
-            animancerComponent.Play(weaponData.BlockAnim, .25f);
-        }
-        else if (currentState == State.Blocking)
-        {
-            //exit block, likely go to idle
-            ReturnToIdle();
-        }
-    }
     protected AnimancerState PerformAttack(Attack _attack, bool _alt)
     {
         usedAlt = _alt;
@@ -216,6 +231,7 @@ public class Weapon : MonoBehaviour
             state = animancerComponent.Play(_attack.Regular, .25f);
         }
         state.Events(this).OnEnd ??= ReturnToIdle;
+        //perform lunge
         return state;
     }
     protected void ReturnToIdle()

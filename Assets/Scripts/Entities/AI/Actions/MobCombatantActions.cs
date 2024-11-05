@@ -15,8 +15,8 @@ public class MobCombatantActions : MobActions
             entity.CurrentWeapon.PerformAttack(_type);
         }
     }
-    public void Block()
+    public void Block(bool block)
     {
-
+        entity.CurrentWeapon.Block(block);
     }
 }

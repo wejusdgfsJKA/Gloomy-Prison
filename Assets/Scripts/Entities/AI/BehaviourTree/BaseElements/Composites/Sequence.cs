@@ -27,7 +27,7 @@ public class Sequence : Composite
         }
         return false;
     }
-    public override void NewLeftmost(int _index)
+    public override void NewLeftmost(Node _child)
     {
         //we don't need to do anything here
     }

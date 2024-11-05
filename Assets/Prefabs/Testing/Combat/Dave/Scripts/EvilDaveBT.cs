@@ -60,6 +60,7 @@ public class EvilDaveBT : BTree
         var _atk = _parent.AddChild(new LeafNode("Attack",
         () =>
         {
+            actions.FaceTarget(localMemory.GetData<EntityBase>("Target").transform.position);
             var _wpnstate = actions.GetEntity.CurrentWeapon.CurrentState;
             if (_wpnstate != Weapon.State.Windup && _wpnstate != Weapon.State.Release)
             {

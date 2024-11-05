@@ -4,6 +4,7 @@ using System.Text;
 public abstract class Composite : Node
 {
     protected List<Node> children = new();
+    public Dictionary<Node, int> childrenIndexes { get; protected set; } = new();
     protected int leftmost;
     public int Leftmost
     {
@@ -23,11 +24,11 @@ public abstract class Composite : Node
     public Node AddChild(Node _node)
     {
         _node.Parent = this;
-        _node.IndexInParent = children.Count;
+        childrenIndexes.Add(_node, children.Count);
         children.Add(_node);
         return _node;
     }
-    public abstract void NewLeftmost(int _index);
+    public abstract void NewLeftmost(Node _child);
     public abstract void UpdateLeftmost();
     public override void GetDebugTextInternal(StringBuilder _debug, int _indentlevel = 0)
     {

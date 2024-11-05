@@ -46,7 +46,6 @@ public abstract class Node : ElementBase
         }
     }
     public Composite Parent { get; set; }
-    public int IndexInParent { get; set; }
     protected List<Service> services = new();
     protected List<Decorator> decorators = new();
     protected Action onEnter, onExit;
@@ -100,7 +99,7 @@ public abstract class Node : ElementBase
         if (Parent != null && BlockingDecorators == 0)
         {
             //we must notify the parent composite
-            Parent.NewLeftmost(IndexInParent);
+            Parent.NewLeftmost(this);
         }
     }
     protected void OnDecoratorFail()
@@ -112,7 +111,7 @@ public abstract class Node : ElementBase
             Abort();
         }
         BlockingDecorators++;
-        if (Parent != null && Parent.Leftmost == IndexInParent)
+        if (Parent != null && Parent.Leftmost == Parent.childrenIndexes[this])
         {
             //we must notify the parent composite
             Parent.UpdateLeftmost();
@@ -136,7 +135,6 @@ public abstract class Node : ElementBase
         if (Parent != null)
         {
             _debug.AppendLine();
-            _debug.Append("Index in parent: " + IndexInParent);
         }
         if (BlockingDecorators > 0)
         {

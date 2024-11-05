@@ -400,6 +400,8 @@
 "Assets/Scripts/Entities/Weapons/Data/WeaponData.cs"
 "Assets/Scripts/Entities/Weapons/Hurtbox.cs"
 "Assets/Scripts/Entities/Weapons/Weapon.cs"
+"Assets/Scripts/Interactables/Interactable.cs"
+"Assets/Scripts/Interactables/Management/InteractableManager.cs"
 "Assets/Scripts/Management/GameManager.cs"
 "Assets/Scripts/Management/Settings.cs"
 "Assets/Scripts/Player/Player Controls/PlayerController.cs"

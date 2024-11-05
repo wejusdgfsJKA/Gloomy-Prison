@@ -30,8 +30,9 @@ public class Selector : Composite
         }
         return false;
     }
-    public override void NewLeftmost(int _index)
+    public override void NewLeftmost(Node _child)
     {
+        int _index = childrenIndexes[_child];
         if (_index >= 0 && _index < children.Count && _index < leftmost)
         {
             //we have a new valid node
@@ -40,7 +41,7 @@ public class Selector : Composite
             {
                 if (Parent != null)
                 {
-                    Parent.NewLeftmost(IndexInParent);
+                    Parent.NewLeftmost(this);
                 }
             }
         }
@@ -58,7 +59,7 @@ public class Selector : Composite
                 {
                     if (Parent != null)
                     {
-                        Parent.NewLeftmost(IndexInParent);
+                        Parent.NewLeftmost(this);
                     }
                 }
                 return;

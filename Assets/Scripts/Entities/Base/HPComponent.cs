@@ -13,7 +13,11 @@ public class HPComponent : MonoBehaviour
             MaxHP = _maxhp;
         }
     }
-    public void Reset()
+    protected void OnEnable()
+    {
+        Reset();
+    }
+    protected void Reset()
     {
         CurrentHP = MaxHP;
     }
