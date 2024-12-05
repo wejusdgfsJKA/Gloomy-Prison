@@ -361,6 +361,7 @@
 "Assets/Prefabs/Testing/Combat/CombatStart.cs"
 "Assets/Prefabs/Testing/Combat/Dave/Scripts/DaveBT.cs"
 "Assets/Prefabs/Testing/Combat/Dave/Scripts/EvilDaveBT.cs"
+"Assets/Prefabs/Testing/Combat/Dave/Scripts/MobCombatantBT.cs"
 "Assets/Prefabs/Testing/Combat/Dummies/DummyHPComponent.cs"
 "Assets/Prefabs/Testing/Combat/HurtboxTest/HurtboxTester.cs"
 "Assets/Scripts/Entities/AI/Actions/AIEntityActions.cs"

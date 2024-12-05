@@ -9,6 +9,13 @@ public class MobActions : AIEntityActions
     //because we might have something passive like the sack rats
     protected NavMeshAgent agent;
     protected EntityBase entity;
+    public Vector3 Destination
+    {
+        get
+        {
+            return agent.destination;
+        }
+    }
     protected void Awake()
     {
         entity = GetComponent<EntityBase>();

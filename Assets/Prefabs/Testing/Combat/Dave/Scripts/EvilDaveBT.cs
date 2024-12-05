@@ -1,33 +1,7 @@
 using UnityEngine;
 
-public class EvilDaveBT : BTree
+public class EvilDaveBT : MobCombatantBT
 {
-    protected MobCombatantActions actions;
-    protected AwarenessSystem awarenessSystem;
-    protected override Composite SetupTree()
-    {
-        localMemory.SetData<EntityBase>("Target", null);
-        localMemory.SetData<EntityBase>("TargetPrevPos", null);
-        localMemory.SetData<Vector3>("MyPos", transform.position);
-        actions = GetComponent<MobCombatantActions>();
-        awarenessSystem = GetComponent<AwarenessSystem>();
-        root = new Selector("Root");
-        AddAttackNode(root);
-        AddChaseNode(root);
-        root.AddService(new Service("Update", () =>
-        {
-            localMemory.SetData("MyPos", transform.position);
-
-            var t = awarenessSystem.ClosestTarget;
-            if (t != null)
-            {
-                localMemory.SetData("Target", awarenessSystem.ClosestTarget.Entity);
-            }
-            else localMemory.SetData<EntityBase>("Target", null);
-        }));
-
-        return root;
-    }
     Node AddChaseNode(Composite parent)
     {
         Node chase = parent.AddChild(new LeafNode("Chase", () =>

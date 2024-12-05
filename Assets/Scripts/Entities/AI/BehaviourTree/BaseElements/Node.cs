@@ -57,6 +57,10 @@ public abstract class Node : ElementBase
         onExit = _exit;
         Abort += () =>
         {
+            if (Parent != null)
+            {
+                Parent.ChildInvalid(this);
+            }
             State = NodeState.FAILURE;
         };
     }
@@ -111,11 +115,6 @@ public abstract class Node : ElementBase
             Abort();
         }
         BlockingDecorators++;
-        if (Parent != null && Parent.Leftmost == Parent.childrenIndexes[this])
-        {
-            //we must notify the parent composite
-            Parent.UpdateLeftmost();
-        }
     }
     protected void RunServices()
     {

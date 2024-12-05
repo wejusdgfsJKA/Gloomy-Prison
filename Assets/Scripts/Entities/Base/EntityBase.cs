@@ -32,6 +32,17 @@ public class EntityBase : MonoBehaviour
             return data.Name;
         }
     }
+    public float Reach
+    {
+        get
+        {
+            if (CurrentWeapon != null)
+            {
+                return CurrentWeapon.Reach;
+            }
+            return 0;
+        }
+    }
     protected virtual void Awake()
     {
         StaminaComp = GetComponent<StaminaComponent>();

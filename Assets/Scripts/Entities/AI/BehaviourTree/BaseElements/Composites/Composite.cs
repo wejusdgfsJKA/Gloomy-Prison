@@ -4,7 +4,7 @@ using System.Text;
 public abstract class Composite : Node
 {
     protected List<Node> children = new();
-    public Dictionary<Node, int> childrenIndexes { get; protected set; } = new();
+    protected Dictionary<Node, int> childrenIndexes = new();
     protected int leftmost;
     public int Leftmost
     {
@@ -30,6 +30,14 @@ public abstract class Composite : Node
     }
     public abstract void NewLeftmost(Node _child);
     public abstract void UpdateLeftmost();
+    public void ChildInvalid(Node _child)
+    {
+        //this child is no longer valid
+        if (childrenIndexes[_child] == leftmost)
+        {
+            UpdateLeftmost();
+        }
+    }
     public override void GetDebugTextInternal(StringBuilder _debug, int _indentlevel = 0)
     {
         base.GetDebugTextInternal(_debug, _indentlevel);
