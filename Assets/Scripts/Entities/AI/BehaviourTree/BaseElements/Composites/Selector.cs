@@ -43,8 +43,11 @@ public class Selector : Composite
         int _index = childrenIndexes[_child];
         if (_index >= 0 && _index < children.Count && _index < leftmost)
         {
-            //we have a new valid node
-            children[leftmost].Abort();
+            //we have a new valid node, so we abort the previous running node
+            if (children[leftmost].State == NodeState.RUNNING)
+            {
+                children[leftmost].Abort();
+            }
             leftmost = _index;
             if (state != NodeState.RUNNING)
             {
