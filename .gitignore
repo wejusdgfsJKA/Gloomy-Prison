@@ -46,10 +46,10 @@ ExportedObj/
 sysinfo.txt
 
 Library/
-# Temp
-# Logs
+Temp/
+Logs/
 # Builds
-# obj
+obj/
 *.apk
 *.aab
 *.unitypackage
