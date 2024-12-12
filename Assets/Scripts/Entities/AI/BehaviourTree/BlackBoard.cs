@@ -14,6 +14,7 @@ public class BlackBoard
             }
             set
             {
+                //this is used so listeners know when the value is changed
                 currentValue = value;
                 if (OnValueChanged != null)
                 {
