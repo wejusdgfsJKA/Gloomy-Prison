@@ -220,8 +220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DaveSpawn: {fileID: 2123289670}
   DummySpawn: {fileID: 860234260}
-  Dave: 1
-  Dummy: 1
+  Dave: 0
+  Dummy: 0
 --- !u!114 &514769149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +262,10 @@ PrefabInstance:
     - target: {fileID: 1978485127514883478, guid: ee81300435771244b8d614412dc59f91, type: 3}
       propertyPath: m_Name
       value: SuperDuperManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978485127514883478, guid: ee81300435771244b8d614412dc59f91, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2966095442185187626, guid: ee81300435771244b8d614412dc59f91, type: 3}
       propertyPath: roster.Array.size

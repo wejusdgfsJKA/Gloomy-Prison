@@ -14,9 +14,12 @@ public class Selector : Composite
                         continue;
                     case NodeState.SUCCESS:
                         state = NodeState.SUCCESS;
-                        if (leftmost < i)
+                        if (i < children.Count - 1)
                         {
-                            //we have a new valid node
+                            leftmost = i + 1;
+                        }
+                        else
+                        {
                             leftmost = i;
                         }
                         return true;
@@ -41,6 +44,7 @@ public class Selector : Composite
         if (_index >= 0 && _index < children.Count && _index < leftmost)
         {
             //we have a new valid node
+            children[leftmost].Abort();
             leftmost = _index;
             if (state != NodeState.RUNNING)
             {
