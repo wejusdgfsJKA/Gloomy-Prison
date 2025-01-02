@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/MainScenes/MainMenuScene.unity
     guid: 45d5e27b72bf3354fa7c3bab2b6dd11e
   - enabled: 1
-    path: Assets/Prefabs/Testing/Combat/CombatArena.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Prefabs/Testing/Misc/TestScene.unity
+    guid: 02a3ce15f4146e44e8cd30ad2ccff46d
   m_configObjects: {}

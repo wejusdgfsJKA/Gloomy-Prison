@@ -4,7 +4,7 @@ using UnityEngine;
 public class InteractableManager : MonoBehaviour
 {
     public static InteractableManager Instance { get; private set; }
-    protected Dictionary<Transform, Interactable> interactables;
+    protected Dictionary<Transform, Interactable> interactables = new();
     private void Awake()
     {
         if (Instance == null)
@@ -19,6 +19,10 @@ public class InteractableManager : MonoBehaviour
         {
             _int.OnInteract(_interactor);
         }
+    }
+    public bool IsInteractable(Transform _interactable)
+    {
+        return interactables.ContainsKey(_interactable);
     }
     public void Register(Interactable _interactable)
     {

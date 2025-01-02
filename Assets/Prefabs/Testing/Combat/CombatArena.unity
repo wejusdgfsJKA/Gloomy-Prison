@@ -731,63 +731,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 514769150}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5745027101586110480
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002953292197479841, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7917658559195653872, guid: bc753425286f5524b89874311f1aae92, type: 3}
-      propertyPath: m_Name
-      value: HumanoidSkeleton
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bc753425286f5524b89874311f1aae92, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -795,4 +738,3 @@ SceneRoots:
   - {fileID: 645105721}
   - {fileID: 175881140}
   - {fileID: 514769150}
-  - {fileID: 5745027101586110480}
