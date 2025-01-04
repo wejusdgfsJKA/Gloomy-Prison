@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-            //SceneManager.LoadScene(0);
+            SceneManager.LoadScene(0);
         }
     }
     public void OnInteract(InputAction.CallbackContext context)

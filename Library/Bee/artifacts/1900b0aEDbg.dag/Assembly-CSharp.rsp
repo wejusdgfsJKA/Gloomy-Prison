@@ -409,6 +409,7 @@
 "Assets/Scripts/Management/GameManager.cs"
 "Assets/Scripts/Management/Settings.cs"
 "Assets/Scripts/Player/Player Controls/PlayerController.cs"
+"Assets/Scripts/Player/Player Controls/PlayerWeaponController.cs"
 "Assets/Scripts/Player/PlayerActions.cs"
 "Assets/Scripts/Player/PlayerSettings.cs"
 "Assets/Scripts/Player/SaveGame.cs"
