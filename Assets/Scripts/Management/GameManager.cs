@@ -12,15 +12,18 @@ public class GameManager : MonoBehaviour
     protected EntityData[] roster;
     protected EntityManager entityManager;
     protected DetectionManager detectionManager;
+    protected InteractableManager interactableManager;
     protected void Awake()
     {
         entityManager = GetComponent<EntityManager>();
         detectionManager = GetComponent<DetectionManager>();
+        interactableManager = GetComponent<InteractableManager>();
     }
     protected void OnEnable()
     {
         HandleDetectionManager();
         HandleEntityManager();
+        HandleInteractableManager();
         PlayerSettings.interactionDistance = 10;
         PlayerSettings.xSens = 1;
         PlayerSettings.ySens = 1;
@@ -37,5 +40,9 @@ public class GameManager : MonoBehaviour
         {
             EntityManager.Instance.AddToRoster(roster[i]);
         }
+    }
+    protected void HandleInteractableManager()
+    {
+        interactableManager.Awake();
     }
 }

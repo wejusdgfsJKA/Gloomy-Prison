@@ -9,12 +9,12 @@ public class IncrementScript : MonoBehaviour
     public void Awake()
     {
         interactable = GetComponent<Interactable>();
-        interactable.OnInteract += (Transform t) =>
+        interactable.AddAction((Transform t) =>
         {
             int a;
             System.Int32.TryParse(text.text, out a);
             a++;
             text.text = a.ToString();
-        };
+        });
     }
 }

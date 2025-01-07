@@ -1,28 +1,29 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    public Weapon CurrentWeapon { get; set; }
+    [field: SerializeField] public Weapon CurrentWeapon { get; set; }
     public void OnStrike(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            CurrentWeapon.PerformAttack(Attack.Type.Light);
+            CurrentWeapon?.PerformAttack(Attack.Type.Light);
         }
     }
     public void OnThrust(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            CurrentWeapon.PerformAttack(Attack.Type.Thrust);
+            CurrentWeapon?.PerformAttack(Attack.Type.Thrust);
         }
     }
     public void OnOverhead(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            CurrentWeapon.PerformAttack(Attack.Type.Overhead);
+            CurrentWeapon?.PerformAttack(Attack.Type.Overhead);
         }
     }
     public void OnChargeUp(InputAction.CallbackContext context)
@@ -34,13 +35,13 @@ public class PlayerWeaponController : MonoBehaviour
     }
     public void OnBlock(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (Convert.ToBoolean(context.ReadValue<float>()))
         {
-            CurrentWeapon.Block(true);
+            CurrentWeapon?.Block(true);
         }
         else
         {
-            CurrentWeapon.Block(false);
+            CurrentWeapon?.Block(false);
         }
     }
     public void OnKick(InputAction.CallbackContext context)

@@ -5,37 +5,37 @@ public class InteractableManager : MonoBehaviour
 {
     public static InteractableManager Instance { get; private set; }
     protected Dictionary<Transform, Interactable> interactables = new();
-    private void Awake()
+    public void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
     }
-    public void Interact(Transform _interactable, Transform _interactor)
+    public void Interact(Transform interactable, Transform interactor)
     {
-        Interactable _int;
-        if (interactables.TryGetValue(_interactable, out _int))
+        Interactable inter;
+        if (interactables.TryGetValue(interactable, out inter))
         {
-            _int.OnInteract(_interactor);
+            inter.Interact(interactor);
         }
     }
-    public bool IsInteractable(Transform _interactable)
+    public bool IsInteractable(Transform interactable)
     {
-        return interactables.ContainsKey(_interactable);
+        return interactables.ContainsKey(interactable);
     }
-    public void Register(Interactable _interactable)
+    public void Register(Interactable interactable)
     {
-        if (!interactables.ContainsKey(_interactable.transform))
+        if (!interactables.ContainsKey(interactable.transform))
         {
-            interactables.Add(_interactable.transform, _interactable);
+            interactables.Add(interactable.transform, interactable);
         }
     }
-    public void DeRegister(Transform _transform)
+    public void DeRegister(Transform transform)
     {
-        if (interactables.ContainsKey(_transform))
+        if (interactables.ContainsKey(transform))
         {
-            interactables.Remove(_transform);
+            interactables.Remove(transform);
         }
     }
 }

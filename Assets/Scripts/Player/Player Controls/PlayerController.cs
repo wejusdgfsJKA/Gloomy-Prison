@@ -71,7 +71,8 @@ public class PlayerController : MonoBehaviour
     }
     protected void InteractionCheck()
     {
-        if (Physics.Raycast(camPivot.position, camPivot.forward, out hit, PlayerSettings.interactionDistance, 1 << 5))
+        if (Physics.SphereCast(camPivot.position, characterController.radius,
+            camPivot.forward, out hit, PlayerSettings.interactionDistance, 1 << 5))
         {
             if (InteractableManager.Instance.IsInteractable(hit.transform))
             {
