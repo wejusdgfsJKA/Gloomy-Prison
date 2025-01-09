@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     {
         HandleDetectionManager();
         HandleEntityManager();
-        HandleInteractableManager();
         PlayerSettings.interactionDistance = 10;
         PlayerSettings.xSens = 1;
         PlayerSettings.ySens = 1;
@@ -40,9 +39,5 @@ public class GameManager : MonoBehaviour
         {
             EntityManager.Instance.AddToRoster(roster[i]);
         }
-    }
-    protected void HandleInteractableManager()
-    {
-        interactableManager.Awake();
     }
 }

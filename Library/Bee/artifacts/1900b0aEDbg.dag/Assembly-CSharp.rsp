@@ -370,6 +370,7 @@
 "Assets/Scripts/Entities/AI/Actions/MobActions.cs"
 "Assets/Scripts/Entities/AI/Actions/MobCombatantActions.cs"
 "Assets/Scripts/Entities/AI/BehaviourTree/BaseElements/Composites/Composite.cs"
+"Assets/Scripts/Entities/AI/BehaviourTree/BaseElements/Composites/ParallelNode.cs"
 "Assets/Scripts/Entities/AI/BehaviourTree/BaseElements/Composites/Selector.cs"
 "Assets/Scripts/Entities/AI/BehaviourTree/BaseElements/Composites/Sequence.cs"
 "Assets/Scripts/Entities/AI/BehaviourTree/BaseElements/ElementBase.cs"
