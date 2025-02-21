@@ -10,6 +10,9 @@ public enum NodeState
 
 public abstract class Node : ElementBase
 {
+    /// <summary>
+    /// Fires when the node is interrupted from running (NOT ON LOCAL SUCCESS!).
+    /// </summary>
     public Action Abort;
     protected NodeState state = NodeState.FAILURE;
     public NodeState State
@@ -48,13 +51,23 @@ public abstract class Node : ElementBase
     public Composite Parent { get; set; }
     protected List<Service> services = new();
     protected List<Decorator> decorators = new();
-    protected Action onEnter, onExit;
+    /// <summary>
+    /// Fires when entering the node.
+    /// </summary>
+    protected Action onEnter;
+    /// <summary>
+    /// Fires when exiting the node, either on success or failure.
+    /// </summary>
+    protected Action onExit;
+    /// <summary>
+    /// The number of decorators which are blocking the execution of this node.
+    /// </summary>
     public int BlockingDecorators { get; protected set; } = 0;
-    public Node(string _name, Action _enter = null, Action _exit = null)
+    public Node(string name, Action enter = null, Action exit = null)
     {
-        Name = _name;
-        onEnter = _enter;
-        onExit = _exit;
+        Name = name;
+        onEnter = enter;
+        onExit = exit;
         Abort += () =>
         {
             if (Parent != null)
@@ -64,6 +77,14 @@ public abstract class Node : ElementBase
             State = NodeState.FAILURE;
         };
     }
+    /// <summary>
+    /// Evaluate the node: <br />
+    /// Run services. <br />
+    /// If we have blocking decorators return false, node state is failure. <br />
+    /// If node was not running previously, run onEnter.<br />
+    /// Return true.
+    /// </summary>
+    /// <returns>True if the execution so far was successfull. This is necessary because children need to know if they should continue execution or not.</returns>
     public virtual bool Evaluate()
     {
         RunServices();
@@ -81,18 +102,32 @@ public abstract class Node : ElementBase
         }
         return true;
     }
-    public Service AddService(Service _service)
+    /// <summary>
+    /// Add a new service to this node.
+    /// </summary>
+    /// <param name="service">The service to be added.</param>
+    /// <returns>The service that was added.</returns>
+    public Service AddService(Service service)
     {
-        services.Add(_service);
-        return _service;
+        services.Add(service);
+        return service;
     }
-    public Decorator AddDecorator(Decorator _decorator)
+    /// <summary>
+    /// Add a new decorator to this node.
+    /// </summary>
+    /// <param name="decorator">Decorator to be added.</param>
+    /// <returns>Returns the added decorator.</returns>
+    public Decorator AddDecorator(Decorator decorator)
     {
-        decorators.Add(_decorator);
-        _decorator.OnPass += OnDecoratorPass;
-        _decorator.OnFail += OnDecoratorFail;
-        return _decorator;
+        decorators.Add(decorator);
+        decorator.OnPass += OnDecoratorPass;
+        decorator.OnFail += OnDecoratorFail;
+        return decorator;
     }
+    /// <summary>
+    /// A decorator has passed and is no longer blocking the execution. If we can 
+    /// now execute, notify the parent.
+    /// </summary>
     protected void OnDecoratorPass()
     {
         //this decorator passes its condition
@@ -106,6 +141,9 @@ public abstract class Node : ElementBase
             Parent.NewLeftmost(this);
         }
     }
+    /// <summary>
+    /// A decorator has failed its condition, abort if currently running.
+    /// </summary>
     protected void OnDecoratorFail()
     {
         //this decorator fails its condition
@@ -116,6 +154,9 @@ public abstract class Node : ElementBase
         }
         BlockingDecorators++;
     }
+    /// <summary>
+    /// Run all services.
+    /// </summary>
     protected void RunServices()
     {
         //run all available services
@@ -124,33 +165,40 @@ public abstract class Node : ElementBase
             services[i].Evaluate();
         }
     }
-    public override void GetDebugTextInternal(StringBuilder _debug, int _indentlevel = 0)
+    /// <summary>
+    /// Return state of this node, services and decorators.
+    /// </summary>
+    /// <param name="debug">StringBuilder object.</param>
+    /// <param name="indentLevel">The level of indentation that we should apply.</param>
+    public override void GetDebugTextInternal(StringBuilder debug, int indentLevel = 0)
     {
         // apply the indent
-        for (int _index = 0; _index < _indentlevel; ++_index)
-            _debug.Append(' ');
+        for (int index = 0; index < indentLevel; ++index)
+        {
+            debug.Append(' ');
+        }
 
-        _debug.Append($"{Name} [{state}]");
+        debug.Append($"{Name} [{state}]");
         if (Parent != null)
         {
-            _debug.AppendLine();
+            debug.AppendLine();
         }
         if (BlockingDecorators > 0)
         {
-            _debug.AppendLine();
-            _debug.Append(BlockingDecorators + " blocking decorators.");
+            debug.AppendLine();
+            debug.Append(BlockingDecorators + " blocking decorators.");
         }
 
-        foreach (var _service in services)
+        foreach (var service in services)
         {
-            _debug.AppendLine();
-            _debug.Append(_service.GetDebugText(_indentlevel + 1));
+            debug.AppendLine();
+            debug.Append(service.GetDebugText(indentLevel + 1));
         }
 
-        foreach (var _decorator in decorators)
+        foreach (var decorator in decorators)
         {
-            _debug.AppendLine();
-            _debug.Append(_decorator.GetDebugText(_indentlevel + 1));
+            debug.AppendLine();
+            debug.Append(decorator.GetDebugText(indentLevel + 1));
         }
     }
 }

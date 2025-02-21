@@ -1,3 +1,7 @@
+/// <summary>
+/// Only has two children. Evaluate left child node. If not failure, evaluate 
+/// right child node. State is state of left child node.
+/// </summary>
 public class ParallelNode : Composite
 {
     public ParallelNode(string name, Node leftChild, Node rightChild) : base(name)
@@ -5,6 +9,10 @@ public class ParallelNode : Composite
         children.Add(leftChild);
         children.Add(rightChild);
     }
+    /// <summary>
+    /// Evaluate the left child. If not failure, evaluate right child.
+    /// </summary>
+    /// <returns></returns>
     public override bool Evaluate()
     {
         if (base.Evaluate())
@@ -19,13 +27,13 @@ public class ParallelNode : Composite
         }
         return false;
     }
-    public override void NewLeftmost(Node _child)
-    {
-
-    }
-
-    public override void UpdateLeftmost()
-    {
-
-    }
+    /// <summary>
+    /// Does nothing.
+    /// </summary>
+    /// <param name="child"></param>
+    public override void NewLeftmost(Node child) { }
+    /// <summary>
+    /// Does nothing.
+    /// </summary>
+    public override void UpdateLeftmost() { }
 }

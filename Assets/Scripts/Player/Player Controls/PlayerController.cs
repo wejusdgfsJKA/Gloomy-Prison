@@ -6,22 +6,20 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    //player input component, used for miscellaneous stuff
     protected PlayerInput playerInput;
-    [Header("Movement")]
-    [SerializeField] protected float walkSpeed;
     [Header("Jumping")]
     [SerializeField] protected bool grounded;
-    [SerializeField] protected float jumpHeight;
     protected Vector2 WASD;
     protected CharacterController characterController;
     [Header("Look")]
-    [SerializeField] protected float maxVerticalAngle;
     [SerializeField] protected Transform camPivot;
     protected float xRot, yRot;
     protected Vector2 mouseDelta;
     //interaction stuff
     protected Transform currentInteractable = null;
+    /// <summary>
+    /// The interactable we are currently able to interact with.
+    /// </summary>
     protected Transform currentInteractableProperty
     {
         get
@@ -44,7 +42,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    RaycastHit hit;
+    protected RaycastHit hit;
     [SerializeField] TextMeshProUGUI interactionPrompt;
     protected void Awake()
     {
@@ -62,13 +60,16 @@ public class PlayerController : MonoBehaviour
     {
         grounded = groundCheck();
         Vector3 movedir = transform.forward * WASD.y + transform.right * WASD.x;
-        characterController.Move(movedir.normalized * walkSpeed * Time.deltaTime);
+        characterController.Move(movedir.normalized * Settings.PlayerSpeed * Time.deltaTime);
     }
-    public void UpdateInteractionPrompt()
+    protected void UpdateInteractionPrompt()
     {
         interactionPrompt.text = "[" + playerInput.currentActionMap.
             FindAction("Interact").GetBindingDisplayString() + "] to interact.";
     }
+    /// <summary>
+    /// Check if we are able to interact with anything. Updates currentInteractableProperty accordingly.
+    /// </summary>
     protected void InteractionCheck()
     {
         if (Physics.SphereCast(camPivot.position, characterController.radius,
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour
         mouseDelta = context.ReadValue<Vector2>();
         yRot += mouseDelta.x * PlayerSettings.ySens;
         xRot -= mouseDelta.y * PlayerSettings.xSens;
-        xRot = Mathf.Clamp(xRot, -maxVerticalAngle, maxVerticalAngle);
+        xRot = Mathf.Clamp(xRot, -Settings.MaxPlayerVerticalAngle, Settings.MaxPlayerVerticalAngle);
         camPivot.localRotation = Quaternion.Euler(xRot, 0, 0);
         transform.rotation = Quaternion.Euler(0, yRot, 0);
         InteractionCheck();

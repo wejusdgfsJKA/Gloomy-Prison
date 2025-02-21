@@ -1,13 +1,19 @@
 using System;
+/// <summary>
+/// This node will always be at the bottom of the tree.
+/// </summary>
 public class LeafNode : Node
 {
-    //action node
     protected Func<NodeState> onEvaluate;
-    public LeafNode(string _name, Func<NodeState> _evaluate, Action _enter = null,
-        Action _exit = null) : base(_name, _enter, _exit)
+    public LeafNode(string name, Func<NodeState> evaluate, Action enter = null,
+        Action exit = null) : base(name, enter, exit)
     {
-        onEvaluate = _evaluate;
+        onEvaluate = evaluate;
     }
+    /// <summary>
+    /// If possible, run onEvaluate.
+    /// </summary>
+    /// <returns></returns>
     public override bool Evaluate()
     {
         if (base.Evaluate())

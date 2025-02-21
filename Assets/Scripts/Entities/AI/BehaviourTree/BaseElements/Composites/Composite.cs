@@ -4,6 +4,9 @@ using System.Text;
 public abstract class Composite : Node
 {
     protected List<Node> children = new();
+    /// <summary>
+    /// Contains the indexes of all children in the children list.
+    /// </summary>
     protected Dictionary<Node, int> childrenIndexes = new();
     protected int leftmost;
     public int Leftmost
@@ -21,32 +24,54 @@ public abstract class Composite : Node
             leftmost = 0;
         };
     }
-    public Node AddChild(Node _node)
+    /// <summary>
+    /// Add a child node to this composite node.
+    /// </summary>
+    /// <param name="node">The child node to be added.</param>
+    /// <returns>The child node that was added.</returns>
+    public Node AddChild(Node node)
     {
-        _node.Parent = this;
-        childrenIndexes.Add(_node, children.Count);
-        children.Add(_node);
-        return _node;
+        node.Parent = this;
+        childrenIndexes.Add(node, children.Count);
+        children.Add(node);
+        return node;
     }
-    public abstract void NewLeftmost(Node _child);
+    /// <summary>
+    /// A new child can be evaluated.
+    /// </summary>
+    /// <param name="child">The child that can now be evaluated.</param>
+    public abstract void NewLeftmost(Node child);
+    /// <summary>
+    /// Reconsider what child to evaluate.
+    /// </summary>
     public abstract void UpdateLeftmost();
-    public void ChildInvalid(Node _child)
+    /// <summary>
+    /// This child node is no longer valid. If he was the leftmost child we 
+    /// could evaluate, update leftmost.
+    /// </summary>
+    /// <param name="child">The child node which is now invalid.</param>
+    public void ChildInvalid(Node child)
     {
         //this child is no longer valid
-        if (childrenIndexes[_child] == leftmost)
+        if (childrenIndexes[child] == leftmost)
         {
             UpdateLeftmost();
         }
     }
-    public override void GetDebugTextInternal(StringBuilder _debug, int _indentlevel = 0)
+    /// <summary>
+    /// Return state of this node, services and decorators, as well as its children.
+    /// </summary>
+    /// <param name="debug">StringBuilder object.</param>
+    /// <param name="indentLevel">The level of indentation that we should apply.</param>
+    public override void GetDebugTextInternal(StringBuilder debug, int indentlevel = 0)
     {
-        base.GetDebugTextInternal(_debug, _indentlevel);
-        _debug.AppendLine();
-        _debug.Append("Leftmost: " + leftmost);
+        base.GetDebugTextInternal(debug, indentlevel);
+        debug.AppendLine();
+        debug.Append("Leftmost: " + leftmost);
         foreach (var _child in children)
         {
-            _debug.AppendLine();
-            _child.GetDebugTextInternal(_debug, _indentlevel + 2);
+            debug.AppendLine();
+            _child.GetDebugTextInternal(debug, indentlevel + 2);
         }
     }
 }

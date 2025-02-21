@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     public enum State { Idle = 0, Windup = 1, Release = 2, Recovery = 3, Blocking = 4 }
     [SerializeField]
     protected State currentState = State.Idle;
+    protected float timeStartedBlocking = -1;
     public State CurrentState
     {
         get
@@ -27,20 +28,20 @@ public class Weapon : MonoBehaviour
                 {
                     case State.Idle:
                         usedAlt = false;
-                        feinted = false;
+                        timeStartedBlocking = -1;
                         damageComponent.ExitDamageState();
                         break;
                     case State.Release:
-                        feinted = false;
+                        timeStartedBlocking = -1;
                         damageComponent.EnterDamageState();
                         break;
                     case State.Recovery:
-                        feinted = false;
+                        timeStartedBlocking = -1;
                         damageComponent.ExitDamageState();
                         break;
                     case State.Blocking:
                         usedAlt = false;
-                        feinted = false;
+                        timeStartedBlocking = Time.time;
                         damageComponent.ExitDamageState();
                         break;
                     case State.Windup:
@@ -89,7 +90,6 @@ public class Weapon : MonoBehaviour
             }
         }
     }
-    protected bool usedAlt, feinted;
     public float Reach
     {
         get
@@ -97,13 +97,7 @@ public class Weapon : MonoBehaviour
             return weaponData.Reach;
         }
     }
-    public float JabReach
-    {
-        get
-        {
-            return weaponData.JabReach;
-        }
-    }
+    protected bool usedAlt;
     protected void Awake()
     {
         //get all the necessary components
@@ -126,8 +120,6 @@ public class Weapon : MonoBehaviour
     }
     protected void OnEnable()
     {
-        usedAlt = false;
-        feinted = false;
         ReturnToIdle();
     }
     public BlockResult Block(DmgInfo _dmgInfo)
@@ -177,16 +169,11 @@ public class Weapon : MonoBehaviour
                     ReturnToIdle();
                 }
                 break;
-            case State.Windup:
-                if (block && !feinted)
-                {
-                    animancerComponent.Play(weaponData.BlockAnim, .25f);
-                }
-                break;
         }
     }
     public void PerformAttack(Attack.Type _type, bool _alt = false)
     {
+        usedAlt = _alt;
         switch (currentState)
         {
             case State.Idle:
@@ -195,18 +182,6 @@ public class Weapon : MonoBehaviour
             case State.Blocking:
                 PerformAttack(attacks[_type], _alt);
                 Block(false);
-                break;
-            case State.Windup:
-                if (LastAttack != null)
-                {
-                    if (_type != LastAttack.AttackType && !feinted && LastAttack.Feintable)
-                    {
-                        //perform a feint, WIP
-                        feinted = true;
-                        var atk = attacks[_type];
-                        PerformAttack(atk, _alt);
-                    }
-                }
                 break;
             case State.Recovery:
                 if (LastAttack.AttackType == _type)

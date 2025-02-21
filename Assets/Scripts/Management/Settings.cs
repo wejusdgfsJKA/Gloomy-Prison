@@ -1,13 +1,7 @@
-using UnityEngine;
-
-public class Settings : MonoBehaviour
+public static class Settings
 {
-    public static Settings Instance { get; protected set; }
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
+    public static float TimedBlockWindow { get; set; }
+    public static float PlayerSpeed { get; set; } = 10;
+    public static float PlayerJumpHeight { get; set; } = 1;
+    public static float MaxPlayerVerticalAngle { get; set; } = 85;
 }

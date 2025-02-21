@@ -1,6 +1,17 @@
+/// <summary>
+/// Evaluate first possible node.
+/// If found successfull child node, state is SUCCESS.<br />
+/// If found child node which can be ran, state is RUNNING.<br />
+/// Otherwise state is FAILURE.
+/// </summary>
 public class Selector : Composite
 {
-    public Selector(string _name) : base(_name) { }
+    public Selector(string name) : base(name) { }
+    /// <summary>
+    /// Start with leftmost child which can be evaluated. If leftmost not running,
+    /// continue rightward.<br/>
+    /// </summary>
+    /// <returns>True if found child to evaluate, false otherwise.</returns>
     public override bool Evaluate()
     {
         if (base.Evaluate())
@@ -38,29 +49,40 @@ public class Selector : Composite
         }
         return false;
     }
-    public override void NewLeftmost(Node _child)
+    /// <summary>
+    /// The selector has a new child which it can run. If this child is at the 
+    /// left of the leftmost node which can be currently evaluated, abort leftmost
+    /// and set its value to the new child. Notify parent if necessary.
+    /// </summary>
+    /// <param name="child">The child which can be executed.</param>
+    public override void NewLeftmost(Node child)
     {
-        int _index = childrenIndexes[_child];
-        if (_index >= 0 && _index < children.Count && _index < leftmost)
+        int index;
+        if (childrenIndexes.TryGetValue(child, out index))
         {
-            //we have a new valid node, so we abort the previous running node
-            if (children[leftmost].State == NodeState.RUNNING)
+            if (index < leftmost)
             {
-                children[leftmost].Abort();
-            }
-            leftmost = _index;
-            if (state != NodeState.RUNNING)
-            {
-                if (Parent != null)
+                //we have a new valid node, so we abort the previous running node
+                if (children[leftmost].State == NodeState.RUNNING)
                 {
-                    Parent.NewLeftmost(this);
+                    children[leftmost].Abort();
+                }
+                leftmost = index;
+                if (state != NodeState.RUNNING)
+                {
+                    if (Parent != null)
+                    {
+                        Parent.NewLeftmost(this);
+                    }
                 }
             }
         }
     }
+    /// <summary>
+    /// Find the first node we can run and set it as the leftmost child which we can evaluate.
+    /// </summary>
     public override void UpdateLeftmost()
     {
-        //find the first node we can run and go from there
         int i = 0;
         while (i < children.Count)
         {
