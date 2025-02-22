@@ -27,9 +27,9 @@ public class BlackBoard
         }
 
         public event Action OnValueChanged;
-        public Data(object _value)
+        public Data(object value)
         {
-            Value = _value;
+            Value = value;
         }
     }
     protected Dictionary<string, Data> data = new();
@@ -42,9 +42,10 @@ public class BlackBoard
     /// <param name="value">The value of the resource.</param>
     public void SetData<T>(string key, T value)
     {
-        if (data.ContainsKey(key))
+        Data resource;
+        if (data.TryGetValue(key, out resource))
         {
-            data[key].Value = value;
+            resource.Value = value;
         }
         else
         {
@@ -54,8 +55,8 @@ public class BlackBoard
     /// <summary>
     /// When the value of the resource given by the key changes, the given action will fire.
     /// </summary>
-    /// <param name="_action"></param>
-    /// <param name="_key"></param>
+    /// <param name="action"></param>
+    /// <param name="key"></param>
     public void AddListener(Action action, string key)
     {
         Data resource;
@@ -71,9 +72,10 @@ public class BlackBoard
     /// <param name="key"></param>
     public void RemoveListener(Action action, string key)
     {
-        if (data.ContainsKey(key))
+        Data resource;
+        if (data.TryGetValue(key, out resource))
         {
-            data[key].OnValueChanged -= action;
+            resource.OnValueChanged -= action;
         }
     }
     /// <summary>
@@ -85,9 +87,10 @@ public class BlackBoard
     /// or the default value otherwise.</returns>
     public T GetData<T>(string key)
     {
-        if (data.ContainsKey(key))
+        Data resource;
+        if (data.TryGetValue(key, out resource))
         {
-            return (T)data[key].Value;
+            return (T)resource.Value;
         }
         return default;
     }

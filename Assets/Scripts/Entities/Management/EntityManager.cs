@@ -4,10 +4,22 @@ using UnityEngine;
 //this script will handle taking damage etc.
 public class EntityManager : MonoBehaviour
 {
+    /// <summary>
+    /// The instance of the manager, only one can exist at any given time.
+    /// </summary>
     public static EntityManager Instance { get; protected set; }
-    public Dictionary<string, EntityBase> Roster { get; protected set; }
-    public Dictionary<Transform, EntityBase> Entities { get; protected set; }
-    protected Dictionary<string, Queue<EntityBase>> pool;
+    /// <summary>
+    /// The roster of entities that can be spawned.
+    /// </summary>
+    protected Dictionary<int, EntityBase> roster = new();
+    /// <summary>
+    /// The list of active entities.
+    /// </summary>
+    protected Dictionary<Transform, EntityBase> entities = new();
+    /// <summary>
+    /// The pool of available entities. The key is each entity's internal ID.
+    /// </summary>
+    protected Dictionary<int, Queue<EntityBase>> pool = new();
     protected void Awake()
     {
         if (Instance == null)
@@ -15,85 +27,91 @@ public class EntityManager : MonoBehaviour
             Instance = this;
         }
     }
-    protected void OnEnable()
+    /// <summary>
+    /// Adds a new entity to the manager's roster of possible entitys to spawn.
+    /// </summary>
+    /// <param name="entity">The entity to be added.</param>
+    /// <returns>True if the entity was added succesfully.</returns>
+    public bool AddToRoster(EntityBase entity)
     {
-        Roster = new();
-        Entities = new();
-        pool = new();
-    }
-    public void AddToRoster(EntityData _entityData)
-    {
-        //add an entity to the roster
-        try
+        if (roster.TryAdd(entity.ID, entity))
         {
-            Roster.Add(_entityData.Name, _entityData.Prefab);
-            //Debug.Log("Added " + entityData.Name + " to roster.");
+            pool.Add(entity.ID, new Queue<EntityBase>());
+            return true;
         }
-        catch (System.Exception _e)
-        {
-            Debug.Log(_e.Message);
-        }
-        try
-        {
-            pool.Add(_entityData.Name, new Queue<EntityBase>());
-            //Debug.Log("Added " + entityData.Name + " to roster.");
-        }
-        catch (System.Exception _e)
-        {
-            Debug.Log(_e.Message);
-        }
+        return false;
     }
-    public void RegisterEntity(EntityBase _entity)
+    /// <summary>
+    /// Get an entity from the roster.
+    /// </summary>
+    /// <param name="EntityID">The internal ID of the entity.</param>
+    /// <returns>The entity if it is found in the roster, or null otherwise.</returns>
+    public EntityBase GetFromRoster(int entityID)
     {
-        Entities.Add(_entity.transform, _entity);
-    }
-    public void AddToPool(string _entity)
-    {
-        pool.Add(_entity, new Queue<EntityBase>());
-    }
-    public EntityBase GetFromPool(string _entity)
-    {
-        if (pool[_entity].Count > 0)
+        EntityBase entity;
+        if (roster.TryGetValue(entityID, out entity))
         {
-            return pool[_entity].Dequeue();
+            return entity;
         }
         return null;
     }
-    public void Dead(EntityBase _entity)
+    /// <summary>
+    /// Adds the entity to the manager's list of active entities, so it can be detected and receive attacks.
+    /// </summary>
+    /// <param name="Entity">The entity to be added.</param>
+    public void RegisterEntity(EntityBase entity)
     {
-        //this entity just died
-        try
+        entities.Add(entity.transform, entity);
+    }
+    /// <summary>
+    /// Get an entity from the pool of existing entities.
+    /// </summary>
+    /// <param name="entityID">Internal ID of the entity.</param>
+    /// <param name="createPool">If true, create a new pool if no existing pool is found.</param>
+    /// <returns>An entity instance if a valid one was found, null if the respective pool was empty or didn't exist.</returns>
+    public EntityBase GetFromPool(int entityID, bool createPool)
+    {
+        Queue<EntityBase> queue;
+        if (pool.TryGetValue(entityID, out queue))
         {
-            pool[_entity.Name].Enqueue(_entity);
+            if (queue.Count > 0)
+            {
+                return queue.Dequeue();
+            }
+            return null;
         }
-        catch (KeyNotFoundException)
+        if (createPool)
         {
-            pool.Add(_entity.Name, new Queue<EntityBase>());
-            pool[_entity.Name].Enqueue(_entity);
+            pool.Add(entityID, new Queue<EntityBase>());
+        }
+        return null;
+    }
+    /// <summary>
+    /// An entity has been destroyed.
+    /// </summary>
+    /// <param name="entity">The EntityBase instance that was destroyed.</param>
+    public void Dead(EntityBase entity)
+    {
+        if (entities.Remove(entity.transform))
+        {
+            pool[entity.ID].Enqueue(entity);
         }
     }
-    public void SendAttack(Transform _entity, DmgInfo _dmgInfo)
+    /// <summary>
+    /// Send a target the damage package.
+    /// </summary>
+    /// <param name="target"> The object being attacked. </param>
+    /// <param name="dmgInfo"> The damage package. </param>
+    /// <returns></returns>
+    public bool SendAttack(Transform target, DmgInfo dmgInfo)
     {
         //send the entity the damage package
-        try
+        EntityBase entity;
+        if (entities.TryGetValue(target, out entity))
         {
-            Entities[_entity].ReceiveAttack(_dmgInfo);
+            entity.ReceiveAttack(dmgInfo);
+            return true;
         }
-        catch (System.Exception _e)
-        {
-            Debug.LogException(_e);
-        }
-    }
-    public void SendAttackResult(BlockResult _blockResult, DmgInfo _dmgInfo)
-    {
-        //send the damage dealer information about what happened to the defender
-        try
-        {
-            Entities[_dmgInfo.Owner].ReceiveAttackResult(_blockResult, _dmgInfo);
-        }
-        catch (System.Exception _e)
-        {
-            Debug.LogException(_e);
-        }
+        return false;
     }
 }

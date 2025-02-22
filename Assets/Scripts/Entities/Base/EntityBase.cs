@@ -25,11 +25,11 @@ public class EntityBase : MonoBehaviour
     [SerializeField]
     protected EntityData data;
     protected BlockResult defaultBlockResult = BlockResult.Failure;
-    public string Name
+    public int ID
     {
         get
         {
-            return data.Name;
+            return data.ID;
         }
     }
     public float Reach
@@ -50,28 +50,28 @@ public class EntityBase : MonoBehaviour
         hpComponent = GetComponent<HPComponent>();
         hpComponent.SetMaxHP(data.MaxHp);
     }
-    public void ReceiveAttack(DmgInfo _dmginfo)
+    public void ReceiveAttack(DmgInfo dmginfo)
     {
-        BlockResult _blockresult;
+        BlockResult blockresult;
         if (CurrentWeapon != null)
         {
-            _blockresult = CurrentWeapon.Block(_dmginfo);
+            blockresult = CurrentWeapon.Block(dmginfo);
         }
         else
         {
             //we had no weapon, so we return the default block result
-            _blockresult = defaultBlockResult;
+            blockresult = defaultBlockResult;
         }
-        EntityManager.Instance.SendAttackResult(_blockresult, _dmginfo);
-        switch (_blockresult)
+        EntityManager.Instance.SendAttackResult(blockresult, dmginfo);
+        switch (blockresult)
         {
             //WIP
             case BlockResult.Failure:
                 var a = this;
-                hpComponent.TakeDamage(_dmginfo.Attack.Damage);
+                hpComponent.TakeDamage(dmginfo.Attack.Damage);
                 break;
             case BlockResult.Partial:
-                hpComponent.TakeDamage(_dmginfo.Attack.Damage);
+                hpComponent.TakeDamage(dmginfo.Attack.Damage);
                 break;
         }
     }

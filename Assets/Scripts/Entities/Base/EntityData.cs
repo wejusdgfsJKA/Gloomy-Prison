@@ -4,7 +4,7 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     [field: SerializeField]
-    public string Name { get; protected set; }
+    public int ID { get; protected set; }
     [field: SerializeField]
     public EntityBase Prefab { get; protected set; }
     [field: SerializeField]
