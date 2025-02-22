@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public class BlackBoard
 {
+    /// <summary>
+    /// This is a wrapper for a resource which decorators can keep track of.
+    /// </summary>
     public class Data
     {
         protected object currentValue;
@@ -30,36 +33,61 @@ public class BlackBoard
         }
     }
     protected Dictionary<string, Data> data = new();
-    public void SetData<T>(string _key, T _value)
+    /// <summary>
+    /// Set the value of a resource given by a key. If the key cannot be found, 
+    /// a new pair will be added to the internal HashMap.
+    /// </summary>
+    /// <typeparam name="T">The datatype of the resource.</typeparam>
+    /// <param name="key">The key which will identify the resource.</param>
+    /// <param name="value">The value of the resource.</param>
+    public void SetData<T>(string key, T value)
     {
-        if (data.ContainsKey(_key))
+        if (data.ContainsKey(key))
         {
-            data[_key].Value = _value;
+            data[key].Value = value;
         }
         else
         {
-            data.Add(_key, new Data(_value));
+            data.Add(key, new Data(value));
         }
     }
-    public void AddListener(Action _action, string _key)
+    /// <summary>
+    /// When the value of the resource given by the key changes, the given action will fire.
+    /// </summary>
+    /// <param name="_action"></param>
+    /// <param name="_key"></param>
+    public void AddListener(Action action, string key)
     {
-        if (data.ContainsKey(_key))
+        Data resource;
+        if (data.TryGetValue(key, out resource))
         {
-            data[_key].OnValueChanged += _action;
+            resource.OnValueChanged += action;
         }
     }
-    public void RemoveListener(Action _action, string _key)
+    /// <summary>
+    /// Remove an action that was tied to this resource.
+    /// </summary>
+    /// <param name="action"></param>
+    /// <param name="key"></param>
+    public void RemoveListener(Action action, string key)
     {
-        if (data.ContainsKey(_key))
+        if (data.ContainsKey(key))
         {
-            data[_key].OnValueChanged -= _action;
+            data[key].OnValueChanged -= action;
         }
     }
-    public T GetData<T>(string _key)
+    /// <summary>
+    /// Get data stored at this key.
+    /// </summary>
+    /// <typeparam name="T">The datatype of the resource.</typeparam>
+    /// <param name="key">The key which identifies the resource.</param>
+    /// <returns>Returns the value of the resource if the key is found, 
+    /// or the default value otherwise.</returns>
+    public T GetData<T>(string key)
     {
-        if (data.ContainsKey(_key))
+        if (data.ContainsKey(key))
         {
-            return (T)data[_key].Value;
+            return (T)data[key].Value;
         }
         return default;
     }

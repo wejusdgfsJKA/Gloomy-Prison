@@ -2,8 +2,15 @@ using System;
 using System.Text;
 public class Decorator : ElementBase
 {
+    /// <summary>
+    /// Returns true if all conditions have been passed, 
+    /// false otherwise.
+    /// </summary>
     public Func<bool> OnEvaluate;
     protected bool result = true;
+    /// <summary>
+    /// The result of OnEvaluate.
+    /// </summary>
     public bool Result
     {
         get
@@ -27,36 +34,61 @@ public class Decorator : ElementBase
             }
         }
     }
+    /// <summary>
+    /// Fires when the value of a monitored resource changes.
+    /// </summary>
     protected Action onDataChanged;
-
-    public Action OnPass, OnFail;
-    public Decorator(string _name, Func<bool> _onevaluate)
+    /// <summary>
+    /// Fires when the Decorator has passed all conditions.
+    /// </summary>
+    public Action OnPass;
+    /// <summary>
+    /// Fires when the Decorator is no longer passing all conditions.
+    /// </summary>
+    public Action OnFail;
+    public Decorator(string name, Func<bool> onevaluate)
     {
-        Name = _name;
-        OnEvaluate = _onevaluate;
+        Name = name;
+        OnEvaluate = onevaluate;
         onDataChanged += () =>
         {
             //re-evaluate everytime the value of the data changes
             Result = OnEvaluate();
         };
     }
-    public override void GetDebugTextInternal(StringBuilder _debug, int _indentlevel = 0)
+    /// <summary>
+    /// Get info about this Decorator(Whether it has passed or not).
+    /// </summary>
+    /// <param name="debug">StringBuilder instance.</param>
+    /// <param name="indentlevel">Level of indentation we should apply.</param>
+    public override void GetDebugTextInternal(StringBuilder
+        debug, int indentlevel = 0)
     {
         // apply the indent
-        for (int _index = 0; _index < _indentlevel; ++_index)
+        for (int index = 0; index < indentlevel; ++index)
         {
-            _debug.Append(' ');
+            debug.Append(' ');
         }
-        _debug.Append($"D: {Name} [{(result ? "PASS" : "FAIL")}]");
+        debug.Append($"D: {Name} [{(result ? "PASS" : "FAIL")}]");
     }
-    public void MonitorValue(BlackBoard _data, string _key)
+    /// <summary>
+    /// Begin monitoring a relevant resource.
+    /// </summary>
+    /// <param name="data">Blackboard being monitored.</param>
+    /// <param name="key">The key of the resource we want monitored.</param>
+    public void MonitorValue(BlackBoard data, string key)
     {
         //subscribe to relevant data
-        _data.AddListener(onDataChanged, _key);
+        data.AddListener(onDataChanged, key);
     }
-    public void StopMonitoringValue(BlackBoard _data, string _key)
+    /// <summary>
+    /// Stop monitoring a resource.
+    /// </summary>
+    /// <param name="data">The Blackboard we were monitoring.</param>
+    /// <param name="key">The key of the resource we were monitoring</param>
+    public void StopMonitoringValue(BlackBoard data, string key)
     {
         //unsubscribe from data which is no longer relevant
-        _data.AddListener(onDataChanged, _key);
+        data.RemoveListener(onDataChanged, key);
     }
 }

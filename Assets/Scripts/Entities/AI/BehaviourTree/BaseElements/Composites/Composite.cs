@@ -68,10 +68,10 @@ public abstract class Composite : Node
         base.GetDebugTextInternal(debug, indentlevel);
         debug.AppendLine();
         debug.Append("Leftmost: " + leftmost);
-        foreach (var _child in children)
+        foreach (var child in children)
         {
             debug.AppendLine();
-            _child.GetDebugTextInternal(debug, indentlevel + 2);
+            child.GetDebugTextInternal(debug, indentlevel + 2);
         }
     }
 }
