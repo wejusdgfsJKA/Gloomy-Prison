@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
-
+/// <summary>
+/// Manages an entity's stamina.
+/// </summary>
 public class StaminaComponent : MonoBehaviour
 {
     public int MaxStamina { get; protected set; } = -1;

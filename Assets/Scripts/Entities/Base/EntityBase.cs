@@ -1,8 +1,10 @@
 using UnityEngine;
+/// <summary>
+/// Connects all the other components that make up an entity.
+/// </summary>
 [RequireComponent(typeof(HPComponent))]
 public class EntityBase : MonoBehaviour
 {
-    //is the connection between all the other components
     [SerializeField]
     protected Weapon weapon;
     public Weapon CurrentWeapon
@@ -25,6 +27,9 @@ public class EntityBase : MonoBehaviour
     [SerializeField]
     protected EntityData data;
     protected BlockResult defaultBlockResult = BlockResult.Failure;
+    /// <summary>
+    /// The internal ID of this entity.
+    /// </summary>
     public int ID
     {
         get
@@ -32,6 +37,9 @@ public class EntityBase : MonoBehaviour
             return data.ID;
         }
     }
+    /// <summary>
+    /// How far can the entity reach with its weapon.
+    /// </summary>
     public float Reach
     {
         get
@@ -62,7 +70,7 @@ public class EntityBase : MonoBehaviour
             //we had no weapon, so we return the default block result
             blockresult = defaultBlockResult;
         }
-        EntityManager.Instance.SendAttackResult(blockresult, dmginfo);
+        EntityManager.Instance.SendAttackResult(transform.root, blockresult, dmginfo);
         switch (blockresult)
         {
             //WIP
@@ -75,7 +83,7 @@ public class EntityBase : MonoBehaviour
                 break;
         }
     }
-    public virtual void ReceiveAttackResult(BlockResult _blockResult, DmgInfo _dmginfo)
+    public virtual void ReceiveAttackResult(Transform target, BlockResult blockResult, DmgInfo dmginfo)
     {
 
     }

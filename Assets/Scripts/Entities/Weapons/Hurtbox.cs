@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-//wrapper class for a more reliable hitbox than a trigger collider
+/// <summary>
+/// wrapper class for a more reliable hitbox than a trigger collider
+/// </summary>
 [System.Serializable]
 public class Hurtbox
 {
-    //basic capsule shaped hurtbox
     public int MaxEntities { get; protected set; }
     public LayerMask Mask { get; protected set; }
     public Collider[] Hits { get; protected set; }
@@ -13,13 +14,22 @@ public class Hurtbox
     public Collider Collider { get; protected set; }
     protected CapsuleCollider capsule;
     protected BoxCollider box;
+    /// <summary>
+    /// Used to calculate the direction of travel of the hurtbox, we need this to
+    /// (semi)accurately determine the contact point.
+    /// </summary>
     public LinkedList<Vector3> PreviousPositions { get; protected set; } = null;
     [SerializeField]
     protected int numberOfPreviouses = 2;
-    public void Init(LayerMask _mask, int _maxEntities)
+    /// <summary>
+    /// Only call ONCE PER INSTANCE!
+    /// </summary>
+    /// <param name="mask">The LayerMask we will check against.</param>
+    /// <param name="maxEntities">The maximum number of entities that will be recorded on contact.</param>
+    public void Init(LayerMask mask, int maxEntities)
     {
-        Mask = _mask;
-        MaxEntities = _maxEntities;
+        Mask = mask;
+        MaxEntities = maxEntities;
         Hits = new Collider[MaxEntities];
         if (Collider is CapsuleCollider)
         {
@@ -63,6 +73,10 @@ public class Hurtbox
             }
         }
     }
+    /// <summary>
+    /// Perform a check, returns the number of objects hit.
+    /// </summary>
+    /// <returns>The number of objects hit.</returns>
     public int CheckVolume()
     {
         Array.Clear(Hits, 0, Hits.Length);

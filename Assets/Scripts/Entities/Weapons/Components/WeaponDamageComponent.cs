@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// manages the damage part of a weapon
+/// </summary>
 public class WeaponDamageComponent : MonoBehaviour
 {
-    //manages the damage part of a weapon
     [SerializeField] protected WeaponDamageData data;
+    /// <summary>
+    /// All of the attacks the weapon can perform.
+    /// </summary>
     public Attack[] Attacks
     {
         get
@@ -12,14 +17,40 @@ public class WeaponDamageComponent : MonoBehaviour
             return data.Attacks;
         }
     }
+    /// <summary>
+    /// All the objects the weapon has hit, only registers 
+    /// once for any given root transform.
+    /// </summary>
     public HashSet<Transform> Hits { get; protected set; } = new();
     protected Coroutine coroutine;
     protected WaitForSeconds wait;
+    /// <summary>
+    /// All the hurtboxes of the weapon.
+    /// </summary>
     [SerializeField]
     protected Hurtbox[] hurtboxes = null;
+    /// <summary>
+    /// All of this weapon's hurtboxes.
+    /// </summary>
+    public Hurtbox[] Hurtboxes
+    {
+        get
+        {
+            return hurtboxes;
+        }
+    }
+    /// <summary>
+    /// The damage package the weapon will use.
+    /// </summary>
     protected DmgInfo dmgInfo;
+    /// <summary>
+    /// The attack we are currently using.
+    /// </summary>
 
     [SerializeField] protected Attack currentAttack;
+    /// <summary>
+    /// The attack we are currently using.
+    /// </summary>
     public Attack CurrentAttack
     {
         get
@@ -44,20 +75,25 @@ public class WeaponDamageComponent : MonoBehaviour
         //cache the WaitForSeconds
         wait = new WaitForSeconds(data.CheckInterval);
     }
+    /// <summary>
+    /// Enable the weapon, begin checking for collisions.
+    /// </summary>
     public void EnterDamageState()
     {
         dmgInfo.Attack = CurrentAttack;
-        //the weapon is enabled, so we begin checking for collisions
         for (int i = 0; i < hurtboxes.Length; i++)
         {
+            //reset all hurtboxes
             hurtboxes[i].ResetPreviouses();
         }
         coroutine = StartCoroutine(collisionCheck());
     }
+    /// <summary>
+    /// The weapon is disabled. Stop the collision check
+    /// coroutine and clear the Hits HashMap.
+    /// </summary>
     public void ExitDamageState()
     {
-        //we disable the weapon hurtboxes; this means just
-        //stopping the coroutine and clearing the set of hits
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -67,6 +103,10 @@ public class WeaponDamageComponent : MonoBehaviour
             Hits.Clear();
         }
     }
+    /// <summary>
+    /// While active, check all hurtboxes.
+    /// </summary>
+    /// <returns></returns>
     protected IEnumerator collisionCheck()
     {
         while (true)
@@ -76,6 +116,11 @@ public class WeaponDamageComponent : MonoBehaviour
             yield return wait;
         }
     }
+    /// <summary>
+    /// Check all hurtboxes. If we hit a child of object A, 
+    /// we will ignore any other hits on other children of 
+    /// object A or on A itself.
+    /// </summary>
     protected void checkHurtboxes()
     {
         foreach (var hurtbox in hurtboxes)
@@ -100,6 +145,12 @@ public class WeaponDamageComponent : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Attempt to estimate the contact point with an entity.
+    /// </summary>
+    /// <param name="hurtbox">The hurtbox which scored the hit.</param>
+    /// <param name="hit">The collider we hit.</param>
+    /// <returns></returns>
     protected Vector3 CalculateContactPoint(Hurtbox hurtbox, Collider hit)
     {
         Vector3 point = hurtbox.Collider.ClosestPointOnBounds(hit.transform.position);
@@ -117,12 +168,12 @@ public class WeaponDamageComponent : MonoBehaviour
         //Debug.DrawLine(point, hit.transform.GetComponent<EntityBase>().GetBlockPoint().position, Color.red, 10);
         return point;
     }
+    /// <summary>
+    /// Send the damage package to the target;
+    /// </summary>
+    /// <param name="target">The target we are trying to damage.</param>
     protected void DealDamage(Transform target)
     {
         EntityManager.Instance.SendAttack(target, dmgInfo);
-    }
-    public Hurtbox[] GetHurtboxes()
-    {
-        return hurtboxes;
     }
 }

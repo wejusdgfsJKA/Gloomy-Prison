@@ -114,4 +114,22 @@ public class EntityManager : MonoBehaviour
         }
         return false;
     }
+    /// <summary>
+    /// Notify a damage source that they have hit a target.
+    /// </summary>
+    /// <param name="target">The entity that was struck.</param>
+    /// <param name="blockResult">Whether the target blocked or not.</param>
+    /// <param name="dmgInfo">The damage package.</param>
+    /// <returns>True if the owner of the damage package was 
+    /// found, false otherwise.</returns>
+    public bool SendAttackResult(Transform target, BlockResult blockResult, DmgInfo dmgInfo)
+    {
+        EntityBase entity;
+        if (entities.TryGetValue(dmgInfo.Owner, out entity))
+        {
+
+            return true;
+        }
+        return false;
+    }
 }
