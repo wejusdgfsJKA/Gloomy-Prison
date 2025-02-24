@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// manages the damage part of a weapon
+/// Manages the damage part of a weapon.
 /// </summary>
 public class WeaponDamageComponent : MonoBehaviour
 {

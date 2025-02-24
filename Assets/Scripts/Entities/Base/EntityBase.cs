@@ -58,6 +58,10 @@ public class EntityBase : MonoBehaviour
         hpComponent = GetComponent<HPComponent>();
         hpComponent.SetMaxHP(data.MaxHp);
     }
+    protected virtual void OnEnable()
+    {
+        EntityManager.Instance.RegisterEntity(this);
+    }
     public void ReceiveAttack(DmgInfo dmginfo)
     {
         BlockResult blockresult;

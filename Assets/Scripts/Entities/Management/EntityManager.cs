@@ -15,7 +15,7 @@ public class EntityManager : MonoBehaviour
     /// <summary>
     /// The list of active entities.
     /// </summary>
-    protected Dictionary<Transform, EntityBase> entities = new();
+    public Dictionary<Transform, EntityBase> Entities = new();
     /// <summary>
     /// The pool of available entities. The key is each entity's internal ID.
     /// </summary>
@@ -32,9 +32,9 @@ public class EntityManager : MonoBehaviour
     /// </summary>
     /// <param name="entity">The entity to be added.</param>
     /// <returns>True if the entity was added succesfully.</returns>
-    public bool AddToRoster(EntityBase entity)
+    public bool AddToRoster(EntityData entity)
     {
-        if (roster.TryAdd(entity.ID, entity))
+        if (roster.TryAdd(entity.ID, entity.Prefab))
         {
             pool.Add(entity.ID, new Queue<EntityBase>());
             return true;
@@ -61,7 +61,7 @@ public class EntityManager : MonoBehaviour
     /// <param name="Entity">The entity to be added.</param>
     public void RegisterEntity(EntityBase entity)
     {
-        entities.Add(entity.transform, entity);
+        Entities.Add(entity.transform, entity);
     }
     /// <summary>
     /// Get an entity from the pool of existing entities.
@@ -92,7 +92,7 @@ public class EntityManager : MonoBehaviour
     /// <param name="entity">The EntityBase instance that was destroyed.</param>
     public void Dead(EntityBase entity)
     {
-        if (entities.Remove(entity.transform))
+        if (Entities.Remove(entity.transform))
         {
             pool[entity.ID].Enqueue(entity);
         }
@@ -107,7 +107,7 @@ public class EntityManager : MonoBehaviour
     {
         //send the entity the damage package
         EntityBase entity;
-        if (entities.TryGetValue(target, out entity))
+        if (Entities.TryGetValue(target, out entity))
         {
             entity.ReceiveAttack(dmgInfo);
             return true;
@@ -125,7 +125,7 @@ public class EntityManager : MonoBehaviour
     public bool SendAttackResult(Transform target, BlockResult blockResult, DmgInfo dmgInfo)
     {
         EntityBase entity;
-        if (entities.TryGetValue(dmgInfo.Owner, out entity))
+        if (Entities.TryGetValue(dmgInfo.Owner, out entity))
         {
 
             return true;

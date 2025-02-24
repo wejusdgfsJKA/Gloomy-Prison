@@ -13,12 +13,12 @@ public class CombatStart : MonoBehaviour
     {
         if (Dave)
         {
-            spawner.Spawn("Dave", DaveSpawn.position, DaveSpawn.rotation);
+            //spawner.Spawn("Dave", DaveSpawn.position, DaveSpawn.rotation);
             Dave = false;
         }
         if (Dummy)
         {
-            spawner.Spawn("EvilDave", DummySpawn.position, DummySpawn.rotation);
+            //spawner.Spawn("EvilDave", DummySpawn.position, DummySpawn.rotation);
             Dummy = false;
         }
     }

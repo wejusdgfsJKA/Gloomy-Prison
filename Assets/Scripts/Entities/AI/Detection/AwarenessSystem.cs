@@ -2,13 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+/// <summary>
+/// Handles target awareness.
+/// </summary>
 public class AwarenessSystem : MonoBehaviour
 {
     [SerializeField] protected DetectionParameters parameters;
+    /// <summary>
+    /// Where does the entity see from?
+    /// </summary>
     [SerializeField] protected Transform eye;
     protected WaitForSeconds wait;
     protected Coroutine coroutine;
+    /// <summary>
+    /// All the targets we have knowledge of. Includes targets
+    /// we have spotted some time ago but we have no recent
+    /// information on.
+    /// </summary>
     public Dictionary<Transform, TargetData> Targets { get; protected set; } = new();
+    /// <summary>
+    /// The target closest to us.
+    /// </summary>
     public TargetData ClosestTarget { get; protected set; }
     protected void Awake()
     {
@@ -28,6 +42,10 @@ public class AwarenessSystem : MonoBehaviour
         }
         Targets.Clear();
     }
+    /// <summary>
+    /// Update loop.
+    /// </summary>
+    /// <returns></returns>
     protected IEnumerator enumerator()
     {
         while (true)
@@ -37,87 +55,112 @@ public class AwarenessSystem : MonoBehaviour
             Detect();
         }
     }
+    /// <summary>
+    /// Handles visual detection.
+    /// </summary>
     protected void Detect()
     {
-        var _teams = DetectionManager.Instance.Teams;
-        if (_teams != null)
+        var teams = DetectionManager.Instance.Teams;
+        for (int i = 0; i < teams.Count; i++)
         {
-            for (int i = 0; i < _teams.Length; i++)
+            if (teams[i] != transform.root.gameObject.layer)
             {
-                if (_teams[i] != transform.root.gameObject.layer.ToString())
+                //this is an enemy team
+                var team = DetectionManager.Instance.Targets[teams[i]];
+                foreach (Transform entity in team)
                 {
-                    //this is an enemy team
-                    var _team = DetectionManager.Instance.Targets[_teams[i]];
-                    foreach (Transform _entity in _team)
+                    //we go through all entities in this team and check if we
+                    //can detect them by sight or proximity
+                    if (InProximity(entity) || CanSee(entity))
                     {
-                        //we go through all entities in this team and check if we
-                        //can detect them by sight or proximity
-                        if (InProximity(_entity) || CanSee(_entity))
-                        {
-                            //we can see this entity or it is very close to us
-                            HasDetected(_entity);
-                        }
-                        //hearing is handled separately
+                        //we can see this entity or it is very close to us
+                        HasDetected(entity);
                     }
+                    //hearing is handled separately
                 }
             }
         }
     }
+    /// <summary>
+    /// Remove targets which have been destroyed or have not been detected for a 
+    /// long time. Refresh data on targets which have been recently spotted and update
+    /// closest target.
+    /// </summary>
     protected void ProcessInformation()
     {
-        Queue<Transform> _queue = new Queue<Transform>();
+        Queue<Transform> queue = new Queue<Transform>();
+
         ClosestTarget = null;
+        float distToClosest = -1;
+
         //we determine the closest target to us here for efficiency's sake
-        foreach (var _data in Targets)
+        foreach (var data in Targets)
         {
-            if (!_data.Key.gameObject.activeSelf)
+            if (!data.Key.gameObject.activeSelf)
             {
                 //this entity has been deactivated
-                _queue.Enqueue(_data.Key);
+                queue.Enqueue(data.Key);
                 continue;
             }
-            if (Time.time - _data.Value.TimeLastDetected >= parameters.TimeToForget)
+
+            if (Time.time - data.Value.TimeLastDetected >= parameters.TimeToForget)
             {
                 //we will forget this target
-                _queue.Enqueue(_data.Key);
+                queue.Enqueue(data.Key);
                 continue;
             }
-            if (_data.Value.Spotted || Time.time - _data.Value.TimeLastDetected <= parameters.TimeToLose)
+
+            if (data.Value.Spotted || Time.time - data.Value.TimeLastDetected <= parameters.TimeToLose)
             {
-                _data.Value.WeakRefresh();
+                data.Value.WeakRefresh();
             }
+
             if (ClosestTarget == null || !Targets.ContainsKey(ClosestTarget.Target))
             {
-                ClosestTarget = _data.Value;
+                ClosestTarget = data.Value;
+                distToClosest = (transform.position - ClosestTarget.KnownPos).
+                    sqrMagnitude;
             }
             else
             {
-                float dist = (transform.position - ClosestTarget.KnownPos).sqrMagnitude;
-                float newdist = (transform.position - _data.Value.KnownPos).sqrMagnitude;
-                if (newdist - dist > 1)
+                float newDist = (transform.position - data.Value.KnownPos).sqrMagnitude;
+                if (newDist - distToClosest < 1)
                 {
-                    ClosestTarget = _data.Value;
+                    //we have a new closest target
+                    ClosestTarget = data.Value;
+                    distToClosest = (transform.position - ClosestTarget.KnownPos).
+                        sqrMagnitude;
                 }
             }
         }
-        while (_queue.Count > 0)
+
+        //remove targets which were destroyed or we forgot about
+        while (queue.Count > 0)
         {
             //we can't remove targets in the foreach loop, we must do it separately
-            Targets.Remove(_queue.Dequeue());
+            Targets.Remove(queue.Dequeue());
         }
     }
-    protected void HasDetected(Transform t)
+    /// <summary>
+    /// We have detected a target.
+    /// </summary>
+    /// <param name="target">The target we have detected.</param>
+    protected void HasDetected(Transform target)
     {
-        //we have detected this target
-        try
+        TargetData data;
+        if (Targets.TryGetValue(target, out data))
         {
-            Targets[t].Refresh();
+            data.Refresh();
         }
-        catch (KeyNotFoundException)
+        else
         {
-            Targets.Add(t, new TargetData(t));
+            Targets.Add(target, new TargetData(target));
         }
     }
+    /// <summary>
+    /// Notify this entity of a sound.
+    /// </summary>
+    /// <param name="sound">The sound we heard.</param>
     public void Hear(Sound sound)
     {
         if (CanHear(sound))
@@ -125,11 +168,20 @@ public class AwarenessSystem : MonoBehaviour
             HasDetected(sound.Data.Source);
         }
     }
+    /// <summary>
+    /// Can we hear a given sound? WIP
+    /// </summary>
+    /// <param name="sound">The sound in question.</param>
+    /// <returns>True if we can hear the sound.</returns>
     protected bool CanHear(Sound sound)
     {
-        //can we hear a given sound? WIP
         return Vector3.Distance(transform.position, sound.Data.Source.position) <= parameters.HearingRange;
     }
+    /// <summary>
+    /// Checks if we can see a target.
+    /// </summary>
+    /// <param name="target">The target in question.</param>
+    /// <returns>True if we can see a target.</returns>
     protected bool CanSee(Transform target)
     {
         Vector3 VectorToTarget = target.position - transform.position;
@@ -151,6 +203,11 @@ public class AwarenessSystem : MonoBehaviour
         }
         return true;
     }
+    /// <summary>
+    /// Check if an entity is very close to us.
+    /// </summary>
+    /// <param name="target">The entity in question.</param>
+    /// <returns>True if the entity is in range of proximity detection.</returns>
     protected bool InProximity(Transform target)
     {
         //simple distance check for now

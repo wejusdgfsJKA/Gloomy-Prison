@@ -3,94 +3,106 @@ using UnityEngine;
 
 public class DetectionManager : MonoBehaviour
 {
-    public static DetectionManager Instance { get; private set; }
-    public Dictionary<string, HashSet<Transform>> Targets { get; private set; } = new();
-    public Dictionary<string, HashSet<AwarenessSystem>> Listeners { get; private set; } = new();
-    public string[] Teams { get; private set; }
-    private void Awake()
+    public static DetectionManager Instance { get; protected set; }
+    /// <summary>
+    /// All targets which can be heard.
+    /// </summary>
+    public Dictionary<int, HashSet<Transform>> Targets { get; protected set; } = new();
+    /// <summary>
+    /// All sensors which can hear noises.
+    /// </summary>
+    public Dictionary<int, HashSet<AwarenessSystem>> Listeners { get; protected set; } = new();
+    public List<int> Teams { get; protected set; } = new();
+    protected void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
     }
-    public void SetTeams(string[] _teams)
-    {
-        Teams = _teams;
-        for (int i = 0; i < _teams.Length; i++)
-        {
-            if (!Targets.ContainsKey(_teams[i]))
-            {
-                Targets.Add(_teams[i], new HashSet<Transform>());
-            }
-            if (!Listeners.ContainsKey(_teams[i]))
-            {
-                Listeners.Add(_teams[i], new HashSet<AwarenessSystem>());
-            }
-        }
-    }
-    public void RegisterTarget(Transform _entity)
+    /// <summary>
+    /// This entity can now be detected.
+    /// </summary>
+    /// <param name="entity">The entity in question.</param>
+    public void RegisterTarget(Transform entity)
     {
         //each team will be identified by a layer
-        try
+        HashSet<Transform> targets;
+        if (Targets.TryGetValue(entity.gameObject.layer, out targets))
         {
-            Targets[_entity.gameObject.layer.ToString()].Add(_entity);
+            targets.Add(entity);
         }
-        catch (KeyNotFoundException)
+        else
         {
-            Targets.Add(_entity.gameObject.layer.ToString(), new HashSet<Transform>());
-            Targets[_entity.gameObject.layer.ToString()].Add(_entity);
+            Teams.Add(entity.gameObject.layer);
+            targets = new HashSet<Transform>() { entity };
+            Targets.Add(entity.gameObject.layer, targets);
         }
-        //Debug.Log("Registered " + _entity.name + " in team " + _entity.gameObject.layer.ToString());
     }
-    public void DeRegisterTarget(Transform _entity)
+    /// <summary>
+    /// This target can no longer be detected, likely because it has been destroyed.
+    /// </summary>
+    /// <param name="entity">The entity that can no longer be detected.</param>
+    public void DeRegisterTarget(Transform entity)
     {
-        try
+        HashSet<Transform> targets;
+        if (Targets.TryGetValue(entity.gameObject.layer, out targets))
         {
-            Targets[_entity.gameObject.layer.ToString()].Remove(_entity);
-        }
-        catch (KeyNotFoundException)
-        {
-            //we don't need to do anything
+            targets.Remove(entity);
         }
     }
-    public void MakeNoise(Sound _sound)
+    /// <summary>
+    /// Make a noise which will be picked up by any sensors which are not on the 
+    /// same team as the source of the sound.
+    /// </summary>
+    /// <param name="sound">The sound being emitted.</param>
+    public void MakeNoise(Sound sound)
     {
         //we must notify all relevant listeners
-        foreach (var _team in Teams)
+        HashSet<AwarenessSystem> listeners;
+        for (int i = 0; i < Teams.Count; i++)
         {
-            if (_team != _sound.Data.Source.gameObject.layer.ToString())
+            if (Teams[i] != sound.Data.Source.gameObject.layer)
             {
-                //this is an enemy team of the source
-                foreach (var _sensor in Listeners[_team])
+                if (Listeners.TryGetValue(Teams[i], out listeners))
                 {
-                    _sensor.Hear(_sound);
+                    foreach (var listener in listeners)
+                    {
+                        listener.Hear(sound);
+                    }
                 }
             }
         }
     }
+    /// <summary>
+    /// This sensor is now active.
+    /// </summary>
+    /// <param name="sensor">The sensor in question.</param>
     public void RegisterListener(AwarenessSystem sensor)
     {
-        try
+        //each team will be identified by a layer
+        HashSet<AwarenessSystem> listeners;
+        if (Listeners.TryGetValue(sensor.gameObject.layer, out listeners))
         {
-            Listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
+            listeners.Add(sensor);
         }
-        catch (KeyNotFoundException)
+        else
         {
-            Listeners.Add(sensor.transform.root.gameObject.layer.ToString(), new HashSet<AwarenessSystem>());
-            Listeners[sensor.transform.root.gameObject.layer.ToString()].Add(sensor);
+            Teams.Add(sensor.gameObject.layer);
+            listeners = new HashSet<AwarenessSystem>() { sensor };
+            Listeners.Add(sensor.gameObject.layer, listeners);
         }
-        //Debug.Log(sensor.transform.root);
     }
+    /// <summary>
+    /// This sensor is no longer active.
+    /// </summary>
+    /// <param name="sensor">The sensor in question.</param>
     public void DeRegisterListener(AwarenessSystem sensor)
     {
-        try
+        HashSet<AwarenessSystem> listeners;
+        if (Listeners.TryGetValue(sensor.gameObject.layer, out listeners))
         {
-            Listeners[sensor.transform.root.gameObject.layer.ToString()].Remove(sensor);
-        }
-        catch (KeyNotFoundException)
-        {
-            //we don't need to do anything
+            listeners.Remove(sensor);
         }
     }
 }

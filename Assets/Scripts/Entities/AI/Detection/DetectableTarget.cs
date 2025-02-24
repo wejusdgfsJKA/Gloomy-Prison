@@ -1,12 +1,13 @@
 using UnityEngine;
 
+[RequireComponent(typeof(EntityBase))]
 public class DetectableTarget : MonoBehaviour
 {
-    private void OnEnable()
+    protected void OnEnable()
     {
         DetectionManager.Instance.RegisterTarget(transform.root);
     }
-    private void OnDisable()
+    protected void OnDisable()
     {
         DetectionManager.Instance.DeRegisterTarget(transform.root);
     }

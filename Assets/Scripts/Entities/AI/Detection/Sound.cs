@@ -3,6 +3,9 @@ using UnityEngine;
 [System.Serializable]
 public class Sound : ScriptableObject
 {
+    /// <summary>
+    /// Currently unused.
+    /// </summary>
     public float Intensity { get; protected set; }
     public SoundData Data { get; protected set; }
 }
