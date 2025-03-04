@@ -166,10 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87258ed7661580d41a39bf126b8b564c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
   grounded: 0
-  jumpHeight: 1
-  maxVerticalAngle: 75
   camPivot: {fileID: 5181882756510126066}
   interactionPrompt: {fileID: 1626919304349631646}
 --- !u!114 &4407096350717195780
@@ -184,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b01f0dbb1d94f4ba649271b59d398f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentWeapon>k__BackingField: {fileID: 0}
 --- !u!114 &602809983553690730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,55 +323,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4407096350717195780}
         m_TargetAssemblyTypeName: PlayerWeaponController, Assembly-CSharp
-        m_MethodName: OnOverhead
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7ff9ff9b-132f-46fc-af56-0b5923a4c222
-    m_ActionName: Player_Normal/Overhead[/Mouse/backButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4407096350717195780}
-        m_TargetAssemblyTypeName: PlayerWeaponController, Assembly-CSharp
-        m_MethodName: OnChargeUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3db57d97-ef88-4a87-877f-42be773f6bdd
-    m_ActionName: Player_Normal/ChargeUp[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4407096350717195780}
-        m_TargetAssemblyTypeName: PlayerWeaponController, Assembly-CSharp
-        m_MethodName: OnKick
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 74335e8e-0ee8-422f-aac2-2226e933522c
-    m_ActionName: Player_Normal/Kick[/Keyboard/f]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4407096350717195780}
-        m_TargetAssemblyTypeName: PlayerWeaponController, Assembly-CSharp
-        m_MethodName: OnShove
+        m_MethodName: OnBash
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

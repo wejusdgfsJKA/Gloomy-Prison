@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 /// <summary>
 /// Connects all the other components that make up an entity.
 /// </summary>
@@ -19,6 +20,7 @@ public class EntityBase : MonoBehaviour
             if (weapon != null)
             {
                 weapon.StaminaComp = StaminaComp;
+                OnStagger.AddListener(weapon.Interrupt);
             }
         }
     }
@@ -51,17 +53,28 @@ public class EntityBase : MonoBehaviour
             return 0;
         }
     }
+    /// <summary>
+    /// Fires when the entity is staggered.
+    /// </summary>
+    public UnityEvent OnStagger { get; set; }
     protected virtual void Awake()
     {
         StaminaComp = GetComponent<StaminaComponent>();
         StaminaComp?.SetMaxStamina(data.MaxStamina);
+
         hpComponent = GetComponent<HPComponent>();
         hpComponent.SetMaxHP(data.MaxHp);
+
+        CurrentWeapon = GetComponentInChildren<Weapon>();
     }
     protected virtual void OnEnable()
     {
         EntityManager.Instance.RegisterEntity(this);
     }
+    /// <summary>
+    /// Receive a damage package, check if we blocked the attack.
+    /// </summary>
+    /// <param name="dmginfo">The damage package.</param>
     public void ReceiveAttack(DmgInfo dmginfo)
     {
         BlockResult blockresult;
@@ -77,13 +90,39 @@ public class EntityBase : MonoBehaviour
         EntityManager.Instance.SendAttackResult(transform.root, blockresult, dmginfo);
         switch (blockresult)
         {
-            //WIP
+            case BlockResult.Success:
+                StaminaComp.DrainStamina(dmginfo.Attack.StaminaDamage);
+                break;
             case BlockResult.Failure:
-                var a = this;
-                hpComponent.TakeDamage(dmginfo.Attack.Damage);
+                TakeDamage(dmginfo);
                 break;
             case BlockResult.Partial:
-                hpComponent.TakeDamage(dmginfo.Attack.Damage);
+                //also take stamina damage
+                TakeDamage(dmginfo);
+                StaminaComp.DrainStamina(dmginfo.Attack.StaminaDamage);
+                break;
+        }
+    }
+    /// <summary>
+    /// Take damage and, if appropriately, get stunned.
+    /// </summary>
+    /// <param name="dmginfo">The damage package.</param>
+    protected void TakeDamage(DmgInfo dmginfo)
+    {
+        hpComponent.TakeDamage(dmginfo.Attack.Damage);
+        switch (data.StunResist)
+        {
+            case StunResist.Weak:
+                OnStagger?.Invoke();
+                break;
+            case StunResist.Normal:
+                if (dmginfo.Attack.AtkWeight == Attack.Weight.Normal)
+                {
+                    OnStagger?.Invoke();
+                }
+                break;
+            default:
+                OnStagger?.Invoke();
                 break;
         }
     }

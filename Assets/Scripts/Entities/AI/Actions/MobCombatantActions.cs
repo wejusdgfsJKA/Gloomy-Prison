@@ -8,12 +8,9 @@ public class MobCombatantActions : MobActions
             return entity;
         }
     }
-    public void PerformAttack(Attack.Type _type)
+    public void PerformAttack(Attack.Type type)
     {
-        if (_type != Attack.Type.Kick)
-        {
-            entity.CurrentWeapon.PerformAttack(_type);
-        }
+        entity.CurrentWeapon.PerformAttack(type);
     }
     public void Block(bool block)
     {

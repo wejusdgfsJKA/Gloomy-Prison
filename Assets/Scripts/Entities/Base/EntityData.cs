@@ -1,4 +1,10 @@
 using UnityEngine;
+
+/// <summary>
+/// Weak entities will get stunned by light attacks.
+/// </summary>
+public enum StunResist { Weak, Normal }
+
 /// <summary>
 /// Contains all the relevant information about an entity.
 /// </summary>
@@ -20,4 +26,6 @@ public class EntityData : ScriptableObject
     public int MaxHp { get; protected set; }
     [field: SerializeField]
     public int MaxStamina { get; protected set; }
+    [field: SerializeField]
+    public StunResist StunResist { get; protected set; } = StunResist.Weak;
 }

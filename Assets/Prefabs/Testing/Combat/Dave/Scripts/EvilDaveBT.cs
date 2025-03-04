@@ -35,25 +35,7 @@ public class EvilDaveBT : MobCombatantBT
         () =>
         {
             actions.FaceTarget(localMemory.GetData<EntityBase>("Target").transform.position);
-            var _wpnstate = actions.GetEntity.CurrentWeapon.CurrentState;
-            if (_wpnstate != Weapon.State.Windup && _wpnstate != Weapon.State.Release)
-            {
-                int i = Random.Range(0, 2);
-                Attack.Type _type = Attack.Type.Kick;
-                switch (i)
-                {
-                    case 0:
-                        _type = Attack.Type.Light;
-                        break;
-                    case 1:
-                        _type = Attack.Type.Thrust;
-                        break;
-                    case 2:
-                        _type = Attack.Type.Overhead;
-                        break;
-                }
-                actions.PerformAttack(_type);
-            }
+
             return NodeState.RUNNING;
         },
         () =>

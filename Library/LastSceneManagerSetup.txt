@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Prefabs/Testing/Combat/CombatArena.unity
+- path: Assets/MainScenes/MainMenuScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

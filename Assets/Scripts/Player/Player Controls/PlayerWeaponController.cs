@@ -9,7 +9,7 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (context.started)
         {
-            CurrentWeapon?.PerformAttack(Attack.Type.Light);
+            CurrentWeapon?.PerformAttack(Attack.Type.Strike);
         }
     }
     public void OnThrust(InputAction.CallbackContext context)
@@ -17,20 +17,6 @@ public class PlayerWeaponController : MonoBehaviour
         if (context.started)
         {
             CurrentWeapon?.PerformAttack(Attack.Type.Thrust);
-        }
-    }
-    public void OnOverhead(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            CurrentWeapon?.PerformAttack(Attack.Type.Overhead);
-        }
-    }
-    public void OnChargeUp(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-
         }
     }
     public void OnBlock(InputAction.CallbackContext context)
@@ -44,14 +30,7 @@ public class PlayerWeaponController : MonoBehaviour
             CurrentWeapon?.Block(false);
         }
     }
-    public void OnKick(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-
-        }
-    }
-    public void OnShove(InputAction.CallbackContext context)
+    public void OnBash(InputAction.CallbackContext context)
     {
         if (context.started)
         {

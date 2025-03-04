@@ -69,34 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Overhead",
-                    "type": "Button",
-                    "id": "7ff9ff9b-132f-46fc-af56-0b5923a4c222",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChargeUp",
-                    "type": "Button",
-                    "id": "3db57d97-ef88-4a87-877f-42be773f6bdd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Kick",
-                    "type": "Button",
-                    "id": "74335e8e-0ee8-422f-aac2-2226e933522c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Shove",
+                    "name": "Bash",
                     "type": "Button",
                     "id": "37bfa439-2a63-434d-a5c8-45f1f169611a",
                     "expectedControlType": "Button",
@@ -229,45 +202,12 @@
                 },
                 {
                     "name": "",
-                    "id": "9029d0ee-827d-4a35-bd91-502a918959a9",
-                    "path": "<Mouse>/backButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Overhead",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f7a39aa1-e06b-4dbf-bc79-6724fc4edac5",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChargeUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6e3520ed-4ae4-444e-9a86-8a2e9903f525",
+                    "id": "74b8dfc6-70ed-428b-9717-11af649e548a",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Kick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "74b8dfc6-70ed-428b-9717-11af649e548a",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shove",
+                    "action": "Bash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
