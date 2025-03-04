@@ -5,24 +5,20 @@ using UnityEngine.Events;
 /// </summary>
 public class StaminaComponent : MonoBehaviour
 {
-    public int MaxStamina { get; protected set; } = -1;
+    public int MaxStamina { get; set; }
     public int CurrentStamina { get; protected set; }
+    /// <summary>
+    /// Fires when this entity runs out of stamina.
+    /// </summary>
     [field: SerializeField]
     public UnityEvent OnStagger { get; protected set; }
-    public void SetMaxStamina(int maxhp)
-    {
-        if (MaxStamina < 0)
-        {
-            MaxStamina = maxhp;
-        }
-    }
     public void Reset()
     {
         CurrentStamina = MaxStamina;
     }
-    public bool DrainStamina(int _value)
+    public bool DrainStamina(int value)
     {
-        CurrentStamina -= _value;
+        CurrentStamina -= value;
         if (CurrentStamina <= 0)
         {
             OnStagger?.Invoke();
@@ -30,4 +26,5 @@ public class StaminaComponent : MonoBehaviour
         }
         return true;
     }
+
 }

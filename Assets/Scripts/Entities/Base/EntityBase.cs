@@ -4,6 +4,7 @@ using UnityEngine.Events;
 /// Connects all the other components that make up an entity.
 /// </summary>
 [RequireComponent(typeof(HPComponent))]
+[RequireComponent(typeof(StaminaComponent))]
 public class EntityBase : MonoBehaviour
 {
     [SerializeField]
@@ -60,10 +61,10 @@ public class EntityBase : MonoBehaviour
     protected virtual void Awake()
     {
         StaminaComp = GetComponent<StaminaComponent>();
-        StaminaComp?.SetMaxStamina(data.MaxStamina);
+        StaminaComp.MaxStamina = data.MaxStamina;
 
         hpComponent = GetComponent<HPComponent>();
-        hpComponent.SetMaxHP(data.MaxHp);
+        hpComponent.MaxHP = data.MaxHp;
 
         CurrentWeapon = GetComponentInChildren<Weapon>();
     }
@@ -88,19 +89,9 @@ public class EntityBase : MonoBehaviour
             blockresult = defaultBlockResult;
         }
         EntityManager.Instance.SendAttackResult(transform.root, blockresult, dmginfo);
-        switch (blockresult)
+        if (blockresult != BlockResult.Success)
         {
-            case BlockResult.Success:
-                StaminaComp.DrainStamina(dmginfo.Attack.StaminaDamage);
-                break;
-            case BlockResult.Failure:
-                TakeDamage(dmginfo);
-                break;
-            case BlockResult.Partial:
-                //also take stamina damage
-                TakeDamage(dmginfo);
-                StaminaComp.DrainStamina(dmginfo.Attack.StaminaDamage);
-                break;
+            TakeDamage(dmginfo);
         }
     }
     /// <summary>

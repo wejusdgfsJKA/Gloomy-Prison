@@ -1,5 +1,7 @@
 using UnityEngine;
-
+/// <summary>
+/// In this state the weapon blocks attacks in a cone in front of the wielder.
+/// </summary>
 public class WeaponBlockState : WeaponState
 {
     public WeaponBlockState(Weapon weapon)

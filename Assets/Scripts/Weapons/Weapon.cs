@@ -14,7 +14,6 @@ public class Weapon : MonoBehaviour
     protected WeaponReleaseState releaseState;
     protected WeaponRecoveryState recoveryState;
     protected WeaponBlockState blockState;
-
     /// <summary>
     /// When we started blocking. If -1, means we are not blocking.
     /// </summary>
@@ -41,10 +40,19 @@ public class Weapon : MonoBehaviour
     }
     [SerializeField]
     protected WeaponData weaponData;
+    /// <summary>
+    /// The weapon's DamageComponent.
+    /// </summary>
     public WeaponDamageComponent DamageComp { get; protected set; }
+    /// <summary>
+    /// The weapon's BlockComponent.
+    /// </summary>
     public WeaponBlockComponent BlockComp { get; protected set; }
     protected AnimancerComponent animancerComponent;
     protected StaminaComponent staminaComponent;
+    /// <summary>
+    /// A reference to the wielder's stamina component.
+    /// </summary>
     public StaminaComponent StaminaComp
     {
         get
@@ -76,6 +84,9 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// How far the weapon can reach.
+    /// </summary>
     public float Reach
     {
         get
@@ -83,6 +94,9 @@ public class Weapon : MonoBehaviour
             return weaponData.Reach;
         }
     }
+    /// <summary>
+    /// If we previously used the alternate version of an attack. Used for combo logic.
+    /// </summary>
     public bool UsedAlt { get; set; }
     /// <summary>
     /// If false, we can perform a feint.
@@ -123,7 +137,7 @@ public class Weapon : MonoBehaviour
         ReturnToIdle();
     }
     /// <summary>
-    /// Check if we successfully blocked an attack.
+    /// Check if we successfully blocked an attack. Drain stamina accordingly.
     /// </summary>
     /// <param name="dmgInfo">The damage package.</param>
     /// <returns>A BlockResult type.</returns>
@@ -144,6 +158,10 @@ public class Weapon : MonoBehaviour
         }
         return BlockResult.Failure;
     }
+    /// <summary>
+    /// Start or stop blocking.
+    /// </summary>
+    /// <param name="block">Start blocking if true, stop blocking otherwise.</param>
     public void Block(bool block)
     {
         if (block)
@@ -163,6 +181,11 @@ public class Weapon : MonoBehaviour
             ReturnToIdle();
         }
     }
+    /// <summary>
+    /// Perform an attack animation.
+    /// </summary>
+    /// <param name="type">The type of attack to perform.</param>
+    /// <param name="alt">If true, perform the alternate version of the attack.</param>
     public void PerformAttack(Attack.Type type, bool alt = false)
     {
         if (CurrentState.CanAttack)
