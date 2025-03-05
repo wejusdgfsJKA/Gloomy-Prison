@@ -12,5 +12,8 @@ public class Sound : ScriptableObject
 [System.Serializable]
 public class SoundData
 {
+    /// <summary>
+    /// The object who made the sound.
+    /// </summary>
     public Transform Source { get; protected set; }
 }

@@ -29,6 +29,9 @@ public class EntityBase : MonoBehaviour
     protected HPComponent hpComponent;
     [SerializeField]
     protected EntityData data;
+    /// <summary>
+    /// The BlockResult when no weapon is available.
+    /// </summary>
     protected BlockResult defaultBlockResult = BlockResult.Failure;
     /// <summary>
     /// The internal ID of this entity.
@@ -117,6 +120,12 @@ public class EntityBase : MonoBehaviour
                 break;
         }
     }
+    /// <summary>
+    /// Receive the result of an attack I performed.
+    /// </summary>
+    /// <param name="target">The target we attacked.</param>
+    /// <param name="blockResult">The BlockResult.</param>
+    /// <param name="dmginfo">The damage package we sent.</param>
     public virtual void ReceiveAttackResult(Transform target, BlockResult blockResult, DmgInfo dmginfo)
     {
 

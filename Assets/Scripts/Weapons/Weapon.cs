@@ -62,7 +62,6 @@ public class Weapon : MonoBehaviour
         set
         {
             staminaComponent = value;
-            staminaComponent.Reset();
             BlockComp.StaminaComp = staminaComponent;
         }
     }

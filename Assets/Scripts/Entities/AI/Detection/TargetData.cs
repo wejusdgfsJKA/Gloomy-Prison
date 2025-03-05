@@ -19,6 +19,9 @@ public class TargetData
     /// Where we think the entity is.
     /// </summary>
     public Vector3 KnownPos { get; protected set; }
+    /// <summary>
+    /// The reference to the entity.
+    /// </summary>
     public EntityBase Entity { get; protected set; }
     public TargetData(Transform target)
     {
@@ -26,12 +29,18 @@ public class TargetData
         Entity = EntityManager.Instance.Entities[target];
         Refresh();
     }
+    /// <summary>
+    /// Fires when the entity is detected.
+    /// </summary>
     public void Refresh()
     {
         TimeLastDetected = Time.time;
         KnownPos = Target.position;
         Spotted = true;
     }
+    /// <summary>
+    /// Fires when the entity has just left detection.
+    /// </summary>
     public void WeakRefresh()
     {
         Spotted = false;

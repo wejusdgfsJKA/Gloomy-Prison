@@ -2,9 +2,9 @@ public class MobHPComponent : HPComponent
 {
     protected void Awake()
     {
-        TakeDamage = (int _damage) =>
+        TakeDamage = (int damage) =>
         {
-            CurrentHP -= _damage;
+            CurrentHP -= damage;
             if (CurrentHP <= 0)
             {
                 Die();
