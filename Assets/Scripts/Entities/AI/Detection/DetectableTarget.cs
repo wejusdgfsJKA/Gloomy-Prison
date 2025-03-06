@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Add this script to an entity to make it detectable.
+/// </summary>
 [RequireComponent(typeof(EntityBase))]
 public class DetectableTarget : MonoBehaviour
 {

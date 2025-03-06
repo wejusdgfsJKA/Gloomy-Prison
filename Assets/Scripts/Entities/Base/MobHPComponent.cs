@@ -1,3 +1,6 @@
+/// <summary>
+/// Handles the HP of an entity which will die when its HP reaches 0.
+/// </summary>
 public class MobHPComponent : HPComponent
 {
     protected void Awake()
@@ -11,6 +14,9 @@ public class MobHPComponent : HPComponent
             }
         };
     }
+    /// <summary>
+    /// Fires when the entity dies.
+    /// </summary>
     protected void Die()
     {
         gameObject.SetActive(false);

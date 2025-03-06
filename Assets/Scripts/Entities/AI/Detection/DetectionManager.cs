@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Keeps track of all entities which can be detected.
+/// </summary>
 public class DetectionManager : MonoBehaviour
 {
     public static DetectionManager Instance { get; protected set; }
