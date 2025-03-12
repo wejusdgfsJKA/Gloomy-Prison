@@ -4,9 +4,9 @@ using UnityEngine;
 public class Sound : ScriptableObject
 {
     /// <summary>
-    /// Currently unused.
+    /// Add the intensity to the hearing range of the listener.
     /// </summary>
-    public float Intensity { get; protected set; }
+    public float Intensity { get; protected set; } = 0;
     public SoundData Data { get; protected set; }
 }
 [System.Serializable]

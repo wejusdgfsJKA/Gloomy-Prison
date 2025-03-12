@@ -175,7 +175,7 @@ public class AwarenessSystem : MonoBehaviour
     /// <returns>True if we can hear the sound.</returns>
     protected bool CanHear(Sound sound)
     {
-        return Vector3.Distance(transform.position, sound.Data.Source.position) <= parameters.HearingRange;
+        return Vector3.Distance(transform.position, sound.Data.Source.position) <= parameters.HearingRange + sound.Intensity;
     }
     /// <summary>
     /// Checks if we can see a target.
