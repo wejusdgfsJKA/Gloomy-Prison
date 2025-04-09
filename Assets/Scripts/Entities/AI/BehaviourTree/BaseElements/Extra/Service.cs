@@ -1,36 +1,39 @@
 using System.Text;
-public class Service : ElementBase
+namespace BTree
 {
-    protected System.Action onEvaluateFn;
-    public Service(string name, System.Action evaluate)
+    public class Service : ElementBase
     {
-        Name = name;
-        onEvaluateFn = evaluate;
-    }
-    /// <summary>
-    /// Run the service.
-    /// </summary>
-    public void Evaluate()
-    {
-        if (onEvaluateFn != null)
+        protected System.Action onEvaluateFn;
+        public Service(string name, System.Action evaluate)
         {
-            onEvaluateFn();
+            Name = name;
+            onEvaluateFn = evaluate;
         }
-    }
-    /// <summary>
-    /// Get information about the service.
-    /// </summary>
-    /// <param name="debug">StringBuilder instance.</param>
-    /// <param name="indentlevel">The level of indentation 
-    /// we should apply.</param>
-    public override void GetDebugTextInternal(StringBuilder
-        debug, int indentlevel = 0)
-    {
-        // apply the indent
-        for (int index = 0; index < indentlevel; ++index)
+        /// <summary>
+        /// Run the service.
+        /// </summary>
+        public void Evaluate()
         {
-            debug.Append(' ');
+            if (onEvaluateFn != null)
+            {
+                onEvaluateFn();
+            }
         }
-        debug.Append($"S: {Name}");
+        /// <summary>
+        /// Get information about the service.
+        /// </summary>
+        /// <param name="debug">StringBuilder instance.</param>
+        /// <param name="indentlevel">The level of indentation 
+        /// we should apply.</param>
+        public override void GetDebugTextInternal(StringBuilder
+            debug, int indentlevel = 0)
+        {
+            // apply the indent
+            for (int index = 0; index < indentlevel; ++index)
+            {
+                debug.Append(' ');
+            }
+            debug.Append($"S: {Name}");
+        }
     }
 }
