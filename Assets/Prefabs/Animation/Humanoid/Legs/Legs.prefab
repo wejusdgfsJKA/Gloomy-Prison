@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 7500930354724080064}
   - component: {fileID: 1235324068549112611}
   - component: {fileID: 5389884377401713633}
-  - component: {fileID: 5720671725930547528}
   m_Layer: 0
   m_Name: Legs
   m_TagString: StopDrawing
@@ -167,18 +166,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5720671725930547528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122654222476308127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95cc0ccfdd8f1ea4ea77dde63311d670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4559379476873360877
 GameObject:
   m_ObjectHideFlags: 0
